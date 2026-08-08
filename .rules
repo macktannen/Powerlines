@@ -1,0 +1,3 @@
+# Versioning Rule
+
+Always update the hardcoded version numbers in `app.js` and `index.html` whenever making any code changes in this project.

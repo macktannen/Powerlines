@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indiana Electric Transmission Grid Viewer</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0F19'/><path d='M55 12L20 54h25l-8 34 38-44H50l8-32z' fill='%2300E5FF'/></svg>">
+
+  <meta name="version" content="3.16.32">
+  
+  <!-- Application Styling -->
+  <link rel="stylesheet" href="style.css?v=3.16.32">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <div class="brand-text">
+          <h1>Indiana Grid Map <span class="badge-version">v3.16.32</span></h1>
+          <p>Electric Transmission System & Mission Planner</p>
+        </div>
+      </div>
+
+      <div class="header-stats">
+        <div class="stat-pill">
+          <span class="stat-label">Subnetworks</span>
+          <span class="stat-value" id="stat-total-circuits">--</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Total Distance</span>
+          <span class="stat-value" id="stat-total-miles">--</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Total Segments</span>
+          <span class="stat-value" id="stat-total-segments">--</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-toggle-sidebar" class="btn-icon" title="Toggle Controls">
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+        <button id="btn-reset-view" class="btn-secondary">
+          <i class="fa-solid fa-location-crosshairs"></i> Reset View
+        </button>
+      </div>
+    </header>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast-notification" class="toast-notification hidden">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toast-message">Saved permanently to database!</span>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-body">
+      <!-- Sidebar Control Panel -->
+      <aside class="sidebar" id="sidebar">
+        <!-- Sidebar Navigation Tabs -->
+        <div class="sidebar-tabs" id="sidebar-tabs-nav">
+          <button class="tab-btn active" data-tab="tab-planner" title="Interactive Flight Planner & Manifest">
+            <i class="fa-solid fa-route"></i> Flight Planner
+          </button>
+          <button class="tab-btn" data-tab="tab-weather" title="Live METAR/TAF Aviation Weather Feeds">
+            <i class="fa-solid fa-cloud-sun-rain"></i> Weather
+          </button>
+          <button class="tab-btn" data-tab="tab-circuits" title="Subnetworks & Transmission Circuits">
+            <i class="fa-solid fa-diagram-project"></i> Circuits (<span id="tab-circuit-count">0</span>)
+          </button>
+          <button class="tab-btn" data-tab="tab-missions" title="Mission Packages (~100 mi & Custom)">
+            <i class="fa-solid fa-helicopter"></i> Missions (<span id="tab-mission-count">37</span>)
+          </button>
+          <button class="tab-btn" data-tab="tab-filters" title="Map Layers, Basemaps & Voltage Filters">
+            <i class="fa-solid fa-filter"></i> Filters & Map
+          </button>
+        </div>
+
+        <!-- Tab 1: Subnetworks & Circuits List -->
+        <div class="tab-content" id="tab-circuits">
+          <!-- Search Circuits Box -->
+          <div class="panel-card search-card">
+            <div class="search-box">
+              <input type="text" id="circuit-search-input" placeholder="Search multiple circuits (e.g. 13883, 34509, 6991)..." autocomplete="off">
+              <button id="btn-clear-search" class="btn-clear" style="display:none;">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="search-hint">
+              <i class="fa-solid fa-lightbulb"></i> Tip: Separate multiple circuit numbers with commas.
+            </div>
+          </div>
+
+          <!-- Group Selection Toolbar -->
+          <div class="group-selection-bar" id="group-selection-bar">
+            <div class="group-selection-info">
+              <span class="group-count-badge" id="group-count-badge">0 selected</span>
+              <span class="group-miles-label" id="group-miles-label">0.0 mi</span>
+            </div>
+            <div class="group-action-btns">
+              <button id="btn-select-all-visible" class="btn-xs" title="Select All Matching">
+                <i class="fa-solid fa-check-double"></i> Select All
+              </button>
+              <button id="btn-zoom-group" class="btn-xs btn-highlight" title="Zoom to Group Bounds">
+                <i class="fa-solid fa-expand"></i> Fit Map
+              </button>
+              <button id="btn-clear-group" class="btn-xs btn-danger" title="Clear Group Selection">
+                <i class="fa-solid fa-trash-can"></i> Clear
+              </button>
+            </div>
+            <div class="group-pdf-row" style="display: flex; gap: 6px; margin-top: 6px; width: 100%;">
+              <select id="report-style-select-bar" class="custom-select-sm" style="flex: 1;">
+                <option value="executive">Executive Summary</option>
+                <option value="operational">Operational Flight Brief</option>
+                <option value="asset">Asset Inventory</option>
+                <option value="comparison">Mission Comparison</option>
+                <option value="field">Field Reference Card</option>
+              </select>
+              <button id="btn-export-pdf-bar" class="btn-xs btn-pdf" style="flex: 1; padding: 6px 10px;" title="Generate PDF Report">
+                <i class="fa-solid fa-file-pdf"></i> PDF Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Circuit Sorting & Controls -->
+          <div class="circuit-sort-bar">
+            <span class="sort-label">Sort by:</span>
+            <select id="circuit-sort-select" class="custom-select-sm">
+              <option value="voltage-asc-name-asc" selected>Voltage (Low→High) & Circuit #</option>
+              <option value="voltage-desc-name-asc">Voltage (High→Low) & Circuit #</option>
+              <option value="miles-desc">Mileage (High to Low)</option>
+              <option value="segments-desc">Segments (Most to Least)</option>
+              <option value="name-asc">Circuit Name (A-Z)</option>
+            </select>
+          </div>
+
+          <!-- Grouped Circuits List Container -->
+          <div class="circuit-cards-container" id="circuit-cards-list">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Mission Packages (~100-Mile Helicopter Out & Back) -->
+        <div class="tab-content" id="tab-missions">
+          <!-- Mission Package Dropdown Card -->
+          <div class="panel-card search-card collapsible-card">
+            <div class="card-header-flex collapsible-header" style="margin-bottom: 8px;">
+              <div class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-helicopter" style="color: var(--accent-cyan);"></i>
+                <h3>Missions (~100 mi)</h3>
+              </div>
+              <span class="badge-sm" style="background: rgba(0, 229, 255, 0.15); color: var(--accent-cyan);">KVPZ Base</span>
+            </div>
+            
+            <div class="form-group card-body" style="margin-bottom: 8px;">
+              <select id="mission-packages-select" class="custom-select">
+                <option value="" selected>-- Select a Mission (~100 mi) --</option>
+                <!-- Populated dynamically by JS -->
+              </select>
+              <div class="search-hint" style="margin-top: 6px;">
+                <i class="fa-solid fa-plane-departure"></i> Origin: KVPZ Airport | 110 kts cruise / 30 kts inspection
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Mission Package Details Card -->
+          <div class="panel-card mission-detail-card collapsible-card hidden" id="mission-detail-card">
+            <div class="mission-detail-header collapsible-header">
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <span class="drawer-badge" id="mission-kv-badge">138 kV</span>
+                <h3 id="mission-detail-title">Mission Package 1</h3>
+                <button id="btn-rename-active-mission" class="btn-xs btn-highlight" style="padding: 2px 6px; font-size: 0.65rem; margin-left: 4px;" title="Rename Mission Pack">
+                  <i class="fa-solid fa-pen"></i> Rename
+                </button>
+              </div>
+              <span class="mission-time-badge" id="mission-detail-time">3 hrs 24 mins</span>
+            </div>
+
+            <div class="card-body" style="margin-top: 10px;">
+              <div class="mission-stats-grid">
+                <div class="m-stat-box">
+                  <span class="m-stat-label">Circuit Length</span>
+                  <span class="m-stat-value" id="mission-stat-lines">102.1 mi</span>
+                </div>
+                <div class="m-stat-box">
+                  <span class="m-stat-label">Total Flight</span>
+                  <span class="m-stat-value" id="mission-stat-flight">159.3 mi</span>
+                </div>
+                <div class="m-stat-box">
+                  <span class="m-stat-label">Circuits</span>
+                  <span class="m-stat-value" id="mission-stat-count">47</span>
+                </div>
+              </div>
+
+              <div class="mission-flight-breakdown" id="mission-flight-breakdown">
+                <!-- Populated by JS -->
+              </div>
+
+              <div class="group-action-btns" style="margin-top: 12px; justify-content: flex-end;">
+                <button id="btn-select-mission-circuits" class="btn-xs btn-highlight">
+                  <i class="fa-solid fa-check-double"></i> Select All Circuits
+                </button>
+                <button id="btn-zoom-mission" class="btn-xs">
+                  <i class="fa-solid fa-expand"></i> Fit Map
+                </button>
+                <button id="btn-clear-mission" class="btn-xs btn-danger">
+                  <i class="fa-solid fa-xmark"></i> Clear
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Saved Mission Packages Card -->
+          <div class="panel-card collapsible-card" id="custom-missions-card" style="margin-bottom: 12px; border-left: 4px solid #10B981;">
+            <div class="card-header-flex collapsible-header">
+              <div class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-bookmark" style="color: #10B981;"></i>
+                <h3>Custom Saved Missions (<span id="custom-mission-count">0</span>)</h3>
+              </div>
+              <span class="badge-sm" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">User Created</span>
+            </div>
+            <div class="card-body" style="margin-top: 8px;">
+              <div id="custom-mission-cards-list" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Populated dynamically by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- List of all Standard Mission Packages -->
+          <div class="circuit-cards-container" id="mission-cards-list">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Filters & Map Layer Settings -->
+        <div class="tab-content" id="tab-filters">
+          <!-- Voltage Filters Card -->
+          <div class="panel-card collapsible-card">
+            <div class="card-header-flex collapsible-header">
+              <div class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Voltage Rating Filter</h3>
+              </div>
+              <button id="btn-toggle-all-voltage" class="btn-link">Toggle All</button>
+            </div>
+            <div class="voltage-filter-list card-body" id="voltage-filter-list">
+              <!-- Filter items populated by JS -->
+            </div>
+          </div>
+
+          <!-- Base Map Selection Card -->
+          <div class="panel-card collapsible-card">
+            <div class="card-title collapsible-header" style="display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-caret-down collapse-triangle"></i>
+              <i class="fa-solid fa-layer-group"></i>
+              <h3>Basemap Theme</h3>
+            </div>
+            <div class="basemap-options card-body" style="margin-top: 8px;">
+              <button class="basemap-btn active" data-basemap="dark">
+                <i class="fa-solid fa-moon"></i> Carto Dark
+              </button>
+              <button class="basemap-btn" data-basemap="hybrid-satellite">
+                <i class="fa-solid fa-globe"></i> Hybrid Satellite
+              </button>
+              <button class="basemap-btn" data-basemap="osm-standard">
+                <i class="fa-solid fa-map"></i> OSM Standard
+              </button>
+              <button class="basemap-btn" data-basemap="satellite">
+                <i class="fa-solid fa-earth-americas"></i> Satellite Only
+              </button>
+              <button class="basemap-btn" data-basemap="light">
+                <i class="fa-solid fa-sun"></i> Carto Light
+              </button>
+              <button class="basemap-btn" data-basemap="voyager">
+                <i class="fa-solid fa-compass"></i> Carto Voyager
+              </button>
+              <button class="basemap-btn" data-basemap="esri-streets">
+                <i class="fa-solid fa-road"></i> Esri Streets
+              </button>
+              <button class="basemap-btn" data-basemap="esri-topo">
+                <i class="fa-solid fa-mountain"></i> Esri Topo
+              </button>
+            </div>
+          </div>
+
+          <!-- Airports & Map Layer Display Settings Card -->
+          <div class="panel-card collapsible-card">
+            <div class="card-title collapsible-header" style="display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-caret-down collapse-triangle"></i>
+              <i class="fa-solid fa-plane-departure" style="color: var(--accent-cyan);"></i>
+              <h3>Airports & Map Layers</h3>
+            </div>
+            <div class="card-body" style="margin-top: 8px; display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px dashed var(--panel-border);">
+                <span style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">MAP AIRPORTS:</span>
+                <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="toggle-show-airports" checked style="width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent-cyan);">
+                  <span style="font-size: 0.76rem; color: var(--text-main); font-weight: 600;">Show Airports</span>
+                </label>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px dashed var(--panel-border);" id="row-airport-labels">
+                <span style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">AIRPORT LABELS:</span>
+                <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="toggle-airport-labels" checked style="width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent-cyan);">
+                  <span style="font-size: 0.76rem; color: var(--text-main); font-weight: 500;">Full Badges</span>
+                </label>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between;" id="row-fuel-prices">
+                <span style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">FUEL PRICES:</span>
+                <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="toggle-show-fuel-prices" checked style="width: 16px; height: 16px; cursor: pointer; accent-color: #10B981;">
+                  <span style="font-size: 0.76rem; color: var(--text-main); font-weight: 500;">Show Jet-A Price</span>
+                </label>
+              </div>
+              
+              <div style="margin-top: 6px;">
+                <button id="btn-force-fetch-fuel" class="btn-xs btn-highlight" style="width: 100%; padding: 6px;">
+                  <i class="fa-solid fa-gas-pump"></i> Fetch Live Fuel Prices Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Aviation Weather (Live METAR/TAF Data) -->
+        <div class="tab-content" id="tab-weather">
+          <!-- Weather Station Selector & Controls -->
+          <div class="panel-card collapsible-card">
+            <div class="card-header-flex collapsible-header">
+              <div class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-cloud-sun-rain" style="color: var(--accent-cyan);"></i>
+                <h3>Aviation Weather</h3>
+              </div>
+              <button id="btn-refresh-weather" class="btn-xs btn-highlight" style="padding: 3px 8px;">
+                <i class="fa-solid fa-arrows-rotate"></i> Refresh
+              </button>
+            </div>
+
+            <div class="card-body" style="margin-top: 8px;">
+              <div class="form-group" style="margin-bottom: 8px;">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Filter Station / Route:</label>
+                <select id="weather-airport-select" class="custom-select-sm" style="width: 100%;">
+                  <option value="ALL" selected>All Database Airports (22)</option>
+                  <option value="PLAN_NEAREST">⚡ Auto-Filter: Nearest to Flight Plan</option>
+                  <!-- Populated dynamically by JS -->
+                </select>
+              </div>
+
+              <div class="search-hint">
+                <i class="fa-solid fa-satellite-dish"></i> Live METAR & TAF feeds via NOAA Aviation Weather API
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather Cards Container -->
+          <div class="circuit-cards-container" id="weather-cards-list">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Tab 4: Interactive Helicopter Flight Planner -->
+        <div class="tab-content active" id="tab-planner">
+          <!-- Section 3: Add Circuit Waypoint Card -->
+          <div  id="planner-card-add-legs" class="panel-card collapsible-card collapsed">
+            <div class="card-title collapsible-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-plus-circle"></i>
+                <h3>Add Circuit Legs</h3>
+              </div>
+              <button id="btn-planner-sync-selected" class="btn-xs btn-highlight" style="padding: 4px 8px; font-size: 0.68rem;" title="Import circuits selected in Circuits tab">
+                <i class="fa-solid fa-sync"></i> Sync Selected
+              </button>
+            </div>
+
+            <div class="card-body" style="margin-top: 10px;">
+              <!-- Routing Mode & Auto-Optimize Toggle -->
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed var(--panel-border);">
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Routing Mode:</span>
+                <button id="btn-toggle-auto-optimize" class="btn-xs btn-highlight" style="padding: 3px 8px; font-size: 0.68rem; background: linear-gradient(135deg, #0284C7, #00E5FF); border: none; color: #FFF; font-weight: 700;" title="Toggle between Auto-Optimize & Manual Drag Waypoints">
+                  <i class="fa-solid fa-bolt"></i> ⚡ Auto-Optimize: ON
+                </button>
+              </div>
+
+              <!-- Typable Circuit Input Box (comma-separated supported) -->
+              <div>
+                <div style="display: flex; gap: 6px;">
+                  <input type="text" id="planner-circuit-search-input" placeholder="Type circuit #s (e.g. 13883, 34509, 6907)..." list="circuit-options-list" autocomplete="off" class="custom-select-sm" style="flex: 1; padding: 7px 10px;">
+                  <button id="btn-planner-add-input" class="btn-xs btn-highlight" style="padding: 6px 14px;">
+                    <i class="fa-solid fa-plus"></i> Add
+                  </button>
+                </div>
+                <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 4px;">
+                  Tip: Type single or comma-separated circuit numbers & press Enter.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+<!-- Section 4: Leg Sequence Breakdown List -->
+          <div class="panel-card collapsible-card" id="planner-card-manifest" style="flex: 1; display: flex; flex-direction: column; min-height: 180px;">
+            <div class="card-title collapsible-header" style="display: flex; align-items: center; justify-content: space-between; gap: 4px; flex-wrap: nowrap; overflow: hidden;">
+              <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-list-ol"></i>
+                <h3 style="font-size: 0.85rem; white-space: nowrap;">Flight Plan</h3>
+              </div>
+              <div style="display: flex; gap: 3px; align-items: center; flex-shrink: 0;">
+                <button id="btn-save-as-mission-pack" class="btn-xs btn-highlight" style="padding: 3px 6px; font-size: 0.65rem; background: linear-gradient(135deg, #059669, #10B981); border: none; color: #FFF; white-space: nowrap;" title="Save exact flight route & endpoints as a Mission Pack">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Mission
+                </button>
+                <button id="btn-planner-reverse-route" class="btn-xs btn-highlight" style="padding: 3px 6px; font-size: 0.65rem; background: linear-gradient(135deg, #3B82F6, #2563EB); border: none; color: #FFF; white-space: nowrap;" title="Reverse the flight plan circuit sequence">
+                  <i class="fa-solid fa-arrow-right-arrow-left"></i> Route
+                </button>
+                <button id="btn-planner-export-pdf" class="btn-xs btn-pdf" style="padding: 3px 6px; font-size: 0.65rem; white-space: nowrap;" title="Print Flight Briefing">
+                  <i class="fa-solid fa-file-pdf"></i> Briefing
+                </button>
+              </div>
+            </div>
+            
+            <div class="card-body" style="flex: 1; display: flex; flex-direction: column; margin-top: 10px; overflow: hidden;">
+              <div id="planner-legs-list" class="segment-scroll-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+          <!-- Section 2: Flight Telemetry Summary Box -->
+          <div  id="planner-card-telemetry" class="panel-card collapsible-card collapsed" style="background: rgba(0, 229, 255, 0.04); border-color: rgba(0, 229, 255, 0.2);">
+            <div class="card-title collapsible-header" style="margin-bottom: 0;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <span style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase;">Flight Telemetry</span>
+              </div>
+              <span id="planner-leg-count" style="font-size: 0.72rem; color: var(--text-muted);">0 Legs</span>
+            </div>
+            
+            <div class="card-body" style="margin-top: 10px;">
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 8px;">
+                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; border: 1px solid var(--panel-border);">
+                  <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Total Time</div>
+                  <div id="planner-total-time" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);">0h 0m</div>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; border: 1px solid var(--panel-border);">
+                  <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Total Distance</div>
+                  <div id="planner-total-miles" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: #FFF;">0.0 mi</div>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                <div style="background: rgba(0,0,0,0.3); padding: 6px 8px; border-radius: 6px; font-size: 0.72rem;">
+                  <span style="color: var(--text-muted);">Transit:</span> <strong id="planner-transit-miles">0 mi</strong>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 6px 8px; border-radius: 6px; font-size: 0.72rem;">
+                  <span style="color: var(--text-muted);">Est. Fuel:</span> <strong id="planner-est-fuel">0 gal</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <!-- Section 1: Flight Planner Settings Card -->
+          <div  id="planner-card-settings" class="panel-card collapsible-card collapsed">
+            <div class="card-title collapsible-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-caret-down collapse-triangle"></i>
+                <i class="fa-solid fa-helicopter" style="color: var(--accent-cyan);"></i>
+                <h3>Flight Planner Settings</h3>
+              </div>
+              <span class="badge-version" style="background: rgba(0,229,255,0.15); color: var(--accent-cyan);">v3.3.0</span>
+            </div>
+            
+            <div class="card-body" style="margin-top: 8px;">
+              <p style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 10px;">
+                Build custom multi-leg helicopter inspection flights with automatic entry/exit routing & transit speed calculations.
+              </p>
+
+              <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+                <button id="btn-autoplan-optimize" class="btn-xs" style="background: rgba(0,229,255,0.15); color: var(--accent-cyan); border: 1px solid rgba(0,229,255,0.3); padding: 7px 10px;" title="Auto-optimize circuit sequence to minimize enroute transit time">
+                  <i class="fa-solid fa-bolt"></i> Auto-Plan
+                </button>
+                <button id="btn-reset-planner" class="btn-xs btn-danger" style="flex: 0 0 auto; padding: 7px 10px;">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 8px;">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">🛫 Departure Airport (Jet-A Fuel):</label>
+                <select id="planner-start-airport" class="custom-select-sm" style="width: 100%;">
+                  <option value="KVPZ">KVPZ - Porter County Municipal (Valparaiso)</option>
+                  <option value="KGYY">KGYY - Gary/Chicago International (Gary)</option>
+                  <option value="KSBN">KSBN - South Bend International (South Bend)</option>
+                  <option value="KPPO">KPPO - La Porte Municipal Airport (La Porte)</option>
+                  <option value="KMGC">KMGC - Michigan City Municipal (Michigan City)</option>
+                  <option value="KRZL">KRZL - Jasper County Airport (Rensselaer)</option>
+                  <option value="KMCX">KMCX - White County Airport (Monticello)</option>
+                  <option value="KOXI">KOXI - Starke County Airport (Knox)</option>
+                  <option value="KRWN">KRWN - Arens Field (Winamac)</option>
+                  <option value="KRCR">KRCR - Fulton County Airport (Rochester)</option>
+                  <option value="KASW">KASW - Warsaw Municipal Airport (Warsaw)</option>
+                  <option value="KGSH">KGSH - Goshen Municipal Airport (Goshen)</option>
+                  <option value="KEKM">KEKM - Elkhart Municipal Airport (Elkhart)</option>
+                  <option value="KANQ">KANQ - Tri State Steuben County (Angola)</option>
+                  <option value="KGWB">KGWB - De Kalb County Airport (Auburn)</option>
+                  <option value="KSMD">KSMD - Smith Field (Fort Wayne)</option>
+                  <option value="KFWA">KFWA - Fort Wayne International (Fort Wayne)</option>
+                  <option value="KHHG">KHHG - Huntington Municipal (Huntington)</option>
+                  <option value="KIWH">KIWH - Wabash Municipal Airport (Wabash)</option>
+                  <option value="KGGP">KGGP - Logansport Cass County (Logansport)</option>
+                  <option value="KLAF">KLAF - Purdue University Airport (West Lafayette)</option>
+                  <option value="KFKR">KFKR - Frankfort Clinton County (Frankfort)</option>
+                  <option value="C65">C65 - Plymouth Municipal Airport (Plymouth)</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 8px;">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">⛽ Fuel Stop Airport (Optional):</label>
+                <select id="planner-fuel-airport" class="custom-select-sm" style="width: 100%;">
+                  <option value="NONE" selected>-- None / No Fuel Stop --</option>
+                  <option value="KVPZ">KVPZ - Porter County Municipal (Valparaiso)</option>
+                  <option value="KGYY">KGYY - Gary/Chicago International (Gary)</option>
+                  <option value="KSBN">KSBN - South Bend International (South Bend)</option>
+                  <option value="KPPO">KPPO - La Porte Municipal Airport (La Porte)</option>
+                  <option value="KMGC">KMGC - Michigan City Municipal (Michigan City)</option>
+                  <option value="KRZL">KRZL - Jasper County Airport (Rensselaer)</option>
+                  <option value="KMCX">KMCX - White County Airport (Monticello)</option>
+                  <option value="KOXI">KOXI - Starke County Airport (Knox)</option>
+                  <option value="KRWN">KRWN - Arens Field (Winamac)</option>
+                  <option value="KRCR">KRCR - Fulton County Airport (Rochester)</option>
+                  <option value="KASW">KASW - Warsaw Municipal Airport (Warsaw)</option>
+                  <option value="KGSH">KGSH - Goshen Municipal Airport (Goshen)</option>
+                  <option value="KEKM">KEKM - Elkhart Municipal Airport (Elkhart)</option>
+                  <option value="KANQ">KANQ - Tri State Steuben County (Angola)</option>
+                  <option value="KGWB">KGWB - De Kalb County Airport (Auburn)</option>
+                  <option value="KSMD">KSMD - Smith Field (Fort Wayne)</option>
+                  <option value="KFWA">KFWA - Fort Wayne International (Fort Wayne)</option>
+                  <option value="KHHG">KHHG - Huntington Municipal (Huntington)</option>
+                  <option value="KIWH">KIWH - Wabash Municipal Airport (Wabash)</option>
+                  <option value="KGGP">KGGP - Logansport Cass County (Logansport)</option>
+                  <option value="KLAF">KLAF - Purdue University Airport (West Lafayette)</option>
+                  <option value="KFKR">KFKR - Frankfort Clinton County (Frankfort)</option>
+                  <option value="C65">C65 - Plymouth Municipal Airport (Plymouth)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="fuel-stop-duration-group" style="margin-bottom: 8px;">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">⏱️ Ground Turnaround Time (Mins):</label>
+                <input type="number" id="planner-fuel-duration" class="custom-select-sm" value="30" min="0" max="240" step="5" placeholder="Default: 30 mins" style="width: 100%; padding: 5px 8px;">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 8px;">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">🛬 Destination Airport (Jet-A Fuel):</label>
+                <select id="planner-end-airport" class="custom-select-sm" style="width: 100%;">
+                  <option value="KVPZ" selected>KVPZ - Return to Base (Valparaiso)</option>
+                  <option value="KGYY">KGYY - Gary/Chicago International (Gary)</option>
+                  <option value="KSBN">KSBN - South Bend International (South Bend)</option>
+                  <option value="KPPO">KPPO - La Porte Municipal Airport (La Porte)</option>
+                  <option value="KMGC">KMGC - Michigan City Municipal (Michigan City)</option>
+                  <option value="KRZL">KRZL - Jasper County Airport (Rensselaer)</option>
+                  <option value="KMCX">KMCX - White County Airport (Monticello)</option>
+                  <option value="KOXI">KOXI - Starke County Airport (Knox)</option>
+                  <option value="KRWN">KRWN - Arens Field (Winamac)</option>
+                  <option value="KRCR">KRCR - Fulton County Airport (Rochester)</option>
+                  <option value="KASW">KASW - Warsaw Municipal Airport (Warsaw)</option>
+                  <option value="KGSH">KGSH - Goshen Municipal Airport (Goshen)</option>
+                  <option value="KEKM">KEKM - Elkhart Municipal Airport (Elkhart)</option>
+                  <option value="KANQ">KANQ - Tri State Steuben County (Angola)</option>
+                  <option value="KGWB">KGWB - De Kalb County Airport (Auburn)</option>
+                  <option value="KSMD">KSMD - Smith Field (Fort Wayne)</option>
+                  <option value="KFWA">KFWA - Fort Wayne International (Fort Wayne)</option>
+                  <option value="KHHG">KHHG - Huntington Municipal (Huntington)</option>
+                  <option value="KIWH">KIWH - Wabash Municipal Airport (Wabash)</option>
+                  <option value="KGGP">KGGP - Logansport Cass County (Logansport)</option>
+                  <option value="KLAF">KLAF - Purdue University Airport (West Lafayette)</option>
+                  <option value="KFKR">KFKR - Frankfort Clinton County (Frankfort)</option>
+                  <option value="C65">C65 - Plymouth Municipal Airport (Plymouth)</option>
+                </select>
+              </div>
+
+              <div style="border-top: 1px solid var(--panel-border); margin-top: 10px; padding-top: 10px;">
+                <label style="font-size: 0.72rem; color: var(--accent-cyan); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; display: block;">⚡ Global Flight Plan Overrides:</label>
+                
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                  <div style="flex: 1;">
+                    <label style="font-size: 0.68rem; color: var(--text-muted);" title="Default enroute transit speed for all transit legs">Enroute Spd:</label>
+                    <div style="display: flex; align-items: center; gap: 2px;">
+                      <input type="number" id="planner-global-transit-speed" class="custom-select-sm" value="110" min="10" max="250" step="5" style="width: 100%; padding: 4px 5px; text-align: center;">
+                      <span style="font-size: 0.65rem; color: var(--text-dim);">kts</span>
+                    </div>
+                  </div>
+                  <div style="flex: 1;">
+                    <label style="font-size: 0.68rem; color: var(--text-muted);" title="Default line inspection speed for all inspection legs">Insp Spd:</label>
+                    <div style="display: flex; align-items: center; gap: 2px;">
+                      <input type="number" id="planner-global-insp-speed" class="custom-select-sm" value="30" min="10" max="150" step="5" style="width: 100%; padding: 4px 5px; text-align: center;">
+                      <span style="font-size: 0.65rem; color: var(--text-dim);">kts</span>
+                    </div>
+                  </div>
+                  <div style="flex: 1;">
+                    <label style="font-size: 0.68rem; color: var(--text-muted);" title="Default fuel burn rate for all legs in the flight plan">Fuel Burn:</label>
+                    <div style="display: flex; align-items: center; gap: 2px;">
+                      <input type="number" id="planner-global-fuel-burn" class="custom-select-sm" value="69" min="1" max="150" step="1" style="width: 100%; padding: 4px 5px; text-align: center;">
+                      <span style="font-size: 0.65rem; color: var(--text-dim);">gph</span>
+                    </div>
+                  </div>
+                </div>
+
+                <button id="btn-apply-global-planner-settings" class="btn-xs btn-highlight" style="width: 100%; padding: 6px; font-size: 0.7rem; background: linear-gradient(135deg, #0284C7, #00E5FF); color: #FFF; font-weight: 700; border: none;" title="Apply enroute speed, inspection speed, and fuel burn to all legs at once">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Apply to All Flight Plan Legs
+                </button>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </aside>
+
+      <!-- Map Container -->
+      <main class="map-wrapper">
+        <div id="map"></div>
+        
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay">
+          <div class="spinner"></div>
+          <p id="loading-text">Loading transmission dataset...</p>
+        </div>
+
+        <!-- Map Floating Legend -->
+        <div class="map-legend">
+          <div class="legend-header">Voltage Legend</div>
+          <div class="legend-items">
+            <div class="legend-item"><span class="color-dot v765"></span> 765 kV</div>
+            <div class="legend-item"><span class="color-dot v345"></span> 345 kV</div>
+            <div class="legend-item"><span class="color-dot v138"></span> 138 kV</div>
+            <div class="legend-item"><span class="color-dot v69"></span> 69 kV</div>
+            <div class="legend-item"><span class="color-dot v34"></span> 34 kV / 34.5 kV</div>
+            <div class="legend-item"><span class="color-dot vother"></span> Other / Unassigned</div>
+            <div class="legend-item highlight-legend"><span class="color-dot vgroup"></span> Group Highlight</div>
+          </div>
+        </div>
+
+        <!-- Selected Subnetwork Inspector Drawer -->
+        <div id="inspector-drawer" class="inspector-drawer hidden">
+          <div class="drawer-header">
+            <div>
+              <span class="drawer-badge" id="insp-voltage-badge">Multi-Group</span>
+              <h3 id="insp-title">Selected Circuit Group</h3>
+            </div>
+            <button id="btn-close-drawer" class="btn-close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          
+          <div class="drawer-content" id="drawer-details">
+            <!-- Attribute Grid populated by JS -->
+          </div>
+
+          <!-- Reassign Circuit Form (Visible when single unknown segment or circuit is selected) -->
+          <div id="reassign-circuit-section" class="reassign-section hidden">
+            <div class="reassign-header">
+              <i class="fa-solid fa-pen-to-square"></i> Reassign Segment Circuit
+            </div>
+            <div class="reassign-form">
+              <div class="form-group">
+                <label>Target Circuit # / Name:</label>
+                <input type="text" id="reassign-circuit-input" placeholder="e.g. 6907, 13883, 34509..." list="circuit-options-list">
+                <datalist id="circuit-options-list"></datalist>
+              </div>
+              <div class="form-group">
+                <label>Voltage Rating:</label>
+                <select id="reassign-voltage-select" class="custom-select">
+                  <option value="765000">765 kV Transmission</option>
+                  <option value="345000">345 kV Transmission</option>
+                  <option value="138000" selected>138 kV Transmission</option>
+                  <option value="69000">69 kV Sub-Transmission</option>
+                  <option value="34000">34 kV Distribution</option>
+                  <option value="34500">34.5 kV Distribution</option>
+                  <option value="OTHER">Other / Unspecified</option>
+                </select>
+              </div>
+              <button id="btn-save-reassign" class="btn-primary btn-save-assignment">
+                <i class="fa-solid fa-floppy-disk"></i> Save & Reassign Circuit
+              </button>
+            </div>
+          </div>
+
+          <!-- Segments / Circuits list inside inspector -->
+          <div class="segment-breakdown-section">
+            <div class="section-title">
+              <span id="insp-list-title">Circuits in Group (<span id="insp-segment-count">0</span>)</span>
+            </div>
+            <div class="segment-scroll-list" id="insp-segments-list"></div>
+          </div>
+
+          <div class="drawer-actions" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <button id="btn-zoom-to-line" class="btn-primary">
+              <i class="fa-solid fa-expand"></i> Fit Group on Map
+            </button>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <select id="report-style-select" class="custom-select-sm" style="flex: 1;">
+                <option value="executive">Executive Summary</option>
+                <option value="operational">Operational Flight Brief</option>
+                <option value="asset">Asset Inventory</option>
+                <option value="comparison">Mission Comparison</option>
+                <option value="field">Field Reference Card</option>
+              </select>
+              <button id="btn-export-pdf" class="btn-secondary btn-pdf-full" style="flex: 1; width: auto; margin: 0;">
+                <i class="fa-solid fa-file-pdf" style="color: #FF0055;"></i> PDF Report
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Sortable JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <!-- Application JS -->
+  <script src="app.js?v=3.16.32"></script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,5718 @@
+[
+  {
+    "id": "M01",
+    "kv_label": "765 kV",
+    "kv_sort": 765000,
+    "flying_id": 1,
+    "title": "[765 kV] Mission 1",
+    "circuit_miles": 21.37,
+    "effective_inspection_miles": 21.37,
+    "transit_out_miles": 55.7,
+    "transit_back_miles": 55.7,
+    "total_flight_miles": 132.7,
+    "total_flight_hrs": 1.5,
+    "total_flight_mins": 89.9,
+    "flight_time_str": "1 hrs 30 mins",
+    "inspection_hrs": 0.62,
+    "transit_out_mins": 26,
+    "inspection_mins": 37,
+    "transit_back_mins": 26,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.6664,
+    "avg_lng": -86.7825,
+    "circuit_names": [
+      "76501"
+    ],
+    "circuits_detail": [
+      {
+        "name": "76501",
+        "voltage": 765000,
+        "miles": 21.37,
+        "lat": 40.6664,
+        "lng": -86.7825
+      }
+    ]
+  },
+  {
+    "id": "M02",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 1,
+    "title": "[345 kV] Mission 1",
+    "circuit_miles": 78.01,
+    "effective_inspection_miles": 76.31,
+    "transit_out_miles": 27.4,
+    "transit_back_miles": 11.0,
+    "total_flight_miles": 114.7,
+    "total_flight_hrs": 2.51,
+    "total_flight_mins": 150.8,
+    "flight_time_str": "2 hrs 31 mins",
+    "inspection_hrs": 2.21,
+    "transit_out_mins": 13,
+    "inspection_mins": 133,
+    "transit_back_mins": 5,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5655,
+    "avg_lng": -87.3392,
+    "circuit_names": [
+      "34504",
+      "34520",
+      "34512",
+      "34511",
+      "34522",
+      "34510",
+      "34517",
+      "34515",
+      "34503",
+      "34523",
+      "34502"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34504",
+        "voltage": 345000,
+        "miles": 0.76,
+        "lat": 41.5494,
+        "lng": -87.5205
+      },
+      {
+        "name": "34520",
+        "voltage": 345000,
+        "miles": 7.61,
+        "lat": 41.6275,
+        "lng": -87.4792
+      },
+      {
+        "name": "34512",
+        "voltage": 345000,
+        "miles": 1.92,
+        "lat": 41.6681,
+        "lng": -87.5172
+      },
+      {
+        "name": "34511",
+        "voltage": 345000,
+        "miles": 1.92,
+        "lat": 41.6699,
+        "lng": -87.5181
+      },
+      {
+        "name": "34522",
+        "voltage": 345000,
+        "miles": 14.74,
+        "lat": 41.5577,
+        "lng": -87.3965
+      },
+      {
+        "name": "34510",
+        "voltage": 345000,
+        "miles": 26.9,
+        "lat": 41.5911,
+        "lng": -87.3279
+      },
+      {
+        "name": "34517",
+        "voltage": 345000,
+        "miles": 0.22,
+        "lat": 41.4605,
+        "lng": -87.2728
+      },
+      {
+        "name": "34515",
+        "voltage": 345000,
+        "miles": 0.2,
+        "lat": 41.4605,
+        "lng": -87.2714
+      },
+      {
+        "name": "34503",
+        "voltage": 345000,
+        "miles": 11.72,
+        "lat": 41.5226,
+        "lng": -87.2098
+      },
+      {
+        "name": "34523",
+        "voltage": 345000,
+        "miles": 4.23,
+        "lat": 41.5164,
+        "lng": -87.1166
+      },
+      {
+        "name": "34502",
+        "voltage": 345000,
+        "miles": 7.79,
+        "lat": 41.5971,
+        "lng": -87.1013
+      }
+    ]
+  },
+  {
+    "id": "M03",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 2,
+    "title": "[345 kV] Mission 2",
+    "circuit_miles": 112.42,
+    "effective_inspection_miles": 94.22,
+    "transit_out_miles": 16.9,
+    "transit_back_miles": 7.4,
+    "total_flight_miles": 118.5,
+    "total_flight_hrs": 2.92,
+    "total_flight_mins": 175.3,
+    "flight_time_str": "2 hrs 55 mins",
+    "inspection_hrs": 2.73,
+    "transit_out_mins": 8,
+    "inspection_mins": 164,
+    "transit_back_mins": 4,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.3607,
+    "avg_lng": -87.1366,
+    "circuit_names": [
+      "34521",
+      "34508",
+      "34507",
+      "34516"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34521",
+        "voltage": 345000,
+        "miles": 30.99,
+        "lat": 41.31,
+        "lng": -87.2704
+      },
+      {
+        "name": "34508",
+        "voltage": 345000,
+        "miles": 31.99,
+        "lat": 41.3987,
+        "lng": -87.1312
+      },
+      {
+        "name": "34507",
+        "voltage": 345000,
+        "miles": 22.75,
+        "lat": 41.3671,
+        "lng": -87.0541
+      },
+      {
+        "name": "34516",
+        "voltage": 345000,
+        "miles": 26.69,
+        "lat": 41.3672,
+        "lng": -87.0909
+      }
+    ]
+  },
+  {
+    "id": "M04",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 3,
+    "title": "[345 kV] Mission 3",
+    "circuit_miles": 59.82,
+    "effective_inspection_miles": 59.82,
+    "transit_out_miles": 15.2,
+    "transit_back_miles": 9.0,
+    "total_flight_miles": 84.1,
+    "total_flight_hrs": 1.92,
+    "total_flight_mins": 115.4,
+    "flight_time_str": "1 hrs 55 mins",
+    "inspection_hrs": 1.73,
+    "transit_out_mins": 7,
+    "inspection_mins": 104,
+    "transit_back_mins": 4,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.6155,
+    "avg_lng": -86.9552,
+    "circuit_names": [
+      "34506",
+      "34505",
+      "34514"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34506",
+        "voltage": 345000,
+        "miles": 11.65,
+        "lat": 41.6742,
+        "lng": -86.9953
+      },
+      {
+        "name": "34505",
+        "voltage": 345000,
+        "miles": 19.41,
+        "lat": 41.6175,
+        "lng": -86.9744
+      },
+      {
+        "name": "34514",
+        "voltage": 345000,
+        "miles": 28.76,
+        "lat": 41.5548,
+        "lng": -86.8958
+      }
+    ]
+  },
+  {
+    "id": "M05",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 4,
+    "title": "[345 kV] Mission 4",
+    "circuit_miles": 79.9,
+    "effective_inspection_miles": 79.9,
+    "transit_out_miles": 47.7,
+    "transit_back_miles": 20.6,
+    "total_flight_miles": 148.2,
+    "total_flight_hrs": 2.85,
+    "total_flight_mins": 171.2,
+    "flight_time_str": "2 hrs 51 mins",
+    "inspection_hrs": 2.31,
+    "transit_out_mins": 23,
+    "inspection_mins": 139,
+    "transit_back_mins": 10,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.0272,
+    "avg_lng": -86.7539,
+    "circuit_names": [
+      "34543",
+      "34528",
+      "34513"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34543",
+        "voltage": 345000,
+        "miles": 0.06,
+        "lat": 40.7723,
+        "lng": -86.8694
+      },
+      {
+        "name": "34528",
+        "voltage": 345000,
+        "miles": 47.55,
+        "lat": 41.0592,
+        "lng": -86.6761
+      },
+      {
+        "name": "34513",
+        "voltage": 345000,
+        "miles": 32.3,
+        "lat": 41.2503,
+        "lng": -86.7162
+      }
+    ]
+  },
+  {
+    "id": "M06",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 5,
+    "title": "[345 kV] Mission 5",
+    "circuit_miles": 82.91,
+    "effective_inspection_miles": 82.91,
+    "transit_out_miles": 24.3,
+    "transit_back_miles": 53.4,
+    "total_flight_miles": 160.6,
+    "total_flight_hrs": 3.02,
+    "total_flight_mins": 180.9,
+    "flight_time_str": "3 hrs 1 mins",
+    "inspection_hrs": 2.4,
+    "transit_out_mins": 12,
+    "inspection_mins": 144,
+    "transit_back_mins": 25,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4013,
+    "avg_lng": -86.2344,
+    "circuit_names": [
+      "34501",
+      "34509",
+      "34529"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34501",
+        "voltage": 345000,
+        "miles": 2.72,
+        "lat": 41.536,
+        "lng": -86.5503
+      },
+      {
+        "name": "34509",
+        "voltage": 345000,
+        "miles": 28.16,
+        "lat": 41.2989,
+        "lng": -86.1698
+      },
+      {
+        "name": "34529",
+        "voltage": 345000,
+        "miles": 52.03,
+        "lat": 41.3691,
+        "lng": -85.9833
+      }
+    ]
+  },
+  {
+    "id": "M07",
+    "kv_label": "345 kV",
+    "kv_sort": 345000,
+    "flying_id": 6,
+    "title": "[345 kV] Mission 6",
+    "circuit_miles": 40.41,
+    "effective_inspection_miles": 40.41,
+    "transit_out_miles": 57.3,
+    "transit_back_miles": 63.9,
+    "total_flight_miles": 161.6,
+    "total_flight_hrs": 2.13,
+    "total_flight_mins": 127.7,
+    "flight_time_str": "2 hrs 8 mins",
+    "inspection_hrs": 1.17,
+    "transit_out_mins": 27,
+    "inspection_mins": 70,
+    "transit_back_mins": 30,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.3305,
+    "avg_lng": -85.8607,
+    "circuit_names": [
+      "34518",
+      "34524"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34518",
+        "voltage": 345000,
+        "miles": 17.71,
+        "lat": 41.2183,
+        "lng": -85.9487
+      },
+      {
+        "name": "34524",
+        "voltage": 345000,
+        "miles": 22.7,
+        "lat": 41.4426,
+        "lng": -85.7727
+      }
+    ]
+  },
+  {
+    "id": "M08",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 1,
+    "title": "[138 kV] Mission 1",
+    "circuit_miles": 25.64,
+    "effective_inspection_miles": 19.65,
+    "transit_out_miles": 31.5,
+    "transit_back_miles": 26.4,
+    "total_flight_miles": 77.5,
+    "total_flight_hrs": 1.03,
+    "total_flight_mins": 61.6,
+    "flight_time_str": "1 hrs 2 mins",
+    "inspection_hrs": 0.57,
+    "transit_out_mins": 15,
+    "inspection_mins": 34,
+    "transit_back_mins": 12,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.659,
+    "avg_lng": -87.4735,
+    "circuit_names": [
+      "13803",
+      "13893",
+      "13877",
+      "13878",
+      "Unassigned Segment (6037432)",
+      "Unassigned Segment (6037431)",
+      "13841",
+      "13869",
+      "13824",
+      "13801",
+      "Unassigned Segment (6037433)",
+      "13850",
+      "138-107",
+      "Unassigned Segment (6037430)",
+      "Unassigned Segment (6091588)",
+      "Unassigned Segment (6038084)",
+      "Unassigned Segment (6038082)",
+      "13830",
+      "13808",
+      "Unassigned Segment (6037968)",
+      "Unassigned Segment (6037969)",
+      "13833"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13803",
+        "voltage": 138000,
+        "miles": 1.41,
+        "lat": 41.6969,
+        "lng": -87.5234
+      },
+      {
+        "name": "13893",
+        "voltage": 138000,
+        "miles": 4.45,
+        "lat": 41.6747,
+        "lng": -87.5194
+      },
+      {
+        "name": "13877",
+        "voltage": 138000,
+        "miles": 1.59,
+        "lat": 41.6608,
+        "lng": -87.4957
+      },
+      {
+        "name": "13878",
+        "voltage": 138000,
+        "miles": 2.41,
+        "lat": 41.661,
+        "lng": -87.479
+      },
+      {
+        "name": "Unassigned Segment (6037432)",
+        "voltage": 138000,
+        "miles": 0.29,
+        "lat": 41.6607,
+        "lng": -87.4725
+      },
+      {
+        "name": "Unassigned Segment (6037431)",
+        "voltage": 138000,
+        "miles": 0.4,
+        "lat": 41.6578,
+        "lng": -87.4753
+      },
+      {
+        "name": "13841",
+        "voltage": 138000,
+        "miles": 0.59,
+        "lat": 41.6609,
+        "lng": -87.4707
+      },
+      {
+        "name": "13869",
+        "voltage": 138000,
+        "miles": 0.91,
+        "lat": 41.6611,
+        "lng": -87.4703
+      },
+      {
+        "name": "13824",
+        "voltage": 138000,
+        "miles": 1.08,
+        "lat": 41.6669,
+        "lng": -87.4707
+      },
+      {
+        "name": "13801",
+        "voltage": 138000,
+        "miles": 0.87,
+        "lat": 41.6685,
+        "lng": -87.4716
+      },
+      {
+        "name": "Unassigned Segment (6037433)",
+        "voltage": 138000,
+        "miles": 0.07,
+        "lat": 41.6609,
+        "lng": -87.4691
+      },
+      {
+        "name": "13850",
+        "voltage": 138000,
+        "miles": 0.41,
+        "lat": 41.6636,
+        "lng": -87.4666
+      },
+      {
+        "name": "138-107",
+        "voltage": 138000,
+        "miles": 0.25,
+        "lat": 41.6627,
+        "lng": -87.4653
+      },
+      {
+        "name": "Unassigned Segment (6037430)",
+        "voltage": 138000,
+        "miles": 0.1,
+        "lat": 41.6544,
+        "lng": -87.4746
+      },
+      {
+        "name": "Unassigned Segment (6091588)",
+        "voltage": 138000,
+        "miles": 0.11,
+        "lat": 41.6532,
+        "lng": -87.4734
+      },
+      {
+        "name": "Unassigned Segment (6038084)",
+        "voltage": 138000,
+        "miles": 0.06,
+        "lat": 41.6529,
+        "lng": -87.4574
+      },
+      {
+        "name": "Unassigned Segment (6038082)",
+        "voltage": 138000,
+        "miles": 0.06,
+        "lat": 41.6528,
+        "lng": -87.4573
+      },
+      {
+        "name": "13830",
+        "voltage": 138000,
+        "miles": 2.24,
+        "lat": 41.6559,
+        "lng": -87.4535
+      },
+      {
+        "name": "13808",
+        "voltage": 138000,
+        "miles": 4.19,
+        "lat": 41.6428,
+        "lng": -87.471
+      },
+      {
+        "name": "Unassigned Segment (6037968)",
+        "voltage": 138000,
+        "miles": 0.3,
+        "lat": 41.6424,
+        "lng": -87.4658
+      },
+      {
+        "name": "Unassigned Segment (6037969)",
+        "voltage": 138000,
+        "miles": 0.29,
+        "lat": 41.639,
+        "lng": -87.4679
+      },
+      {
+        "name": "13833",
+        "voltage": 138000,
+        "miles": 3.57,
+        "lat": 41.6489,
+        "lng": -87.4453
+      }
+    ]
+  },
+  {
+    "id": "M09",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 2,
+    "title": "[138 kV] Mission 2",
+    "circuit_miles": 56.66,
+    "effective_inspection_miles": 35.31,
+    "transit_out_miles": 29.4,
+    "transit_back_miles": 21.3,
+    "total_flight_miles": 86.0,
+    "total_flight_hrs": 1.42,
+    "total_flight_mins": 85.4,
+    "flight_time_str": "1 hrs 25 mins",
+    "inspection_hrs": 1.02,
+    "transit_out_mins": 14,
+    "inspection_mins": 61,
+    "transit_back_mins": 10,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.6377,
+    "avg_lng": -87.4284,
+    "circuit_names": [
+      "13804",
+      "13853",
+      "13870",
+      "13835",
+      "13831",
+      "138-104",
+      "13811",
+      "13829",
+      "13825",
+      "13890",
+      "13891",
+      "13892",
+      "Unassigned Segment (6037532)",
+      "Unassigned Segment (6037531)",
+      "13859",
+      "Unassigned Segment (1905023796)",
+      "Unassigned Segment (6137010)",
+      "13826",
+      "13864",
+      "Unassigned Segment (6136689)",
+      "13860",
+      "13889"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13804",
+        "voltage": 138000,
+        "miles": 2.42,
+        "lat": 41.6479,
+        "lng": -87.5126
+      },
+      {
+        "name": "13853",
+        "voltage": 138000,
+        "miles": 9.09,
+        "lat": 41.6523,
+        "lng": -87.5094
+      },
+      {
+        "name": "13870",
+        "voltage": 138000,
+        "miles": 2.51,
+        "lat": 41.6223,
+        "lng": -87.4907
+      },
+      {
+        "name": "13835",
+        "voltage": 138000,
+        "miles": 2.36,
+        "lat": 41.627,
+        "lng": -87.4692
+      },
+      {
+        "name": "13831",
+        "voltage": 138000,
+        "miles": 1.57,
+        "lat": 41.6329,
+        "lng": -87.4134
+      },
+      {
+        "name": "138-104",
+        "voltage": 138000,
+        "miles": 0.21,
+        "lat": 41.6312,
+        "lng": -87.4306
+      },
+      {
+        "name": "13811",
+        "voltage": 138000,
+        "miles": 2.5,
+        "lat": 41.632,
+        "lng": -87.4506
+      },
+      {
+        "name": "13829",
+        "voltage": 138000,
+        "miles": 2.36,
+        "lat": 41.6439,
+        "lng": -87.4345
+      },
+      {
+        "name": "13825",
+        "voltage": 138000,
+        "miles": 4.99,
+        "lat": 41.6193,
+        "lng": -87.4385
+      },
+      {
+        "name": "13890",
+        "voltage": 138000,
+        "miles": 3.52,
+        "lat": 41.6447,
+        "lng": -87.4314
+      },
+      {
+        "name": "13891",
+        "voltage": 138000,
+        "miles": 4.65,
+        "lat": 41.643,
+        "lng": -87.4271
+      },
+      {
+        "name": "13892",
+        "voltage": 138000,
+        "miles": 1.25,
+        "lat": 41.6336,
+        "lng": -87.4183
+      },
+      {
+        "name": "Unassigned Segment (6037532)",
+        "voltage": 138000,
+        "miles": 0.91,
+        "lat": 41.6339,
+        "lng": -87.4166
+      },
+      {
+        "name": "Unassigned Segment (6037531)",
+        "voltage": 138000,
+        "miles": 0.09,
+        "lat": 41.6378,
+        "lng": -87.4088
+      },
+      {
+        "name": "13859",
+        "voltage": 138000,
+        "miles": 2.12,
+        "lat": 41.6309,
+        "lng": -87.4084
+      },
+      {
+        "name": "Unassigned Segment (1905023796)",
+        "voltage": 138000,
+        "miles": 0.01,
+        "lat": 41.6635,
+        "lng": -87.417
+      },
+      {
+        "name": "Unassigned Segment (6137010)",
+        "voltage": 138000,
+        "miles": 1.55,
+        "lat": 41.6719,
+        "lng": -87.4171
+      },
+      {
+        "name": "13826",
+        "voltage": 138000,
+        "miles": 4.81,
+        "lat": 41.6292,
+        "lng": -87.3905
+      },
+      {
+        "name": "13864",
+        "voltage": 138000,
+        "miles": 1.59,
+        "lat": 41.6227,
+        "lng": -87.3893
+      },
+      {
+        "name": "Unassigned Segment (6136689)",
+        "voltage": 138000,
+        "miles": 0.02,
+        "lat": 41.6785,
+        "lng": -87.425
+      },
+      {
+        "name": "13860",
+        "voltage": 138000,
+        "miles": 5.56,
+        "lat": 41.6191,
+        "lng": -87.3646
+      },
+      {
+        "name": "13889",
+        "voltage": 138000,
+        "miles": 2.58,
+        "lat": 41.6122,
+        "lng": -87.3607
+      }
+    ]
+  },
+  {
+    "id": "M10",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 3,
+    "title": "[138 kV] Mission 3",
+    "circuit_miles": 121.79,
+    "effective_inspection_miles": 83.62,
+    "transit_out_miles": 26.0,
+    "transit_back_miles": 17.4,
+    "total_flight_miles": 127.0,
+    "total_flight_hrs": 2.76,
+    "total_flight_mins": 165.9,
+    "flight_time_str": "2 hrs 46 mins",
+    "inspection_hrs": 2.42,
+    "transit_out_mins": 12,
+    "inspection_mins": 145,
+    "transit_back_mins": 8,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5583,
+    "avg_lng": -87.3528,
+    "circuit_names": [
+      "13823",
+      "13894",
+      "13895",
+      "13899",
+      "138-108",
+      "13834",
+      "13863",
+      "13862",
+      "13854",
+      "13822",
+      "138102",
+      "13861",
+      "13818",
+      "13817",
+      "13865",
+      "13810",
+      "13885",
+      "13842",
+      "13867",
+      "13888"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13823",
+        "voltage": 138000,
+        "miles": 5.28,
+        "lat": 41.5436,
+        "lng": -87.4943
+      },
+      {
+        "name": "13894",
+        "voltage": 138000,
+        "miles": 9.33,
+        "lat": 41.57,
+        "lng": -87.4793
+      },
+      {
+        "name": "13895",
+        "voltage": 138000,
+        "miles": 8.5,
+        "lat": 41.5561,
+        "lng": -87.4569
+      },
+      {
+        "name": "13899",
+        "voltage": 138000,
+        "miles": 3.07,
+        "lat": 41.5838,
+        "lng": -87.4666
+      },
+      {
+        "name": "138-108",
+        "voltage": 138000,
+        "miles": 1.31,
+        "lat": 41.5243,
+        "lng": -87.4493
+      },
+      {
+        "name": "13834",
+        "voltage": 138000,
+        "miles": 5.42,
+        "lat": 41.4817,
+        "lng": -87.4239
+      },
+      {
+        "name": "13863",
+        "voltage": 138000,
+        "miles": 11.08,
+        "lat": 41.5597,
+        "lng": -87.358
+      },
+      {
+        "name": "13862",
+        "voltage": 138000,
+        "miles": 6.36,
+        "lat": 41.5593,
+        "lng": -87.3224
+      },
+      {
+        "name": "13854",
+        "voltage": 138000,
+        "miles": 4.96,
+        "lat": 41.567,
+        "lng": -87.2948
+      },
+      {
+        "name": "13822",
+        "voltage": 138000,
+        "miles": 5.5,
+        "lat": 41.5697,
+        "lng": -87.2946
+      },
+      {
+        "name": "138102",
+        "voltage": 138000,
+        "miles": 0.52,
+        "lat": 41.5969,
+        "lng": -87.2958
+      },
+      {
+        "name": "13861",
+        "voltage": 138000,
+        "miles": 3.83,
+        "lat": 41.6064,
+        "lng": -87.3317
+      },
+      {
+        "name": "13818",
+        "voltage": 138000,
+        "miles": 7.39,
+        "lat": 41.6123,
+        "lng": -87.3564
+      },
+      {
+        "name": "13817",
+        "voltage": 138000,
+        "miles": 5.2,
+        "lat": 41.6103,
+        "lng": -87.3284
+      },
+      {
+        "name": "13865",
+        "voltage": 138000,
+        "miles": 2.38,
+        "lat": 41.6066,
+        "lng": -87.3096
+      },
+      {
+        "name": "13810",
+        "voltage": 138000,
+        "miles": 8.03,
+        "lat": 41.5984,
+        "lng": -87.2467
+      },
+      {
+        "name": "13885",
+        "voltage": 138000,
+        "miles": 5.33,
+        "lat": 41.4993,
+        "lng": -87.2758
+      },
+      {
+        "name": "13842",
+        "voltage": 138000,
+        "miles": 9.04,
+        "lat": 41.6028,
+        "lng": -87.2269
+      },
+      {
+        "name": "13867",
+        "voltage": 138000,
+        "miles": 11.7,
+        "lat": 41.4663,
+        "lng": -87.3013
+      },
+      {
+        "name": "13888",
+        "voltage": 138000,
+        "miles": 7.56,
+        "lat": 41.4523,
+        "lng": -87.3431
+      }
+    ]
+  },
+  {
+    "id": "M11",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 4,
+    "title": "[138 kV] Mission 4",
+    "circuit_miles": 35.75,
+    "effective_inspection_miles": 35.75,
+    "transit_out_miles": 53.7,
+    "transit_back_miles": 47.5,
+    "total_flight_miles": 136.9,
+    "total_flight_hrs": 1.83,
+    "total_flight_mins": 110.1,
+    "flight_time_str": "1 hrs 50 mins",
+    "inspection_hrs": 1.04,
+    "transit_out_mins": 25,
+    "inspection_mins": 62,
+    "transit_back_mins": 23,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.7688,
+    "avg_lng": -87.3224,
+    "circuit_names": [
+      "13871",
+      "138-105",
+      "13857"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13871",
+        "voltage": 138000,
+        "miles": 1.89,
+        "lat": 40.7696,
+        "lng": -87.4958
+      },
+      {
+        "name": "138-105",
+        "voltage": 138000,
+        "miles": 12.13,
+        "lat": 40.767,
+        "lng": -87.3797
+      },
+      {
+        "name": "13857",
+        "voltage": 138000,
+        "miles": 21.74,
+        "lat": 40.77,
+        "lng": -87.0917
+      }
+    ]
+  },
+  {
+    "id": "M12",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 5,
+    "title": "[138 kV] Mission 5",
+    "circuit_miles": 87.68,
+    "effective_inspection_miles": 59.72,
+    "transit_out_miles": 22.0,
+    "transit_back_miles": 4.4,
+    "total_flight_miles": 86.1,
+    "total_flight_hrs": 1.94,
+    "total_flight_mins": 116.3,
+    "flight_time_str": "1 hrs 56 mins",
+    "inspection_hrs": 1.73,
+    "transit_out_mins": 10,
+    "inspection_mins": 104,
+    "transit_back_mins": 2,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5784,
+    "avg_lng": -87.1611,
+    "circuit_names": [
+      "138101",
+      "13868",
+      "13866",
+      "13898",
+      "13806",
+      "13805",
+      "13837",
+      "13838",
+      "13836",
+      "13879",
+      "13875",
+      "13884",
+      "13849",
+      "13848",
+      "138602",
+      "138603",
+      "138601",
+      "13872",
+      "138106"
+    ],
+    "circuits_detail": [
+      {
+        "name": "138101",
+        "voltage": 138000,
+        "miles": 4.94,
+        "lat": 41.4302,
+        "lng": -87.4303
+      },
+      {
+        "name": "13868",
+        "voltage": 138000,
+        "miles": 2.21,
+        "lat": 41.4451,
+        "lng": -87.3892
+      },
+      {
+        "name": "13866",
+        "voltage": 138000,
+        "miles": 14.12,
+        "lat": 41.4851,
+        "lng": -87.2211
+      },
+      {
+        "name": "13898",
+        "voltage": 138000,
+        "miles": 4.35,
+        "lat": 41.5173,
+        "lng": -87.1155
+      },
+      {
+        "name": "13806",
+        "voltage": 138000,
+        "miles": 11.63,
+        "lat": 41.6092,
+        "lng": -87.1922
+      },
+      {
+        "name": "13805",
+        "voltage": 138000,
+        "miles": 12.32,
+        "lat": 41.6099,
+        "lng": -87.185
+      },
+      {
+        "name": "13837",
+        "voltage": 138000,
+        "miles": 0.79,
+        "lat": 41.622,
+        "lng": -87.1707
+      },
+      {
+        "name": "13838",
+        "voltage": 138000,
+        "miles": 0.79,
+        "lat": 41.622,
+        "lng": -87.1706
+      },
+      {
+        "name": "13836",
+        "voltage": 138000,
+        "miles": 4.08,
+        "lat": 41.623,
+        "lng": -87.1388
+      },
+      {
+        "name": "13879",
+        "voltage": 138000,
+        "miles": 3.86,
+        "lat": 41.6252,
+        "lng": -87.1281
+      },
+      {
+        "name": "13875",
+        "voltage": 138000,
+        "miles": 7.78,
+        "lat": 41.5948,
+        "lng": -87.1013
+      },
+      {
+        "name": "13884",
+        "voltage": 138000,
+        "miles": 2.6,
+        "lat": 41.626,
+        "lng": -87.1125
+      },
+      {
+        "name": "13849",
+        "voltage": 138000,
+        "miles": 1.18,
+        "lat": 41.6368,
+        "lng": -87.1122
+      },
+      {
+        "name": "13848",
+        "voltage": 138000,
+        "miles": 1.19,
+        "lat": 41.6367,
+        "lng": -87.1107
+      },
+      {
+        "name": "138602",
+        "voltage": 138000,
+        "miles": 1.54,
+        "lat": 41.6381,
+        "lng": -87.1127
+      },
+      {
+        "name": "138603",
+        "voltage": 138000,
+        "miles": 1.54,
+        "lat": 41.6381,
+        "lng": -87.1122
+      },
+      {
+        "name": "138601",
+        "voltage": 138000,
+        "miles": 1.58,
+        "lat": 41.6387,
+        "lng": -87.1129
+      },
+      {
+        "name": "13872",
+        "voltage": 138000,
+        "miles": 5.57,
+        "lat": 41.4956,
+        "lng": -87.072
+      },
+      {
+        "name": "138106",
+        "voltage": 138000,
+        "miles": 5.61,
+        "lat": 41.495,
+        "lng": -87.072
+      }
+    ]
+  },
+  {
+    "id": "M13",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 6,
+    "title": "[138 kV] Mission 6",
+    "circuit_miles": 87.65,
+    "effective_inspection_miles": 87.65,
+    "transit_out_miles": 21.1,
+    "transit_back_miles": 6.4,
+    "total_flight_miles": 115.2,
+    "total_flight_hrs": 2.76,
+    "total_flight_mins": 165.4,
+    "flight_time_str": "2 hrs 45 mins",
+    "inspection_hrs": 2.54,
+    "transit_out_mins": 10,
+    "inspection_mins": 152,
+    "transit_back_mins": 3,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.2401,
+    "avg_lng": -87.0435,
+    "circuit_names": [
+      "138-115",
+      "13851",
+      "13874",
+      "138-113",
+      "13820",
+      "13886"
+    ],
+    "circuits_detail": [
+      {
+        "name": "138-115",
+        "voltage": 138000,
+        "miles": 15.97,
+        "lat": 41.1731,
+        "lng": -87.1682
+      },
+      {
+        "name": "13851",
+        "voltage": 138000,
+        "miles": 19.56,
+        "lat": 41.2161,
+        "lng": -87.154
+      },
+      {
+        "name": "13874",
+        "voltage": 138000,
+        "miles": 4.26,
+        "lat": 41.1941,
+        "lng": -87.009
+      },
+      {
+        "name": "138-113",
+        "voltage": 138000,
+        "miles": 9.53,
+        "lat": 41.1766,
+        "lng": -86.9381
+      },
+      {
+        "name": "13820",
+        "voltage": 138000,
+        "miles": 15.5,
+        "lat": 41.3119,
+        "lng": -86.9351
+      },
+      {
+        "name": "13886",
+        "voltage": 138000,
+        "miles": 22.84,
+        "lat": 41.3689,
+        "lng": -87.0567
+      }
+    ]
+  },
+  {
+    "id": "M14",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 7,
+    "title": "[138 kV] Mission 7",
+    "circuit_miles": 35.94,
+    "effective_inspection_miles": 35.94,
+    "transit_out_miles": 60.6,
+    "transit_back_miles": 48.0,
+    "total_flight_miles": 144.6,
+    "total_flight_hrs": 1.9,
+    "total_flight_mins": 113.9,
+    "flight_time_str": "1 hrs 54 mins",
+    "inspection_hrs": 1.04,
+    "transit_out_mins": 29,
+    "inspection_mins": 62,
+    "transit_back_mins": 23,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.6922,
+    "avg_lng": -86.8574,
+    "circuit_names": [
+      "13883",
+      "13807",
+      "13847",
+      "138109"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13883",
+        "voltage": 138000,
+        "miles": 18.13,
+        "lat": 40.5776,
+        "lng": -86.9623
+      },
+      {
+        "name": "13807",
+        "voltage": 138000,
+        "miles": 11.05,
+        "lat": 40.6597,
+        "lng": -86.7714
+      },
+      {
+        "name": "13847",
+        "voltage": 138000,
+        "miles": 5.96,
+        "lat": 40.7641,
+        "lng": -86.8284
+      },
+      {
+        "name": "138109",
+        "voltage": 138000,
+        "miles": 0.8,
+        "lat": 40.7675,
+        "lng": -86.8676
+      }
+    ]
+  },
+  {
+    "id": "M15",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 8,
+    "title": "[138 kV] Mission 8",
+    "circuit_miles": 111.82,
+    "effective_inspection_miles": 96.53,
+    "transit_out_miles": 15.2,
+    "transit_back_miles": 23.5,
+    "total_flight_miles": 135.2,
+    "total_flight_hrs": 3.1,
+    "total_flight_mins": 186.1,
+    "flight_time_str": "3 hrs 6 mins",
+    "inspection_hrs": 2.8,
+    "transit_out_mins": 7,
+    "inspection_mins": 168,
+    "transit_back_mins": 11,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.6874,
+    "avg_lng": -86.8552,
+    "circuit_names": [
+      "13843",
+      "13839",
+      "13815",
+      "13814",
+      "13813",
+      "138-121",
+      "138-122",
+      "138-119",
+      "138-120",
+      "13827",
+      "13852",
+      "13873",
+      "138-112",
+      "138-111",
+      "13812"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13843",
+        "voltage": 138000,
+        "miles": 11.74,
+        "lat": 41.6738,
+        "lng": -86.9951
+      },
+      {
+        "name": "13839",
+        "voltage": 138000,
+        "miles": 11.74,
+        "lat": 41.6751,
+        "lng": -86.9934
+      },
+      {
+        "name": "13815",
+        "voltage": 138000,
+        "miles": 3.46,
+        "lat": 41.6768,
+        "lng": -86.9269
+      },
+      {
+        "name": "13814",
+        "voltage": 138000,
+        "miles": 4.79,
+        "lat": 41.703,
+        "lng": -86.8832
+      },
+      {
+        "name": "13813",
+        "voltage": 138000,
+        "miles": 9.08,
+        "lat": 41.7093,
+        "lng": -86.8442
+      },
+      {
+        "name": "138-121",
+        "voltage": 138000,
+        "miles": 1.68,
+        "lat": 41.708,
+        "lng": -86.9205
+      },
+      {
+        "name": "138-122",
+        "voltage": 138000,
+        "miles": 1.69,
+        "lat": 41.7106,
+        "lng": -86.9192
+      },
+      {
+        "name": "138-119",
+        "voltage": 138000,
+        "miles": 1.72,
+        "lat": 41.7131,
+        "lng": -86.9166
+      },
+      {
+        "name": "138-120",
+        "voltage": 138000,
+        "miles": 1.83,
+        "lat": 41.7142,
+        "lng": -86.9158
+      },
+      {
+        "name": "13827",
+        "voltage": 138000,
+        "miles": 15.26,
+        "lat": 41.6551,
+        "lng": -86.8458
+      },
+      {
+        "name": "13852",
+        "voltage": 138000,
+        "miles": 4.29,
+        "lat": 41.7169,
+        "lng": -86.7985
+      },
+      {
+        "name": "13873",
+        "voltage": 138000,
+        "miles": 12.65,
+        "lat": 41.5756,
+        "lng": -86.9677
+      },
+      {
+        "name": "138-112",
+        "voltage": 138000,
+        "miles": 12.0,
+        "lat": 41.7182,
+        "lng": -86.6466
+      },
+      {
+        "name": "138-111",
+        "voltage": 138000,
+        "miles": 12.02,
+        "lat": 41.719,
+        "lng": -86.6261
+      },
+      {
+        "name": "13812",
+        "voltage": 138000,
+        "miles": 7.84,
+        "lat": 41.6416,
+        "lng": -86.6285
+      }
+    ]
+  },
+  {
+    "id": "M16",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 9,
+    "title": "[138 kV] Mission 9",
+    "circuit_miles": 29.26,
+    "effective_inspection_miles": 29.26,
+    "transit_out_miles": 0.9,
+    "transit_back_miles": 25.9,
+    "total_flight_miles": 56.1,
+    "total_flight_hrs": 1.06,
+    "total_flight_mins": 63.6,
+    "flight_time_str": "1 hrs 4 mins",
+    "inspection_hrs": 0.85,
+    "transit_out_mins": 0,
+    "inspection_mins": 51,
+    "transit_back_mins": 12,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5787,
+    "avg_lng": -86.7236,
+    "circuit_names": [
+      "138110",
+      "13897",
+      "13816"
+    ],
+    "circuits_detail": [
+      {
+        "name": "138110",
+        "voltage": 138000,
+        "miles": 6.42,
+        "lat": 41.4606,
+        "lng": -86.9916
+      },
+      {
+        "name": "13897",
+        "voltage": 138000,
+        "miles": 7.85,
+        "lat": 41.5987,
+        "lng": -86.5751
+      },
+      {
+        "name": "13816",
+        "voltage": 138000,
+        "miles": 14.99,
+        "lat": 41.6768,
+        "lng": -86.6041
+      }
+    ]
+  },
+  {
+    "id": "M17",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 10,
+    "title": "[138 kV] Mission 10",
+    "circuit_miles": 96.15,
+    "effective_inspection_miles": 96.15,
+    "transit_out_miles": 41.3,
+    "transit_back_miles": 34.2,
+    "total_flight_miles": 171.6,
+    "total_flight_hrs": 3.38,
+    "total_flight_mins": 202.9,
+    "flight_time_str": "3 hrs 23 mins",
+    "inspection_hrs": 2.79,
+    "transit_out_mins": 20,
+    "inspection_mins": 167,
+    "transit_back_mins": 16,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.1262,
+    "avg_lng": -86.5089,
+    "circuit_names": [
+      "13832",
+      "13882",
+      "13819"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13832",
+        "voltage": 138000,
+        "miles": 48.33,
+        "lat": 40.9183,
+        "lng": -86.6567
+      },
+      {
+        "name": "13882",
+        "voltage": 138000,
+        "miles": 31.31,
+        "lat": 41.1589,
+        "lng": -86.4896
+      },
+      {
+        "name": "13819",
+        "voltage": 138000,
+        "miles": 16.52,
+        "lat": 41.3013,
+        "lng": -86.3804
+      }
+    ]
+  },
+  {
+    "id": "M18",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 11,
+    "title": "[138 kV] Mission 11",
+    "circuit_miles": 96.11,
+    "effective_inspection_miles": 95.86,
+    "transit_out_miles": 28.4,
+    "transit_back_miles": 59.6,
+    "total_flight_miles": 183.9,
+    "total_flight_hrs": 3.47,
+    "total_flight_mins": 208.3,
+    "flight_time_str": "3 hrs 28 mins",
+    "inspection_hrs": 2.78,
+    "transit_out_mins": 13,
+    "inspection_mins": 167,
+    "transit_back_mins": 28,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.41,
+    "avg_lng": -85.9722,
+    "circuit_names": [
+      "13896",
+      "13821",
+      "13844",
+      "13855",
+      "13876",
+      "13881",
+      "13880"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13896",
+        "voltage": 138000,
+        "miles": 39.32,
+        "lat": 41.4284,
+        "lng": -86.4593
+      },
+      {
+        "name": "13821",
+        "voltage": 138000,
+        "miles": 29.89,
+        "lat": 41.3044,
+        "lng": -86.012
+      },
+      {
+        "name": "13844",
+        "voltage": 138000,
+        "miles": 10.03,
+        "lat": 41.3881,
+        "lng": -85.8736
+      },
+      {
+        "name": "13855",
+        "voltage": 138000,
+        "miles": 0.16,
+        "lat": 41.4563,
+        "lng": -85.8645
+      },
+      {
+        "name": "13876",
+        "voltage": 138000,
+        "miles": 0.15,
+        "lat": 41.4555,
+        "lng": -85.8636
+      },
+      {
+        "name": "13881",
+        "voltage": 138000,
+        "miles": 7.53,
+        "lat": 41.3093,
+        "lng": -85.8725
+      },
+      {
+        "name": "13880",
+        "voltage": 138000,
+        "miles": 9.03,
+        "lat": 41.5281,
+        "lng": -85.8596
+      }
+    ]
+  },
+  {
+    "id": "M19",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 12,
+    "title": "[138 kV] Mission 12",
+    "circuit_miles": 48.29,
+    "effective_inspection_miles": 48.29,
+    "transit_out_miles": 65.6,
+    "transit_back_miles": 80.8,
+    "total_flight_miles": 194.7,
+    "total_flight_hrs": 2.56,
+    "total_flight_mins": 153.3,
+    "flight_time_str": "2 hrs 33 mins",
+    "inspection_hrs": 1.4,
+    "transit_out_mins": 31,
+    "inspection_mins": 84,
+    "transit_back_mins": 38,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5402,
+    "avg_lng": -85.5302,
+    "circuit_names": [
+      "138103",
+      "13809",
+      "13887",
+      "13856"
+    ],
+    "circuits_detail": [
+      {
+        "name": "138103",
+        "voltage": 138000,
+        "miles": 13.97,
+        "lat": 41.5531,
+        "lng": -85.7453
+      },
+      {
+        "name": "13809",
+        "voltage": 138000,
+        "miles": 14.64,
+        "lat": 41.5731,
+        "lng": -85.4936
+      },
+      {
+        "name": "13887",
+        "voltage": 138000,
+        "miles": 8.54,
+        "lat": 41.5829,
+        "lng": -85.4351
+      },
+      {
+        "name": "13856",
+        "voltage": 138000,
+        "miles": 11.14,
+        "lat": 41.4517,
+        "lng": -85.4466
+      }
+    ]
+  },
+  {
+    "id": "M20",
+    "kv_label": "138 kV",
+    "kv_sort": 138000,
+    "flying_id": 13,
+    "title": "[138 kV] Mission 13",
+    "circuit_miles": 5.96,
+    "effective_inspection_miles": 5.96,
+    "transit_out_miles": 103.2,
+    "transit_back_miles": 102.2,
+    "total_flight_miles": 211.4,
+    "total_flight_hrs": 1.8,
+    "total_flight_mins": 107.7,
+    "flight_time_str": "1 hrs 48 mins",
+    "inspection_hrs": 0.17,
+    "transit_out_mins": 49,
+    "inspection_mins": 10,
+    "transit_back_mins": 48,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5724,
+    "avg_lng": -85.043,
+    "circuit_names": [
+      "13802",
+      "13828"
+    ],
+    "circuits_detail": [
+      {
+        "name": "13802",
+        "voltage": 138000,
+        "miles": 0.97,
+        "lat": 41.7531,
+        "lng": -85.0508
+      },
+      {
+        "name": "13828",
+        "voltage": 138000,
+        "miles": 4.99,
+        "lat": 41.3917,
+        "lng": -85.0353
+      }
+    ]
+  },
+  {
+    "id": "M21",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 1,
+    "title": "[69 kV] Mission 1",
+    "circuit_miles": 1.69,
+    "effective_inspection_miles": 0.68,
+    "transit_out_miles": 25.0,
+    "transit_back_miles": 24.1,
+    "total_flight_miles": 49.7,
+    "total_flight_hrs": 0.41,
+    "total_flight_mins": 24.4,
+    "flight_time_str": "24 mins",
+    "inspection_hrs": 0.02,
+    "transit_out_mins": 12,
+    "inspection_mins": 1,
+    "transit_back_mins": 11,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4286,
+    "avg_lng": -87.4724,
+    "circuit_names": [
+      "Unassigned Segment (6015503)",
+      "Unassigned Segment (6015502)",
+      "Unassigned Segment (10180501)",
+      "Unassigned Segment (10180502)",
+      "Unassigned Segment (9636707)",
+      "Unassigned Segment (1906886431)",
+      "Unassigned Segment (1906886098)",
+      "Unassigned Segment (1906885713)",
+      "Unassigned Segment (1906885253)",
+      "Unassigned Segment (1906885214)",
+      "Unassigned Segment (1906885153)",
+      "Unassigned Segment (1906885093)",
+      "Unassigned Segment (1906885004)",
+      "Unassigned Segment (1906883729)",
+      "Unassigned Segment (1905035265)",
+      "Unassigned Segment (1905035263)",
+      "Unassigned Segment (1905035264)",
+      "Unassigned Segment (1905035262)",
+      "Unassigned Segment (1905034669)",
+      "Unassigned Segment (10180915)",
+      "Unassigned Segment (1905034667)",
+      "Unassigned Segment (1905034666)",
+      "Unassigned Segment (10180929)",
+      "Unassigned Segment (1901265301)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6015503)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4325,
+        "lng": -87.4885
+      },
+      {
+        "name": "Unassigned Segment (6015502)",
+        "voltage": 69000,
+        "miles": 0.22,
+        "lat": 41.4327,
+        "lng": -87.4863
+      },
+      {
+        "name": "Unassigned Segment (10180501)",
+        "voltage": 69000,
+        "miles": 0.14,
+        "lat": 41.4326,
+        "lng": -87.4825
+      },
+      {
+        "name": "Unassigned Segment (10180502)",
+        "voltage": 69000,
+        "miles": 0.4,
+        "lat": 41.4325,
+        "lng": -87.4781
+      },
+      {
+        "name": "Unassigned Segment (9636707)",
+        "voltage": 69000,
+        "miles": 0.18,
+        "lat": 41.4325,
+        "lng": -87.4714
+      },
+      {
+        "name": "Unassigned Segment (1906886431)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.4324,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906886098)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.432,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885713)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.4313,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885253)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4307,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885214)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4301,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885153)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4296,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885093)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4291,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906885004)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4287,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1906883729)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4285,
+        "lng": -87.4701
+      },
+      {
+        "name": "Unassigned Segment (1905035265)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.4281,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (1905035263)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.4275,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (1905035264)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4269,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (1905035262)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4264,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (1905034669)",
+        "voltage": 69000,
+        "miles": 0.06,
+        "lat": 41.4259,
+        "lng": -87.47
+      },
+      {
+        "name": "Unassigned Segment (10180915)",
+        "voltage": 69000,
+        "miles": 0.07,
+        "lat": 41.425,
+        "lng": -87.47
+      },
+      {
+        "name": "Unassigned Segment (1905034667)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4241,
+        "lng": -87.47
+      },
+      {
+        "name": "Unassigned Segment (1905034666)",
+        "voltage": 69000,
+        "miles": 0.09,
+        "lat": 41.4232,
+        "lng": -87.47
+      },
+      {
+        "name": "Unassigned Segment (10180929)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4223,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (1901265301)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.4221,
+        "lng": -87.4698
+      }
+    ]
+  },
+  {
+    "id": "M22",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 2,
+    "title": "[69 kV] Mission 2",
+    "circuit_miles": 29.09,
+    "effective_inspection_miles": 23.5,
+    "transit_out_miles": 24.8,
+    "transit_back_miles": 24.0,
+    "total_flight_miles": 72.3,
+    "total_flight_hrs": 1.07,
+    "total_flight_mins": 64.0,
+    "flight_time_str": "1 hrs 4 mins",
+    "inspection_hrs": 0.68,
+    "transit_out_mins": 12,
+    "inspection_mins": 41,
+    "transit_back_mins": 11,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4641,
+    "avg_lng": -87.4643,
+    "circuit_names": [
+      "6951",
+      "Unassigned Segment (1900233256)",
+      "Unassigned Segment (1900233752)",
+      "Unassigned Segment (1900233270)",
+      "6957",
+      "Unassigned Segment (1900234272)",
+      "Unassigned Segment (1900289813)",
+      "Unassigned Segment (1900234672)",
+      "Unassigned Segment (1900235793)",
+      "Unassigned Segment (1900237179)",
+      "Unassigned Segment (1901173785)",
+      "Unassigned Segment (1901150754)",
+      "6932",
+      "Unassigned Segment (1900452087)",
+      "69-126",
+      "Unassigned Segment (10180928)",
+      "Unassigned Segment (1901266770)",
+      "Unassigned Segment (10180925)",
+      "Unassigned Segment (1901265302)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6951",
+        "voltage": 69000,
+        "miles": 13.26,
+        "lat": 41.4712,
+        "lng": -87.4858
+      },
+      {
+        "name": "Unassigned Segment (1900233256)",
+        "voltage": 69000,
+        "miles": 0.2,
+        "lat": 41.477,
+        "lng": -87.4706
+      },
+      {
+        "name": "Unassigned Segment (1900233752)",
+        "voltage": 69000,
+        "miles": 0.28,
+        "lat": 41.4734,
+        "lng": -87.4705
+      },
+      {
+        "name": "Unassigned Segment (1900233270)",
+        "voltage": 69000,
+        "miles": 0.07,
+        "lat": 41.4788,
+        "lng": -87.4706
+      },
+      {
+        "name": "6957",
+        "voltage": 69000,
+        "miles": 6.11,
+        "lat": 41.5129,
+        "lng": -87.4723
+      },
+      {
+        "name": "Unassigned Segment (1900234272)",
+        "voltage": 69000,
+        "miles": 0.25,
+        "lat": 41.4693,
+        "lng": -87.4705
+      },
+      {
+        "name": "Unassigned Segment (1900289813)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4675,
+        "lng": -87.4705
+      },
+      {
+        "name": "Unassigned Segment (1900234672)",
+        "voltage": 69000,
+        "miles": 0.17,
+        "lat": 41.4662,
+        "lng": -87.4705
+      },
+      {
+        "name": "Unassigned Segment (1900235793)",
+        "voltage": 69000,
+        "miles": 0.1,
+        "lat": 41.465,
+        "lng": -87.4711
+      },
+      {
+        "name": "Unassigned Segment (1900237179)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.4648,
+        "lng": -87.4721
+      },
+      {
+        "name": "Unassigned Segment (1901173785)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.4644,
+        "lng": -87.4654
+      },
+      {
+        "name": "Unassigned Segment (1901150754)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4645,
+        "lng": -87.465
+      },
+      {
+        "name": "6932",
+        "voltage": 69000,
+        "miles": 6.2,
+        "lat": 41.4968,
+        "lng": -87.4382
+      },
+      {
+        "name": "Unassigned Segment (1900452087)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.5172,
+        "lng": -87.4421
+      },
+      {
+        "name": "69-126",
+        "voltage": 69000,
+        "miles": 1.76,
+        "lat": 41.4441,
+        "lng": -87.4089
+      },
+      {
+        "name": "Unassigned Segment (10180928)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.422,
+        "lng": -87.4694
+      },
+      {
+        "name": "Unassigned Segment (1901266770)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.422,
+        "lng": -87.4699
+      },
+      {
+        "name": "Unassigned Segment (10180925)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4218,
+        "lng": -87.4688
+      },
+      {
+        "name": "Unassigned Segment (1901265302)",
+        "voltage": 69000,
+        "miles": 0.5,
+        "lat": 41.4189,
+        "lng": -87.4687
+      }
+    ]
+  },
+  {
+    "id": "M23",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 3,
+    "title": "[69 kV] Mission 3",
+    "circuit_miles": 66.9,
+    "effective_inspection_miles": 63.45,
+    "transit_out_miles": 24.1,
+    "transit_back_miles": 18.8,
+    "total_flight_miles": 106.3,
+    "total_flight_hrs": 2.18,
+    "total_flight_mins": 130.6,
+    "flight_time_str": "2 hrs 11 mins",
+    "inspection_hrs": 1.84,
+    "transit_out_mins": 11,
+    "inspection_mins": 110,
+    "transit_back_mins": 9,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.39,
+    "avg_lng": -87.3916,
+    "circuit_names": [
+      "6917",
+      "6909",
+      "Unassigned Segment (6015517)",
+      "Unassigned Segment (1900598376)",
+      "Unassigned Segment (1900598377)",
+      "Unassigned Segment (1900598984)",
+      "Unassigned Segment (1900599191)",
+      "Unassigned Segment (1900599570)",
+      "Unassigned Segment (6091870)",
+      "Unassigned Segment (5978523)",
+      "Unassigned Segment (6131380)",
+      "Unassigned Segment (5978524)",
+      "Unassigned Segment (6091990)",
+      "Unassigned Segment (6146340)",
+      "Unassigned Segment (5978514)",
+      "Unassigned Segment (5978513)",
+      "Unassigned Segment (5978508)",
+      "Unassigned Segment (11367468)",
+      "6912",
+      "Unassigned Segment (11367469)",
+      "6906"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6917",
+        "voltage": 69000,
+        "miles": 6.18,
+        "lat": 41.3845,
+        "lng": -87.4632
+      },
+      {
+        "name": "6909",
+        "voltage": 69000,
+        "miles": 39.06,
+        "lat": 41.3958,
+        "lng": -87.4522
+      },
+      {
+        "name": "Unassigned Segment (6015517)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.3788,
+        "lng": -87.4211
+      },
+      {
+        "name": "Unassigned Segment (1900598376)",
+        "voltage": 69000,
+        "miles": 0.3,
+        "lat": 41.3778,
+        "lng": -87.4187
+      },
+      {
+        "name": "Unassigned Segment (1900598377)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.377,
+        "lng": -87.417
+      },
+      {
+        "name": "Unassigned Segment (1900598984)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.377,
+        "lng": -87.4164
+      },
+      {
+        "name": "Unassigned Segment (1900599191)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.377,
+        "lng": -87.4158
+      },
+      {
+        "name": "Unassigned Segment (1900599570)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.377,
+        "lng": -87.4151
+      },
+      {
+        "name": "Unassigned Segment (6091870)",
+        "voltage": 69000,
+        "miles": 2.27,
+        "lat": 41.3769,
+        "lng": -87.3941
+      },
+      {
+        "name": "Unassigned Segment (5978523)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.3767,
+        "lng": -87.3709
+      },
+      {
+        "name": "Unassigned Segment (6131380)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.3764,
+        "lng": -87.3708
+      },
+      {
+        "name": "Unassigned Segment (5978524)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.3769,
+        "lng": -87.3706
+      },
+      {
+        "name": "Unassigned Segment (6091990)",
+        "voltage": 69000,
+        "miles": 1.44,
+        "lat": 41.3864,
+        "lng": -87.3694
+      },
+      {
+        "name": "Unassigned Segment (6146340)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.3984,
+        "lng": -87.3696
+      },
+      {
+        "name": "Unassigned Segment (5978514)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.3983,
+        "lng": -87.3692
+      },
+      {
+        "name": "Unassigned Segment (5978513)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.3984,
+        "lng": -87.3691
+      },
+      {
+        "name": "Unassigned Segment (5978508)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.3986,
+        "lng": -87.3686
+      },
+      {
+        "name": "Unassigned Segment (11367468)",
+        "voltage": 69000,
+        "miles": 2.51,
+        "lat": 41.4148,
+        "lng": -87.3732
+      },
+      {
+        "name": "6912",
+        "voltage": 69000,
+        "miles": 14.33,
+        "lat": 41.3859,
+        "lng": -87.3426
+      },
+      {
+        "name": "Unassigned Segment (11367469)",
+        "voltage": 69000,
+        "miles": 0.24,
+        "lat": 41.4276,
+        "lng": -87.3688
+      },
+      {
+        "name": "6906",
+        "voltage": 69000,
+        "miles": 0.19,
+        "lat": 41.4288,
+        "lng": -87.3681
+      }
+    ]
+  },
+  {
+    "id": "M24",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 4,
+    "title": "[69 kV] Mission 4",
+    "circuit_miles": 109.49,
+    "effective_inspection_miles": 109.48,
+    "transit_out_miles": 48.8,
+    "transit_back_miles": 58.4,
+    "total_flight_miles": 216.7,
+    "total_flight_hrs": 4.02,
+    "total_flight_mins": 241.1,
+    "flight_time_str": "4 hrs 1 mins",
+    "inspection_hrs": 3.17,
+    "transit_out_mins": 23,
+    "inspection_mins": 190,
+    "transit_back_mins": 28,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.7345,
+    "avg_lng": -87.3161,
+    "circuit_names": [
+      "6965",
+      "6963",
+      "Unassigned Segment (1904942441)",
+      "69-108",
+      "6964",
+      "6966",
+      "6967"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6965",
+        "voltage": 69000,
+        "miles": 15.6,
+        "lat": 40.8311,
+        "lng": -87.4494
+      },
+      {
+        "name": "6963",
+        "voltage": 69000,
+        "miles": 12.32,
+        "lat": 40.7558,
+        "lng": -87.3729
+      },
+      {
+        "name": "Unassigned Segment (1904942441)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 40.7508,
+        "lng": -87.2937
+      },
+      {
+        "name": "69-108",
+        "voltage": 69000,
+        "miles": 2.83,
+        "lat": 40.7475,
+        "lng": -87.2756
+      },
+      {
+        "name": "6964",
+        "voltage": 69000,
+        "miles": 39.58,
+        "lat": 40.6636,
+        "lng": -87.3366
+      },
+      {
+        "name": "6966",
+        "voltage": 69000,
+        "miles": 11.72,
+        "lat": 40.7571,
+        "lng": -87.1968
+      },
+      {
+        "name": "6967",
+        "voltage": 69000,
+        "miles": 27.45,
+        "lat": 40.6352,
+        "lng": -87.288
+      }
+    ]
+  },
+  {
+    "id": "M25",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 5,
+    "title": "[69 kV] Mission 5",
+    "circuit_miles": 118.66,
+    "effective_inspection_miles": 85.56,
+    "transit_out_miles": 26.6,
+    "transit_back_miles": 13.3,
+    "total_flight_miles": 125.5,
+    "total_flight_hrs": 2.79,
+    "total_flight_mins": 167.6,
+    "flight_time_str": "2 hrs 48 mins",
+    "inspection_hrs": 2.48,
+    "transit_out_mins": 13,
+    "inspection_mins": 149,
+    "transit_back_mins": 6,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4983,
+    "avg_lng": -87.3097,
+    "circuit_names": [
+      "Unassigned Segment (6137144)",
+      "6927",
+      "6928",
+      "6926",
+      "6929",
+      "6922",
+      "6920",
+      "6908",
+      "6930",
+      "69-118",
+      "69-116",
+      "6953",
+      "6933",
+      "6939"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6137144)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.6787,
+        "lng": -87.4259
+      },
+      {
+        "name": "6927",
+        "voltage": 69000,
+        "miles": 9.26,
+        "lat": 41.5147,
+        "lng": -87.367
+      },
+      {
+        "name": "6928",
+        "voltage": 69000,
+        "miles": 8.97,
+        "lat": 41.5102,
+        "lng": -87.3262
+      },
+      {
+        "name": "6926",
+        "voltage": 69000,
+        "miles": 8.34,
+        "lat": 41.4752,
+        "lng": -87.3176
+      },
+      {
+        "name": "6929",
+        "voltage": 69000,
+        "miles": 5.23,
+        "lat": 41.5511,
+        "lng": -87.259
+      },
+      {
+        "name": "6922",
+        "voltage": 69000,
+        "miles": 12.45,
+        "lat": 41.5253,
+        "lng": -87.2396
+      },
+      {
+        "name": "6920",
+        "voltage": 69000,
+        "miles": 11.62,
+        "lat": 41.5505,
+        "lng": -87.2314
+      },
+      {
+        "name": "6908",
+        "voltage": 69000,
+        "miles": 7.4,
+        "lat": 41.4657,
+        "lng": -87.345
+      },
+      {
+        "name": "6930",
+        "voltage": 69000,
+        "miles": 8.95,
+        "lat": 41.4489,
+        "lng": -87.319
+      },
+      {
+        "name": "69-118",
+        "voltage": 69000,
+        "miles": 4.26,
+        "lat": 41.4471,
+        "lng": -87.2857
+      },
+      {
+        "name": "69-116",
+        "voltage": 69000,
+        "miles": 9.11,
+        "lat": 41.4632,
+        "lng": -87.3882
+      },
+      {
+        "name": "6953",
+        "voltage": 69000,
+        "miles": 2.01,
+        "lat": 41.4415,
+        "lng": -87.3664
+      },
+      {
+        "name": "6933",
+        "voltage": 69000,
+        "miles": 19.41,
+        "lat": 41.495,
+        "lng": -87.2077
+      },
+      {
+        "name": "6939",
+        "voltage": 69000,
+        "miles": 11.61,
+        "lat": 41.4091,
+        "lng": -87.2569
+      }
+    ]
+  },
+  {
+    "id": "M26",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 6,
+    "title": "[69 kV] Mission 6",
+    "circuit_miles": 128.77,
+    "effective_inspection_miles": 112.74,
+    "transit_out_miles": 23.3,
+    "transit_back_miles": 1.4,
+    "total_flight_miles": 137.4,
+    "total_flight_hrs": 3.46,
+    "total_flight_mins": 207.6,
+    "flight_time_str": "3 hrs 28 mins",
+    "inspection_hrs": 3.27,
+    "transit_out_mins": 11,
+    "inspection_mins": 196,
+    "transit_back_mins": 1,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4347,
+    "avg_lng": -87.0754,
+    "circuit_names": [
+      "6935",
+      "6901",
+      "6934",
+      "6952",
+      "6956",
+      "Unassigned Segment (6091079)",
+      "Unassigned Segment (6091094)",
+      "Unassigned Segment (6091104)",
+      "Unassigned Segment (1901318757)",
+      "Unassigned Segment (1901319317)",
+      "Unassigned Segment (1901319423)",
+      "69-111",
+      "Unassigned Segment (1901319453)",
+      "Unassigned Segment (1901319513)",
+      "6924",
+      "6903"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6935",
+        "voltage": 69000,
+        "miles": 20.07,
+        "lat": 41.2693,
+        "lng": -87.3822
+      },
+      {
+        "name": "6901",
+        "voltage": 69000,
+        "miles": 26.51,
+        "lat": 41.366,
+        "lng": -87.2914
+      },
+      {
+        "name": "6934",
+        "voltage": 69000,
+        "miles": 30.2,
+        "lat": 41.3771,
+        "lng": -87.1476
+      },
+      {
+        "name": "6952",
+        "voltage": 69000,
+        "miles": 10.58,
+        "lat": 41.4729,
+        "lng": -87.0613
+      },
+      {
+        "name": "6956",
+        "voltage": 69000,
+        "miles": 6.66,
+        "lat": 41.4711,
+        "lng": -87.034
+      },
+      {
+        "name": "Unassigned Segment (6091079)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.4781,
+        "lng": -87.0452
+      },
+      {
+        "name": "Unassigned Segment (6091094)",
+        "voltage": 69000,
+        "miles": 0.0,
+        "lat": 41.4781,
+        "lng": -87.0451
+      },
+      {
+        "name": "Unassigned Segment (6091104)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.4761,
+        "lng": -87.0322
+      },
+      {
+        "name": "Unassigned Segment (1901318757)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.4386,
+        "lng": -87.0234
+      },
+      {
+        "name": "Unassigned Segment (1901319317)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.4386,
+        "lng": -87.0227
+      },
+      {
+        "name": "Unassigned Segment (1901319423)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.4386,
+        "lng": -87.0221
+      },
+      {
+        "name": "69-111",
+        "voltage": 69000,
+        "miles": 13.21,
+        "lat": 41.4259,
+        "lng": -87.0206
+      },
+      {
+        "name": "Unassigned Segment (1901319453)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.4385,
+        "lng": -87.0215
+      },
+      {
+        "name": "Unassigned Segment (1901319513)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.4385,
+        "lng": -87.0207
+      },
+      {
+        "name": "6924",
+        "voltage": 69000,
+        "miles": 5.28,
+        "lat": 41.4976,
+        "lng": -87.0569
+      },
+      {
+        "name": "6903",
+        "voltage": 69000,
+        "miles": 16.05,
+        "lat": 41.4507,
+        "lng": -86.98
+      }
+    ]
+  },
+  {
+    "id": "M27",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 7,
+    "title": "[69 kV] Mission 7",
+    "circuit_miles": 110.48,
+    "effective_inspection_miles": 102.02,
+    "transit_out_miles": 41.0,
+    "transit_back_miles": 24.9,
+    "total_flight_miles": 167.9,
+    "total_flight_hrs": 3.48,
+    "total_flight_mins": 208.5,
+    "flight_time_str": "3 hrs 29 mins",
+    "inspection_hrs": 2.96,
+    "transit_out_mins": 19,
+    "inspection_mins": 177,
+    "transit_back_mins": 12,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.9974,
+    "avg_lng": -87.0038,
+    "circuit_names": [
+      "6969",
+      "6958",
+      "6911",
+      "6910",
+      "Unassigned Segment (6015852)",
+      "6919"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6969",
+        "voltage": 69000,
+        "miles": 30.52,
+        "lat": 40.8928,
+        "lng": -87.2605
+      },
+      {
+        "name": "6958",
+        "voltage": 69000,
+        "miles": 26.68,
+        "lat": 41.0908,
+        "lng": -87.1792
+      },
+      {
+        "name": "6911",
+        "voltage": 69000,
+        "miles": 6.65,
+        "lat": 40.9853,
+        "lng": -86.9217
+      },
+      {
+        "name": "6910",
+        "voltage": 69000,
+        "miles": 10.57,
+        "lat": 40.9562,
+        "lng": -86.8884
+      },
+      {
+        "name": "Unassigned Segment (6015852)",
+        "voltage": 69000,
+        "miles": 0.1,
+        "lat": 40.9552,
+        "lng": -86.8828
+      },
+      {
+        "name": "6919",
+        "voltage": 69000,
+        "miles": 35.97,
+        "lat": 41.1043,
+        "lng": -86.89
+      }
+    ]
+  },
+  {
+    "id": "M28",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 8,
+    "title": "[69 kV] Mission 8",
+    "circuit_miles": 100.85,
+    "effective_inspection_miles": 100.85,
+    "transit_out_miles": 69.9,
+    "transit_back_miles": 43.4,
+    "total_flight_miles": 214.2,
+    "total_flight_hrs": 3.82,
+    "total_flight_mins": 229.0,
+    "flight_time_str": "3 hrs 49 mins",
+    "inspection_hrs": 2.92,
+    "transit_out_mins": 33,
+    "inspection_mins": 175,
+    "transit_back_mins": 21,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.6786,
+    "avg_lng": -86.9946,
+    "circuit_names": [
+      "69-999",
+      "6931",
+      "69-103",
+      "6972",
+      "6991",
+      "6918"
+    ],
+    "circuits_detail": [
+      {
+        "name": "69-999",
+        "voltage": 69000,
+        "miles": 0.06,
+        "lat": 40.4637,
+        "lng": -87.2844
+      },
+      {
+        "name": "6931",
+        "voltage": 69000,
+        "miles": 21.22,
+        "lat": 40.6722,
+        "lng": -87.0595
+      },
+      {
+        "name": "69-103",
+        "voltage": 69000,
+        "miles": 21.76,
+        "lat": 40.6989,
+        "lng": -87.0006
+      },
+      {
+        "name": "6972",
+        "voltage": 69000,
+        "miles": 9.91,
+        "lat": 40.649,
+        "lng": -86.8452
+      },
+      {
+        "name": "6991",
+        "voltage": 69000,
+        "miles": 10.88,
+        "lat": 40.7589,
+        "lng": -86.8608
+      },
+      {
+        "name": "6918",
+        "voltage": 69000,
+        "miles": 37.02,
+        "lat": 40.8291,
+        "lng": -86.9172
+      }
+    ]
+  },
+  {
+    "id": "M29",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 9,
+    "title": "[69 kV] Mission 9",
+    "circuit_miles": 107.46,
+    "effective_inspection_miles": 105.2,
+    "transit_out_miles": 10.8,
+    "transit_back_miles": 19.3,
+    "total_flight_miles": 135.3,
+    "total_flight_hrs": 3.28,
+    "total_flight_mins": 197.1,
+    "flight_time_str": "3 hrs 17 mins",
+    "inspection_hrs": 3.05,
+    "transit_out_mins": 5,
+    "inspection_mins": 183,
+    "transit_back_mins": 9,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5788,
+    "avg_lng": -86.9384,
+    "circuit_names": [
+      "6954",
+      "6948",
+      "6955",
+      "6949",
+      "6950",
+      "69-112",
+      "6925",
+      "Unassigned Segment (1910596703)",
+      "6988",
+      "6983"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6954",
+        "voltage": 69000,
+        "miles": 10.15,
+        "lat": 41.5579,
+        "lng": -87.1625
+      },
+      {
+        "name": "6948",
+        "voltage": 69000,
+        "miles": 17.93,
+        "lat": 41.5661,
+        "lng": -87.0896
+      },
+      {
+        "name": "6955",
+        "voltage": 69000,
+        "miles": 6.64,
+        "lat": 41.515,
+        "lng": -87.1036
+      },
+      {
+        "name": "6949",
+        "voltage": 69000,
+        "miles": 15.06,
+        "lat": 41.5469,
+        "lng": -87.0112
+      },
+      {
+        "name": "6950",
+        "voltage": 69000,
+        "miles": 13.49,
+        "lat": 41.4975,
+        "lng": -86.968
+      },
+      {
+        "name": "69-112",
+        "voltage": 69000,
+        "miles": 11.59,
+        "lat": 41.5852,
+        "lng": -86.907
+      },
+      {
+        "name": "6925",
+        "voltage": 69000,
+        "miles": 12.22,
+        "lat": 41.6422,
+        "lng": -86.8506
+      },
+      {
+        "name": "Unassigned Segment (1910596703)",
+        "voltage": 69000,
+        "miles": 1.61,
+        "lat": 41.6485,
+        "lng": -86.8418
+      },
+      {
+        "name": "6988",
+        "voltage": 69000,
+        "miles": 15.94,
+        "lat": 41.6046,
+        "lng": -86.7379
+      },
+      {
+        "name": "6983",
+        "voltage": 69000,
+        "miles": 2.82,
+        "lat": 41.6246,
+        "lng": -86.7117
+      }
+    ]
+  },
+  {
+    "id": "M30",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 10,
+    "title": "[69 kV] Mission 10",
+    "circuit_miles": 23.69,
+    "effective_inspection_miles": 23.69,
+    "transit_out_miles": 19.4,
+    "transit_back_miles": 12.0,
+    "total_flight_miles": 55.1,
+    "total_flight_hrs": 0.93,
+    "total_flight_mins": 56.0,
+    "flight_time_str": "56 mins",
+    "inspection_hrs": 0.69,
+    "transit_out_mins": 9,
+    "inspection_mins": 41,
+    "transit_back_mins": 6,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.2312,
+    "avg_lng": -86.9158,
+    "circuit_names": [
+      "138-114",
+      "6905",
+      "6961"
+    ],
+    "circuits_detail": [
+      {
+        "name": "138-114",
+        "voltage": 69000,
+        "miles": 0.06,
+        "lat": 41.1733,
+        "lng": -87.0069
+      },
+      {
+        "name": "6905",
+        "voltage": 69000,
+        "miles": 6.38,
+        "lat": 41.2151,
+        "lng": -86.851
+      },
+      {
+        "name": "6961",
+        "voltage": 69000,
+        "miles": 17.25,
+        "lat": 41.3052,
+        "lng": -86.8895
+      }
+    ]
+  },
+  {
+    "id": "M31",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 11,
+    "title": "[69 kV] Mission 11",
+    "circuit_miles": 36.86,
+    "effective_inspection_miles": 36.86,
+    "transit_out_miles": 52.2,
+    "transit_back_miles": 47.4,
+    "total_flight_miles": 136.5,
+    "total_flight_hrs": 1.85,
+    "total_flight_mins": 111.3,
+    "flight_time_str": "1 hrs 51 mins",
+    "inspection_hrs": 1.07,
+    "transit_out_mins": 25,
+    "inspection_mins": 64,
+    "transit_back_mins": 22,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 40.7633,
+    "avg_lng": -86.7655,
+    "circuit_names": [
+      "6971",
+      "6979",
+      "6907"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6971",
+        "voltage": 69000,
+        "miles": 8.02,
+        "lat": 40.7199,
+        "lng": -86.7718
+      },
+      {
+        "name": "6979",
+        "voltage": 69000,
+        "miles": 3.09,
+        "lat": 40.7748,
+        "lng": -86.7706
+      },
+      {
+        "name": "6907",
+        "voltage": 69000,
+        "miles": 25.75,
+        "lat": 40.7952,
+        "lng": -86.7539
+      }
+    ]
+  },
+  {
+    "id": "M32",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 12,
+    "title": "[69 kV] Mission 12",
+    "circuit_miles": 62.04,
+    "effective_inspection_miles": 59.57,
+    "transit_out_miles": 18.9,
+    "transit_back_miles": 27.1,
+    "total_flight_miles": 105.5,
+    "total_flight_hrs": 2.09,
+    "total_flight_mins": 125.3,
+    "flight_time_str": "2 hrs 5 mins",
+    "inspection_hrs": 1.73,
+    "transit_out_mins": 9,
+    "inspection_mins": 104,
+    "transit_back_mins": 13,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.6144,
+    "avg_lng": -86.6556,
+    "circuit_names": [
+      "6978",
+      "Unassigned Segment (6144133)",
+      "6960",
+      "6940",
+      "Unassigned Segment (1902171937)",
+      "Unassigned Segment (1902171927)",
+      "Unassigned Segment (6007567)",
+      "6945",
+      "Unassigned Segment (1912533947)",
+      "6946"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6978",
+        "voltage": 69000,
+        "miles": 8.36,
+        "lat": 41.645,
+        "lng": -86.7463
+      },
+      {
+        "name": "Unassigned Segment (6144133)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.6252,
+        "lng": -86.6967
+      },
+      {
+        "name": "6960",
+        "voltage": 69000,
+        "miles": 5.34,
+        "lat": 41.6171,
+        "lng": -86.7027
+      },
+      {
+        "name": "6940",
+        "voltage": 69000,
+        "miles": 16.73,
+        "lat": 41.6222,
+        "lng": -86.6628
+      },
+      {
+        "name": "Unassigned Segment (1902171937)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.718,
+        "lng": -86.6941
+      },
+      {
+        "name": "Unassigned Segment (1902171927)",
+        "voltage": 69000,
+        "miles": 3.09,
+        "lat": 41.7182,
+        "lng": -86.722
+      },
+      {
+        "name": "Unassigned Segment (6007567)",
+        "voltage": 69000,
+        "miles": 0.5,
+        "lat": 41.635,
+        "lng": -86.5771
+      },
+      {
+        "name": "6945",
+        "voltage": 69000,
+        "miles": 9.65,
+        "lat": 41.5212,
+        "lng": -86.6289
+      },
+      {
+        "name": "Unassigned Segment (1912533947)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.519,
+        "lng": -86.6343
+      },
+      {
+        "name": "6946",
+        "voltage": 69000,
+        "miles": 18.31,
+        "lat": 41.523,
+        "lng": -86.4915
+      }
+    ]
+  },
+  {
+    "id": "M33",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 13,
+    "title": "[69 kV] Mission 13",
+    "circuit_miles": 97.31,
+    "effective_inspection_miles": 97.31,
+    "transit_out_miles": 16.5,
+    "transit_back_miles": 30.3,
+    "total_flight_miles": 144.2,
+    "total_flight_hrs": 3.19,
+    "total_flight_mins": 191.3,
+    "flight_time_str": "3 hrs 11 mins",
+    "inspection_hrs": 2.82,
+    "transit_out_mins": 8,
+    "inspection_mins": 169,
+    "transit_back_mins": 14,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.355,
+    "avg_lng": -86.5614,
+    "circuit_names": [
+      "69-105",
+      "6904",
+      "6914"
+    ],
+    "circuits_detail": [
+      {
+        "name": "69-105",
+        "voltage": 69000,
+        "miles": 38.37,
+        "lat": 41.3835,
+        "lng": -86.7025
+      },
+      {
+        "name": "6904",
+        "voltage": 69000,
+        "miles": 34.05,
+        "lat": 41.2817,
+        "lng": -86.5554
+      },
+      {
+        "name": "6914",
+        "voltage": 69000,
+        "miles": 24.9,
+        "lat": 41.3998,
+        "lng": -86.4262
+      }
+    ]
+  },
+  {
+    "id": "M34",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 14,
+    "title": "[69 kV] Mission 14",
+    "circuit_miles": 62.61,
+    "effective_inspection_miles": 62.61,
+    "transit_out_miles": 36.2,
+    "transit_back_miles": 34.2,
+    "total_flight_miles": 133.0,
+    "total_flight_hrs": 2.37,
+    "total_flight_mins": 142.2,
+    "flight_time_str": "2 hrs 22 mins",
+    "inspection_hrs": 1.81,
+    "transit_out_mins": 17,
+    "inspection_mins": 109,
+    "transit_back_mins": 16,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.1109,
+    "avg_lng": -86.5281,
+    "circuit_names": [
+      "6916",
+      "6913",
+      "6962",
+      "6937",
+      "6938"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6916",
+        "voltage": 69000,
+        "miles": 6.69,
+        "lat": 41.0257,
+        "lng": -86.6074
+      },
+      {
+        "name": "6913",
+        "voltage": 69000,
+        "miles": 9.61,
+        "lat": 41.0561,
+        "lng": -86.5527
+      },
+      {
+        "name": "6962",
+        "voltage": 69000,
+        "miles": 24.89,
+        "lat": 41.1369,
+        "lng": -86.5803
+      },
+      {
+        "name": "6937",
+        "voltage": 69000,
+        "miles": 21.11,
+        "lat": 41.122,
+        "lng": -86.4695
+      },
+      {
+        "name": "6938",
+        "voltage": 69000,
+        "miles": 0.31,
+        "lat": 41.2139,
+        "lng": -86.4304
+      }
+    ]
+  },
+  {
+    "id": "M35",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 15,
+    "title": "[69 kV] Mission 15",
+    "circuit_miles": 81.22,
+    "effective_inspection_miles": 81.16,
+    "transit_out_miles": 33.9,
+    "transit_back_miles": 43.8,
+    "total_flight_miles": 158.9,
+    "total_flight_hrs": 2.96,
+    "total_flight_mins": 177.9,
+    "flight_time_str": "2 hrs 58 mins",
+    "inspection_hrs": 2.35,
+    "transit_out_mins": 16,
+    "inspection_mins": 141,
+    "transit_back_mins": 21,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.3406,
+    "avg_lng": -86.2097,
+    "circuit_names": [
+      "6915",
+      "6921",
+      "6974",
+      "Unassigned Segment (1902275302)",
+      "Unassigned Segment (1900455794)",
+      "Unassigned Segment (6147737)",
+      "6944",
+      "6968"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6915",
+        "voltage": 69000,
+        "miles": 22.99,
+        "lat": 41.395,
+        "lng": -86.357
+      },
+      {
+        "name": "6921",
+        "voltage": 69000,
+        "miles": 9.72,
+        "lat": 41.3594,
+        "lng": -86.322
+      },
+      {
+        "name": "6974",
+        "voltage": 69000,
+        "miles": 22.52,
+        "lat": 41.3411,
+        "lng": -86.2111
+      },
+      {
+        "name": "Unassigned Segment (1902275302)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.3297,
+        "lng": -86.1357
+      },
+      {
+        "name": "Unassigned Segment (1900455794)",
+        "voltage": 69000,
+        "miles": 0.08,
+        "lat": 41.3287,
+        "lng": -86.1357
+      },
+      {
+        "name": "Unassigned Segment (6147737)",
+        "voltage": 69000,
+        "miles": 1.18,
+        "lat": 41.3055,
+        "lng": -86.1353
+      },
+      {
+        "name": "6944",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.449,
+        "lng": -86.1563
+      },
+      {
+        "name": "6968",
+        "voltage": 69000,
+        "miles": 24.64,
+        "lat": 41.2161,
+        "lng": -86.2243
+      }
+    ]
+  },
+  {
+    "id": "M36",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 16,
+    "title": "[69 kV] Mission 16",
+    "circuit_miles": 93.91,
+    "effective_inspection_miles": 89.5,
+    "transit_out_miles": 49.7,
+    "transit_back_miles": 63.8,
+    "total_flight_miles": 203.0,
+    "total_flight_hrs": 3.49,
+    "total_flight_mins": 209.4,
+    "flight_time_str": "3 hrs 29 mins",
+    "inspection_hrs": 2.59,
+    "transit_out_mins": 24,
+    "inspection_mins": 156,
+    "transit_back_mins": 30,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.2217,
+    "avg_lng": -85.9392,
+    "circuit_names": [
+      "Unassigned Segment (6021603)",
+      "Unassigned Segment (1900357457)",
+      "Unassigned Segment (1908414174)",
+      "Unassigned Segment (1908414205)",
+      "Unassigned Segment (6021602)",
+      "Unassigned Segment (1908414166)",
+      "6997",
+      "69-107",
+      "6998",
+      "6996",
+      "6993",
+      "Unassigned Segment (1905069680)",
+      "Unassigned Segment (1905069681)",
+      "Unassigned Segment (1905069678)",
+      "Unassigned Segment (1905069676)",
+      "6995",
+      "6982"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6021603)",
+        "voltage": 69000,
+        "miles": 2.24,
+        "lat": 41.192,
+        "lng": -86.1147
+      },
+      {
+        "name": "Unassigned Segment (1900357457)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.2065,
+        "lng": -86.1145
+      },
+      {
+        "name": "Unassigned Segment (1908414174)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.1739,
+        "lng": -86.1145
+      },
+      {
+        "name": "Unassigned Segment (1908414205)",
+        "voltage": 69000,
+        "miles": 0.0,
+        "lat": 41.1736,
+        "lng": -86.1145
+      },
+      {
+        "name": "Unassigned Segment (6021602)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.1732,
+        "lng": -86.1145
+      },
+      {
+        "name": "Unassigned Segment (1908414166)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.1727,
+        "lng": -86.1145
+      },
+      {
+        "name": "6997",
+        "voltage": 69000,
+        "miles": 26.09,
+        "lat": 41.2099,
+        "lng": -85.9225
+      },
+      {
+        "name": "69-107",
+        "voltage": 69000,
+        "miles": 19.46,
+        "lat": 41.2242,
+        "lng": -85.8884
+      },
+      {
+        "name": "6998",
+        "voltage": 69000,
+        "miles": 2.88,
+        "lat": 41.2553,
+        "lng": -85.8641
+      },
+      {
+        "name": "6996",
+        "voltage": 69000,
+        "miles": 1.84,
+        "lat": 41.2643,
+        "lng": -85.8589
+      },
+      {
+        "name": "6993",
+        "voltage": 69000,
+        "miles": 3.46,
+        "lat": 41.2451,
+        "lng": -85.8398
+      },
+      {
+        "name": "Unassigned Segment (1905069680)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.2417,
+        "lng": -85.8265
+      },
+      {
+        "name": "Unassigned Segment (1905069681)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.2416,
+        "lng": -85.8265
+      },
+      {
+        "name": "Unassigned Segment (1905069678)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.2417,
+        "lng": -85.8264
+      },
+      {
+        "name": "Unassigned Segment (1905069676)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.2417,
+        "lng": -85.8262
+      },
+      {
+        "name": "6995",
+        "voltage": 69000,
+        "miles": 11.34,
+        "lat": 41.236,
+        "lng": -85.7993
+      },
+      {
+        "name": "6982",
+        "voltage": 69000,
+        "miles": 26.39,
+        "lat": 41.2751,
+        "lng": -85.7998
+      }
+    ]
+  },
+  {
+    "id": "M37",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 17,
+    "title": "[69 kV] Mission 17",
+    "circuit_miles": 102.43,
+    "effective_inspection_miles": 101.07,
+    "transit_out_miles": 51.8,
+    "transit_back_miles": 59.4,
+    "total_flight_miles": 212.3,
+    "total_flight_hrs": 3.81,
+    "total_flight_mins": 228.4,
+    "flight_time_str": "3 hrs 48 mins",
+    "inspection_hrs": 2.93,
+    "transit_out_mins": 25,
+    "inspection_mins": 176,
+    "transit_back_mins": 28,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4613,
+    "avg_lng": -85.9047,
+    "circuit_names": [
+      "69-106",
+      "Unassigned Segment (6052254)",
+      "Unassigned Segment (6052248)",
+      "6975",
+      "Unassigned Segment (10180462)",
+      "Unassigned Segment (10180461)",
+      "Unassigned Segment (10180463)",
+      "Unassigned Segment (10180465)",
+      "Unassigned Segment (10180464)",
+      "Unassigned Segment (6058602)",
+      "Unassigned Segment (6058610)",
+      "Unassigned Segment (6058603)",
+      "Unassigned Segment (6058599)",
+      "Unassigned Segment (6058577)",
+      "Unassigned Segment (1900102558)",
+      "6941",
+      "6981"
+    ],
+    "circuits_detail": [
+      {
+        "name": "69-106",
+        "voltage": 69000,
+        "miles": 34.39,
+        "lat": 41.3559,
+        "lng": -86.0163
+      },
+      {
+        "name": "Unassigned Segment (6052254)",
+        "voltage": 69000,
+        "miles": 0.47,
+        "lat": 41.4389,
+        "lng": -85.997
+      },
+      {
+        "name": "Unassigned Segment (6052248)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.4388,
+        "lng": -85.9918
+      },
+      {
+        "name": "6975",
+        "voltage": 69000,
+        "miles": 38.94,
+        "lat": 41.4664,
+        "lng": -86.0141
+      },
+      {
+        "name": "Unassigned Segment (10180462)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4629,
+        "lng": -85.9052
+      },
+      {
+        "name": "Unassigned Segment (10180461)",
+        "voltage": 69000,
+        "miles": 0.08,
+        "lat": 41.4638,
+        "lng": -85.9052
+      },
+      {
+        "name": "Unassigned Segment (10180463)",
+        "voltage": 69000,
+        "miles": 0.1,
+        "lat": 41.4646,
+        "lng": -85.9052
+      },
+      {
+        "name": "Unassigned Segment (10180465)",
+        "voltage": 69000,
+        "miles": 0.25,
+        "lat": 41.4679,
+        "lng": -85.9052
+      },
+      {
+        "name": "Unassigned Segment (10180464)",
+        "voltage": 69000,
+        "miles": 0.1,
+        "lat": 41.4701,
+        "lng": -85.9052
+      },
+      {
+        "name": "Unassigned Segment (6058602)",
+        "voltage": 69000,
+        "miles": 0.0,
+        "lat": 41.4573,
+        "lng": -85.8655
+      },
+      {
+        "name": "Unassigned Segment (6058610)",
+        "voltage": 69000,
+        "miles": 0.18,
+        "lat": 41.4583,
+        "lng": -85.8655
+      },
+      {
+        "name": "Unassigned Segment (6058603)",
+        "voltage": 69000,
+        "miles": 0.11,
+        "lat": 41.4564,
+        "lng": -85.865
+      },
+      {
+        "name": "Unassigned Segment (6058599)",
+        "voltage": 69000,
+        "miles": 0.82,
+        "lat": 41.4671,
+        "lng": -85.866
+      },
+      {
+        "name": "Unassigned Segment (6058577)",
+        "voltage": 69000,
+        "miles": 1.55,
+        "lat": 41.4932,
+        "lng": -85.8508
+      },
+      {
+        "name": "Unassigned Segment (1900102558)",
+        "voltage": 69000,
+        "miles": 0.04,
+        "lat": 41.4931,
+        "lng": -85.8362
+      },
+      {
+        "name": "6941",
+        "voltage": 69000,
+        "miles": 16.29,
+        "lat": 41.4465,
+        "lng": -85.8214
+      },
+      {
+        "name": "6981",
+        "voltage": 69000,
+        "miles": 9.05,
+        "lat": 41.5402,
+        "lng": -85.8645
+      }
+    ]
+  },
+  {
+    "id": "M38",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 18,
+    "title": "[69 kV] Mission 18",
+    "circuit_miles": 101.69,
+    "effective_inspection_miles": 96.27,
+    "transit_out_miles": 56.2,
+    "transit_back_miles": 69.2,
+    "total_flight_miles": 221.7,
+    "total_flight_hrs": 3.78,
+    "total_flight_mins": 226.8,
+    "flight_time_str": "3 hrs 47 mins",
+    "inspection_hrs": 2.79,
+    "transit_out_mins": 27,
+    "inspection_mins": 167,
+    "transit_back_mins": 33,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5882,
+    "avg_lng": -85.82,
+    "circuit_names": [
+      "6902",
+      "6984",
+      "6970",
+      "Unassigned Segment (1900159061)",
+      "Unassigned Segment (6091136)",
+      "Unassigned Segment (6091131)",
+      "6985",
+      "Unassigned Segment (1905031701)",
+      "6999",
+      "6977",
+      "6976",
+      "69-104"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6902",
+        "voltage": 69000,
+        "miles": 11.12,
+        "lat": 41.5518,
+        "lng": -85.9283
+      },
+      {
+        "name": "6984",
+        "voltage": 69000,
+        "miles": 2.23,
+        "lat": 41.5742,
+        "lng": -85.8632
+      },
+      {
+        "name": "6970",
+        "voltage": 69000,
+        "miles": 4.04,
+        "lat": 41.5801,
+        "lng": -85.8323
+      },
+      {
+        "name": "Unassigned Segment (1900159061)",
+        "voltage": 69000,
+        "miles": 0.02,
+        "lat": 41.5691,
+        "lng": -85.8263
+      },
+      {
+        "name": "Unassigned Segment (6091136)",
+        "voltage": 69000,
+        "miles": 0.05,
+        "lat": 41.5692,
+        "lng": -85.8255
+      },
+      {
+        "name": "Unassigned Segment (6091131)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.5692,
+        "lng": -85.825
+      },
+      {
+        "name": "6985",
+        "voltage": 69000,
+        "miles": 6.69,
+        "lat": 41.5616,
+        "lng": -85.8071
+      },
+      {
+        "name": "Unassigned Segment (1905031701)",
+        "voltage": 69000,
+        "miles": 0.01,
+        "lat": 41.5654,
+        "lng": -85.8045
+      },
+      {
+        "name": "6999",
+        "voltage": 69000,
+        "miles": 9.15,
+        "lat": 41.5412,
+        "lng": -85.8262
+      },
+      {
+        "name": "6977",
+        "voltage": 69000,
+        "miles": 16.11,
+        "lat": 41.6415,
+        "lng": -85.8318
+      },
+      {
+        "name": "6976",
+        "voltage": 69000,
+        "miles": 24.18,
+        "lat": 41.6442,
+        "lng": -85.7636
+      },
+      {
+        "name": "69-104",
+        "voltage": 69000,
+        "miles": 28.06,
+        "lat": 41.6907,
+        "lng": -85.7066
+      }
+    ]
+  },
+  {
+    "id": "M39",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 19,
+    "title": "[69 kV] Mission 19",
+    "circuit_miles": 61.0,
+    "effective_inspection_miles": 61.0,
+    "transit_out_miles": 60.6,
+    "transit_back_miles": 72.2,
+    "total_flight_miles": 193.8,
+    "total_flight_hrs": 2.82,
+    "total_flight_mins": 169.0,
+    "flight_time_str": "2 hrs 49 mins",
+    "inspection_hrs": 1.77,
+    "transit_out_mins": 29,
+    "inspection_mins": 106,
+    "transit_back_mins": 34,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.4398,
+    "avg_lng": -85.7337,
+    "circuit_names": [
+      "6947",
+      "6989",
+      "6990"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6947",
+        "voltage": 69000,
+        "miles": 19.29,
+        "lat": 41.3775,
+        "lng": -85.8413
+      },
+      {
+        "name": "6989",
+        "voltage": 69000,
+        "miles": 18.39,
+        "lat": 41.4067,
+        "lng": -85.7436
+      },
+      {
+        "name": "6990",
+        "voltage": 69000,
+        "miles": 23.31,
+        "lat": 41.5353,
+        "lng": -85.6161
+      }
+    ]
+  },
+  {
+    "id": "M40",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 20,
+    "title": "[69 kV] Mission 20",
+    "circuit_miles": 88.44,
+    "effective_inspection_miles": 88.16,
+    "transit_out_miles": 74.1,
+    "transit_back_miles": 92.8,
+    "total_flight_miles": 255.1,
+    "total_flight_hrs": 3.87,
+    "total_flight_mins": 232.3,
+    "flight_time_str": "3 hrs 52 mins",
+    "inspection_hrs": 2.55,
+    "transit_out_mins": 35,
+    "inspection_mins": 153,
+    "transit_back_mins": 44,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.6606,
+    "avg_lng": -85.467,
+    "circuit_names": [
+      "6923",
+      "Unassigned Segment (1901848525)",
+      "Unassigned Segment (1901848521)",
+      "Unassigned Segment (6045656)",
+      "6943",
+      "6987",
+      "6973",
+      "69-101",
+      "6936",
+      "69-102"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6923",
+        "voltage": 69000,
+        "miles": 23.1,
+        "lat": 41.6447,
+        "lng": -85.5965
+      },
+      {
+        "name": "Unassigned Segment (1901848525)",
+        "voltage": 69000,
+        "miles": 0.09,
+        "lat": 41.6765,
+        "lng": -85.5686
+      },
+      {
+        "name": "Unassigned Segment (1901848521)",
+        "voltage": 69000,
+        "miles": 0.23,
+        "lat": 41.6767,
+        "lng": -85.5715
+      },
+      {
+        "name": "Unassigned Segment (6045656)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.6778,
+        "lng": -85.5724
+      },
+      {
+        "name": "6943",
+        "voltage": 69000,
+        "miles": 18.26,
+        "lat": 41.6894,
+        "lng": -85.4515
+      },
+      {
+        "name": "6987",
+        "voltage": 69000,
+        "miles": 6.68,
+        "lat": 41.6574,
+        "lng": -85.412
+      },
+      {
+        "name": "6973",
+        "voltage": 69000,
+        "miles": 0.73,
+        "lat": 41.6408,
+        "lng": -85.4135
+      },
+      {
+        "name": "69-101",
+        "voltage": 69000,
+        "miles": 3.08,
+        "lat": 41.7393,
+        "lng": -85.4182
+      },
+      {
+        "name": "6936",
+        "voltage": 69000,
+        "miles": 5.94,
+        "lat": 41.5271,
+        "lng": -85.4292
+      },
+      {
+        "name": "69-102",
+        "voltage": 69000,
+        "miles": 30.3,
+        "lat": 41.6766,
+        "lng": -85.2365
+      }
+    ]
+  },
+  {
+    "id": "M41",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 21,
+    "title": "[69 kV] Mission 21",
+    "circuit_miles": 111.32,
+    "effective_inspection_miles": 111.32,
+    "transit_out_miles": 90.0,
+    "transit_back_miles": 102.3,
+    "total_flight_miles": 303.6,
+    "total_flight_hrs": 4.74,
+    "total_flight_mins": 284.6,
+    "flight_time_str": "4 hrs 45 mins",
+    "inspection_hrs": 3.22,
+    "transit_out_mins": 43,
+    "inspection_mins": 193,
+    "transit_back_mins": 48,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5762,
+    "avg_lng": -85.1545,
+    "circuit_names": [
+      "6959",
+      "69-100",
+      "6980",
+      "6986"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6959",
+        "voltage": 69000,
+        "miles": 30.79,
+        "lat": 41.5447,
+        "lng": -85.2719
+      },
+      {
+        "name": "69-100",
+        "voltage": 69000,
+        "miles": 26.04,
+        "lat": 41.6242,
+        "lng": -85.1609
+      },
+      {
+        "name": "6980",
+        "voltage": 69000,
+        "miles": 23.23,
+        "lat": 41.6408,
+        "lng": -85.1534
+      },
+      {
+        "name": "6986",
+        "voltage": 69000,
+        "miles": 31.26,
+        "lat": 41.495,
+        "lng": -85.0319
+      }
+    ]
+  },
+  {
+    "id": "M42",
+    "kv_label": "69 kV",
+    "kv_sort": 69000,
+    "flying_id": 22,
+    "title": "[69 kV] Mission 22",
+    "circuit_miles": 34.76,
+    "effective_inspection_miles": 34.74,
+    "transit_out_miles": 104.9,
+    "transit_back_miles": 108.8,
+    "total_flight_miles": 248.4,
+    "total_flight_hrs": 2.69,
+    "total_flight_mins": 161.7,
+    "flight_time_str": "2 hrs 42 mins",
+    "inspection_hrs": 1.01,
+    "transit_out_mins": 50,
+    "inspection_mins": 60,
+    "transit_back_mins": 52,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.7062,
+    "avg_lng": -84.9653,
+    "circuit_names": [
+      "6994",
+      "6942",
+      "Unassigned Segment (1901529635)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "6994",
+        "voltage": 69000,
+        "miles": 14.16,
+        "lat": 41.685,
+        "lng": -85.0015
+      },
+      {
+        "name": "6942",
+        "voltage": 69000,
+        "miles": 20.58,
+        "lat": 41.7099,
+        "lng": -84.9617
+      },
+      {
+        "name": "Unassigned Segment (1901529635)",
+        "voltage": 69000,
+        "miles": 0.03,
+        "lat": 41.7238,
+        "lng": -84.9326
+      }
+    ]
+  },
+  {
+    "id": "M43",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 1,
+    "title": "[34 kV / 34.5 kV] Mission 1",
+    "circuit_miles": 49.81,
+    "effective_inspection_miles": 32.43,
+    "transit_out_miles": 29.6,
+    "transit_back_miles": 27.2,
+    "total_flight_miles": 89.2,
+    "total_flight_hrs": 1.86,
+    "total_flight_mins": 111.5,
+    "flight_time_str": "1 hrs 51 mins",
+    "inspection_hrs": 1.41,
+    "transit_out_mins": 14,
+    "inspection_mins": 85,
+    "transit_back_mins": 13,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.6254,
+    "avg_lng": -87.4964,
+    "circuit_names": [
+      "Unassigned Segment (6037278)",
+      "34-118",
+      "Unassigned Segment (6038091)",
+      "Unassigned Segment (6038090)",
+      "Unassigned Segment (6038105)",
+      "Unassigned Segment (6037914)",
+      "Unassigned Segment (6038087)",
+      "Unassigned Segment (6038028)",
+      "34-117",
+      "34-119",
+      "34-116",
+      "3421",
+      "3469",
+      "34-104",
+      "3477",
+      "3405",
+      "34-126",
+      "3447",
+      "3446",
+      "Unassigned Segment (6032620)",
+      "Unassigned Segment (6032621)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6037278)",
+        "voltage": 34000,
+        "miles": 0.09,
+        "lat": 41.6394,
+        "lng": -87.5234
+      },
+      {
+        "name": "34-118",
+        "voltage": 34000,
+        "miles": 3.31,
+        "lat": 41.6365,
+        "lng": -87.5151
+      },
+      {
+        "name": "Unassigned Segment (6038091)",
+        "voltage": 34000,
+        "miles": 0.11,
+        "lat": 41.632,
+        "lng": -87.5067
+      },
+      {
+        "name": "Unassigned Segment (6038090)",
+        "voltage": 34000,
+        "miles": 0.06,
+        "lat": 41.632,
+        "lng": -87.5051
+      },
+      {
+        "name": "Unassigned Segment (6038105)",
+        "voltage": 34000,
+        "miles": 0.13,
+        "lat": 41.6313,
+        "lng": -87.5036
+      },
+      {
+        "name": "Unassigned Segment (6037914)",
+        "voltage": 34000,
+        "miles": 0.1,
+        "lat": 41.6306,
+        "lng": -87.5033
+      },
+      {
+        "name": "Unassigned Segment (6038087)",
+        "voltage": 34000,
+        "miles": 0.12,
+        "lat": 41.6302,
+        "lng": -87.5018
+      },
+      {
+        "name": "Unassigned Segment (6038028)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.6296,
+        "lng": -87.5009
+      },
+      {
+        "name": "34-117",
+        "voltage": 34000,
+        "miles": 6.09,
+        "lat": 41.6404,
+        "lng": -87.5025
+      },
+      {
+        "name": "34-119",
+        "voltage": 34000,
+        "miles": 5.98,
+        "lat": 41.622,
+        "lng": -87.5076
+      },
+      {
+        "name": "34-116",
+        "voltage": 34000,
+        "miles": 2.93,
+        "lat": 41.6242,
+        "lng": -87.5187
+      },
+      {
+        "name": "3421",
+        "voltage": 34000,
+        "miles": 2.88,
+        "lat": 41.6203,
+        "lng": -87.4865
+      },
+      {
+        "name": "3469",
+        "voltage": 34000,
+        "miles": 4.63,
+        "lat": 41.6153,
+        "lng": -87.4992
+      },
+      {
+        "name": "34-104",
+        "voltage": 34000,
+        "miles": 1.68,
+        "lat": 41.6217,
+        "lng": -87.4764
+      },
+      {
+        "name": "3477",
+        "voltage": 34000,
+        "miles": 5.94,
+        "lat": 41.6061,
+        "lng": -87.4899
+      },
+      {
+        "name": "3405",
+        "voltage": 34000,
+        "miles": 0.41,
+        "lat": 41.6133,
+        "lng": -87.4747
+      },
+      {
+        "name": "34-126",
+        "voltage": 34000,
+        "miles": 4.82,
+        "lat": 41.6343,
+        "lng": -87.4701
+      },
+      {
+        "name": "3447",
+        "voltage": 34000,
+        "miles": 4.02,
+        "lat": 41.6246,
+        "lng": -87.4676
+      },
+      {
+        "name": "3446",
+        "voltage": 34000,
+        "miles": 6.41,
+        "lat": 41.6481,
+        "lng": -87.4808
+      },
+      {
+        "name": "Unassigned Segment (6032620)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6012,
+        "lng": -87.4947
+      },
+      {
+        "name": "Unassigned Segment (6032621)",
+        "voltage": 34000,
+        "miles": 0.06,
+        "lat": 41.6008,
+        "lng": -87.4952
+      }
+    ]
+  },
+  {
+    "id": "M44",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 2,
+    "title": "[34 kV / 34.5 kV] Mission 2",
+    "circuit_miles": 43.45,
+    "effective_inspection_miles": 35.34,
+    "transit_out_miles": 27.6,
+    "transit_back_miles": 25.4,
+    "total_flight_miles": 88.3,
+    "total_flight_hrs": 1.95,
+    "total_flight_mins": 117.2,
+    "flight_time_str": "1 hrs 57 mins",
+    "inspection_hrs": 1.54,
+    "transit_out_mins": 13,
+    "inspection_mins": 92,
+    "transit_back_mins": 12,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.558,
+    "avg_lng": -87.4903,
+    "circuit_names": [
+      "3428",
+      "3429",
+      "Unassigned Segment (6141162)",
+      "Unassigned Segment (6140376)",
+      "Unassigned Segment (6140377)",
+      "Unassigned Segment (6140399)",
+      "Unassigned Segment (6140394)",
+      "3430",
+      "3431",
+      "34-107",
+      "34-110",
+      "34-108",
+      "34-109",
+      "34-111",
+      "3487",
+      "Unassigned Segment (6139220)",
+      "Unassigned Segment (6032578)",
+      "3479"
+    ],
+    "circuits_detail": [
+      {
+        "name": "3428",
+        "voltage": 34000,
+        "miles": 6.31,
+        "lat": 41.5713,
+        "lng": -87.5177
+      },
+      {
+        "name": "3429",
+        "voltage": 34000,
+        "miles": 2.28,
+        "lat": 41.552,
+        "lng": -87.5125
+      },
+      {
+        "name": "Unassigned Segment (6141162)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.5517,
+        "lng": -87.5089
+      },
+      {
+        "name": "Unassigned Segment (6140376)",
+        "voltage": 34000,
+        "miles": 0.05,
+        "lat": 41.5517,
+        "lng": -87.5081
+      },
+      {
+        "name": "Unassigned Segment (6140377)",
+        "voltage": 34000,
+        "miles": 0.11,
+        "lat": 41.5518,
+        "lng": -87.5064
+      },
+      {
+        "name": "Unassigned Segment (6140399)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.5518,
+        "lng": -87.5054
+      },
+      {
+        "name": "Unassigned Segment (6140394)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.5518,
+        "lng": -87.5054
+      },
+      {
+        "name": "3430",
+        "voltage": 34000,
+        "miles": 3.5,
+        "lat": 41.5437,
+        "lng": -87.508
+      },
+      {
+        "name": "3431",
+        "voltage": 34000,
+        "miles": 4.15,
+        "lat": 41.5239,
+        "lng": -87.515
+      },
+      {
+        "name": "34-107",
+        "voltage": 34000,
+        "miles": 3.16,
+        "lat": 41.5528,
+        "lng": -87.4846
+      },
+      {
+        "name": "34-110",
+        "voltage": 34000,
+        "miles": 5.26,
+        "lat": 41.5722,
+        "lng": -87.4912
+      },
+      {
+        "name": "34-108",
+        "voltage": 34000,
+        "miles": 8.29,
+        "lat": 41.5781,
+        "lng": -87.486
+      },
+      {
+        "name": "34-109",
+        "voltage": 34000,
+        "miles": 3.7,
+        "lat": 41.5492,
+        "lng": -87.465
+      },
+      {
+        "name": "34-111",
+        "voltage": 34000,
+        "miles": 2.32,
+        "lat": 41.5624,
+        "lng": -87.4591
+      },
+      {
+        "name": "3487",
+        "voltage": 34000,
+        "miles": 0.73,
+        "lat": 41.5297,
+        "lng": -87.4608
+      },
+      {
+        "name": "Unassigned Segment (6139220)",
+        "voltage": 34000,
+        "miles": 0.3,
+        "lat": 41.5701,
+        "lng": -87.4477
+      },
+      {
+        "name": "Unassigned Segment (6032578)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.5924,
+        "lng": -87.48
+      },
+      {
+        "name": "3479",
+        "voltage": 34000,
+        "miles": 3.24,
+        "lat": 41.5878,
+        "lng": -87.4636
+      }
+    ]
+  },
+  {
+    "id": "M45",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 3,
+    "title": "[34 kV / 34.5 kV] Mission 3",
+    "circuit_miles": 39.7,
+    "effective_inspection_miles": 26.77,
+    "transit_out_miles": 30.9,
+    "transit_back_miles": 24.5,
+    "total_flight_miles": 82.2,
+    "total_flight_hrs": 1.6,
+    "total_flight_mins": 96.1,
+    "flight_time_str": "1 hrs 36 mins",
+    "inspection_hrs": 1.16,
+    "transit_out_mins": 15,
+    "inspection_mins": 70,
+    "transit_back_mins": 12,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.6618,
+    "avg_lng": -87.4723,
+    "circuit_names": [
+      "3455",
+      "3457",
+      "3456",
+      "3459",
+      "3466",
+      "3416",
+      "Unassigned Segment (1900192186)",
+      "Unassigned Segment (6037468)",
+      "Unassigned Segment (6037467)",
+      "Unassigned Segment (6037466)",
+      "Unassigned Segment (6037385)",
+      "3467",
+      "3450",
+      "3494",
+      "Unassigned Segment (6037372)",
+      "Unassigned Segment (1900002924)",
+      "Unassigned Segment (6140435)",
+      "Unassigned Segment (6140420)",
+      "3478",
+      "Unassigned Segment (6037869)",
+      "3482",
+      "3483",
+      "Unassigned Segment (6137423)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "3455",
+        "voltage": 34000,
+        "miles": 5.46,
+        "lat": 41.6888,
+        "lng": -87.5163
+      },
+      {
+        "name": "3457",
+        "voltage": 34000,
+        "miles": 1.95,
+        "lat": 41.6905,
+        "lng": -87.5123
+      },
+      {
+        "name": "3456",
+        "voltage": 34000,
+        "miles": 5.37,
+        "lat": 41.6842,
+        "lng": -87.5084
+      },
+      {
+        "name": "3459",
+        "voltage": 34000,
+        "miles": 2.17,
+        "lat": 41.6543,
+        "lng": -87.47
+      },
+      {
+        "name": "3466",
+        "voltage": 34000,
+        "miles": 0.35,
+        "lat": 41.6611,
+        "lng": -87.4686
+      },
+      {
+        "name": "3416",
+        "voltage": 34000,
+        "miles": 0.68,
+        "lat": 41.6637,
+        "lng": -87.4692
+      },
+      {
+        "name": "Unassigned Segment (1900192186)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.6692,
+        "lng": -87.4733
+      },
+      {
+        "name": "Unassigned Segment (6037468)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6679,
+        "lng": -87.4708
+      },
+      {
+        "name": "Unassigned Segment (6037467)",
+        "voltage": 34000,
+        "miles": 0.12,
+        "lat": 41.6672,
+        "lng": -87.4697
+      },
+      {
+        "name": "Unassigned Segment (6037466)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6667,
+        "lng": -87.4685
+      },
+      {
+        "name": "Unassigned Segment (6037385)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6669,
+        "lng": -87.4683
+      },
+      {
+        "name": "3467",
+        "voltage": 34000,
+        "miles": 2.69,
+        "lat": 41.6553,
+        "lng": -87.4555
+      },
+      {
+        "name": "3450",
+        "voltage": 34000,
+        "miles": 2.69,
+        "lat": 41.6117,
+        "lng": -87.4605
+      },
+      {
+        "name": "3494",
+        "voltage": 34000,
+        "miles": 3.68,
+        "lat": 41.6689,
+        "lng": -87.4826
+      },
+      {
+        "name": "Unassigned Segment (6037372)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6759,
+        "lng": -87.4883
+      },
+      {
+        "name": "Unassigned Segment (1900002924)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6758,
+        "lng": -87.4888
+      },
+      {
+        "name": "Unassigned Segment (6140435)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6915,
+        "lng": -87.5055
+      },
+      {
+        "name": "Unassigned Segment (6140420)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.6917,
+        "lng": -87.5056
+      },
+      {
+        "name": "3478",
+        "voltage": 34000,
+        "miles": 4.7,
+        "lat": 41.6393,
+        "lng": -87.4564
+      },
+      {
+        "name": "Unassigned Segment (6037869)",
+        "voltage": 34000,
+        "miles": 0.08,
+        "lat": 41.6305,
+        "lng": -87.453
+      },
+      {
+        "name": "3482",
+        "voltage": 34000,
+        "miles": 3.37,
+        "lat": 41.6413,
+        "lng": -87.4211
+      },
+      {
+        "name": "3483",
+        "voltage": 34000,
+        "miles": 6.18,
+        "lat": 41.6309,
+        "lng": -87.4309
+      },
+      {
+        "name": "Unassigned Segment (6137423)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.628,
+        "lng": -87.4199
+      }
+    ]
+  },
+  {
+    "id": "M46",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 4,
+    "title": "[34 kV / 34.5 kV] Mission 4",
+    "circuit_miles": 48.78,
+    "effective_inspection_miles": 29.0,
+    "transit_out_miles": 27.2,
+    "transit_back_miles": 21.4,
+    "total_flight_miles": 77.6,
+    "total_flight_hrs": 1.64,
+    "total_flight_mins": 98.6,
+    "flight_time_str": "1 hrs 39 mins",
+    "inspection_hrs": 1.26,
+    "transit_out_mins": 13,
+    "inspection_mins": 76,
+    "transit_back_mins": 10,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.6153,
+    "avg_lng": -87.4203,
+    "circuit_names": [
+      "Unassigned Segment (6032610)",
+      "3409",
+      "3470",
+      "3476",
+      "3472",
+      "3471",
+      "3410",
+      "3485",
+      "3480",
+      "3423",
+      "3427",
+      "3484",
+      "3486",
+      "Unassigned Segment (6058229)",
+      "Unassigned Segment (6058234)",
+      "Unassigned Segment (6058231)",
+      "Unassigned Segment (6058230)",
+      "Unassigned Segment (6058233)",
+      "3437",
+      "3434"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6032610)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6005,
+        "lng": -87.4951
+      },
+      {
+        "name": "3409",
+        "voltage": 34000,
+        "miles": 6.02,
+        "lat": 41.5998,
+        "lng": -87.4893
+      },
+      {
+        "name": "3470",
+        "voltage": 34000,
+        "miles": 1.96,
+        "lat": 41.5975,
+        "lng": -87.4838
+      },
+      {
+        "name": "3476",
+        "voltage": 34000,
+        "miles": 3.05,
+        "lat": 41.6045,
+        "lng": -87.4747
+      },
+      {
+        "name": "3472",
+        "voltage": 34000,
+        "miles": 2.8,
+        "lat": 41.5944,
+        "lng": -87.4719
+      },
+      {
+        "name": "3471",
+        "voltage": 34000,
+        "miles": 9.69,
+        "lat": 41.5831,
+        "lng": -87.4234
+      },
+      {
+        "name": "3410",
+        "voltage": 34000,
+        "miles": 4.57,
+        "lat": 41.6081,
+        "lng": -87.4451
+      },
+      {
+        "name": "3485",
+        "voltage": 34000,
+        "miles": 6.93,
+        "lat": 41.6113,
+        "lng": -87.4172
+      },
+      {
+        "name": "3480",
+        "voltage": 34000,
+        "miles": 0.27,
+        "lat": 41.6367,
+        "lng": -87.4106
+      },
+      {
+        "name": "3423",
+        "voltage": 34000,
+        "miles": 0.51,
+        "lat": 41.634,
+        "lng": -87.407
+      },
+      {
+        "name": "3427",
+        "voltage": 34000,
+        "miles": 0.38,
+        "lat": 41.6346,
+        "lng": -87.407
+      },
+      {
+        "name": "3484",
+        "voltage": 34000,
+        "miles": 4.52,
+        "lat": 41.6173,
+        "lng": -87.3938
+      },
+      {
+        "name": "3486",
+        "voltage": 34000,
+        "miles": 3.4,
+        "lat": 41.6286,
+        "lng": -87.3954
+      },
+      {
+        "name": "Unassigned Segment (6058229)",
+        "voltage": 34000,
+        "miles": 0.1,
+        "lat": 41.6279,
+        "lng": -87.3889
+      },
+      {
+        "name": "Unassigned Segment (6058234)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6283,
+        "lng": -87.3889
+      },
+      {
+        "name": "Unassigned Segment (6058231)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6285,
+        "lng": -87.3889
+      },
+      {
+        "name": "Unassigned Segment (6058230)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.6288,
+        "lng": -87.3889
+      },
+      {
+        "name": "Unassigned Segment (6058233)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.629,
+        "lng": -87.3889
+      },
+      {
+        "name": "3437",
+        "voltage": 34000,
+        "miles": 1.93,
+        "lat": 41.6053,
+        "lng": -87.3795
+      },
+      {
+        "name": "3434",
+        "voltage": 34000,
+        "miles": 2.59,
+        "lat": 41.6072,
+        "lng": -87.3675
+      }
+    ]
+  },
+  {
+    "id": "M47",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 5,
+    "title": "[34 kV / 34.5 kV] Mission 5",
+    "circuit_miles": 43.79,
+    "effective_inspection_miles": 33.57,
+    "transit_out_miles": 23.8,
+    "transit_back_miles": 21.0,
+    "total_flight_miles": 78.4,
+    "total_flight_hrs": 1.81,
+    "total_flight_mins": 108.8,
+    "flight_time_str": "1 hrs 49 mins",
+    "inspection_hrs": 1.46,
+    "transit_out_mins": 11,
+    "inspection_mins": 88,
+    "transit_back_mins": 10,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.5349,
+    "avg_lng": -87.4085,
+    "circuit_names": [
+      "Unassigned Segment (1900529388)",
+      "Unassigned Segment (1900529215)",
+      "Unassigned Segment (1900529216)",
+      "3490",
+      "3451",
+      "3488",
+      "3489",
+      "Unassigned Segment (6032846)",
+      "Unassigned Segment (6091900)",
+      "Unassigned Segment (6090487)",
+      "Unassigned Segment (6091898)",
+      "Unassigned Segment (6032667)",
+      "Unassigned Segment (6032671)",
+      "Unassigned Segment (6091910)",
+      "Unassigned Segment (6090393)",
+      "34-121",
+      "34-122",
+      "Unassigned Segment (6090136)",
+      "34-120"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (1900529388)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.5077,
+        "lng": -87.4615
+      },
+      {
+        "name": "Unassigned Segment (1900529215)",
+        "voltage": 34000,
+        "miles": 0.29,
+        "lat": 41.505,
+        "lng": -87.4614
+      },
+      {
+        "name": "Unassigned Segment (1900529216)",
+        "voltage": 34000,
+        "miles": 0.01,
+        "lat": 41.5035,
+        "lng": -87.4612
+      },
+      {
+        "name": "3490",
+        "voltage": 34000,
+        "miles": 5.15,
+        "lat": 41.5112,
+        "lng": -87.4492
+      },
+      {
+        "name": "3451",
+        "voltage": 34000,
+        "miles": 3.23,
+        "lat": 41.5228,
+        "lng": -87.4359
+      },
+      {
+        "name": "3488",
+        "voltage": 34000,
+        "miles": 6.15,
+        "lat": 41.5234,
+        "lng": -87.419
+      },
+      {
+        "name": "3489",
+        "voltage": 34000,
+        "miles": 5.07,
+        "lat": 41.5379,
+        "lng": -87.4327
+      },
+      {
+        "name": "Unassigned Segment (6032846)",
+        "voltage": 34000,
+        "miles": 0.0,
+        "lat": 41.5225,
+        "lng": -87.3957
+      },
+      {
+        "name": "Unassigned Segment (6091900)",
+        "voltage": 34000,
+        "miles": 0.54,
+        "lat": 41.5226,
+        "lng": -87.3911
+      },
+      {
+        "name": "Unassigned Segment (6090487)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.5226,
+        "lng": -87.385
+      },
+      {
+        "name": "Unassigned Segment (6091898)",
+        "voltage": 34000,
+        "miles": 0.49,
+        "lat": 41.526,
+        "lng": -87.3847
+      },
+      {
+        "name": "Unassigned Segment (6032667)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.5445,
+        "lng": -87.4121
+      },
+      {
+        "name": "Unassigned Segment (6032671)",
+        "voltage": 34000,
+        "miles": 0.92,
+        "lat": 41.5444,
+        "lng": -87.4041
+      },
+      {
+        "name": "Unassigned Segment (6091910)",
+        "voltage": 34000,
+        "miles": 0.42,
+        "lat": 41.5443,
+        "lng": -87.3884
+      },
+      {
+        "name": "Unassigned Segment (6090393)",
+        "voltage": 34000,
+        "miles": 0.27,
+        "lat": 41.5458,
+        "lng": -87.385
+      },
+      {
+        "name": "34-121",
+        "voltage": 34000,
+        "miles": 6.79,
+        "lat": 41.5753,
+        "lng": -87.3949
+      },
+      {
+        "name": "34-122",
+        "voltage": 34000,
+        "miles": 7.39,
+        "lat": 41.5495,
+        "lng": -87.3531
+      },
+      {
+        "name": "Unassigned Segment (6090136)",
+        "voltage": 34000,
+        "miles": 0.49,
+        "lat": 41.5734,
+        "lng": -87.3692
+      },
+      {
+        "name": "34-120",
+        "voltage": 34000,
+        "miles": 6.49,
+        "lat": 41.5803,
+        "lng": -87.3769
+      }
+    ]
+  },
+  {
+    "id": "M48",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 6,
+    "title": "[34 kV / 34.5 kV] Mission 6",
+    "circuit_miles": 73.52,
+    "effective_inspection_miles": 38.86,
+    "transit_out_miles": 21.4,
+    "transit_back_miles": 16.5,
+    "total_flight_miles": 76.8,
+    "total_flight_hrs": 1.99,
+    "total_flight_mins": 119.3,
+    "flight_time_str": "1 hrs 59 mins",
+    "inspection_hrs": 1.69,
+    "transit_out_mins": 10,
+    "inspection_mins": 101,
+    "transit_back_mins": 8,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.5892,
+    "avg_lng": -87.3037,
+    "circuit_names": [
+      "3439",
+      "34-123",
+      "Unassigned Segment (6135085)",
+      "Unassigned Segment (6135084)",
+      "3475",
+      "3406",
+      "3408",
+      "3412",
+      "3460",
+      "3461",
+      "3425",
+      "3407",
+      "3419",
+      "3401",
+      "3402",
+      "Unassigned Segment (6090645)",
+      "34-113",
+      "Unassigned Segment (6090640)",
+      "Unassigned Segment (6090662)",
+      "Unassigned Segment (6090663)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "3439",
+        "voltage": 34000,
+        "miles": 3.35,
+        "lat": 41.6061,
+        "lng": -87.3665
+      },
+      {
+        "name": "34-123",
+        "voltage": 34000,
+        "miles": 5.89,
+        "lat": 41.5886,
+        "lng": -87.3542
+      },
+      {
+        "name": "Unassigned Segment (6135085)",
+        "voltage": 34000,
+        "miles": 0.4,
+        "lat": 41.5734,
+        "lng": -87.362
+      },
+      {
+        "name": "Unassigned Segment (6135084)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.5734,
+        "lng": -87.3577
+      },
+      {
+        "name": "3475",
+        "voltage": 34000,
+        "miles": 7.49,
+        "lat": 41.5872,
+        "lng": -87.3296
+      },
+      {
+        "name": "3406",
+        "voltage": 34000,
+        "miles": 3.55,
+        "lat": 41.5914,
+        "lng": -87.3164
+      },
+      {
+        "name": "3408",
+        "voltage": 34000,
+        "miles": 0.12,
+        "lat": 41.5929,
+        "lng": -87.2978
+      },
+      {
+        "name": "3412",
+        "voltage": 34000,
+        "miles": 1.11,
+        "lat": 41.5955,
+        "lng": -87.3072
+      },
+      {
+        "name": "3460",
+        "voltage": 34000,
+        "miles": 7.04,
+        "lat": 41.5635,
+        "lng": -87.3195
+      },
+      {
+        "name": "3461",
+        "voltage": 34000,
+        "miles": 3.78,
+        "lat": 41.6008,
+        "lng": -87.3165
+      },
+      {
+        "name": "3425",
+        "voltage": 34000,
+        "miles": 2.09,
+        "lat": 41.5966,
+        "lng": -87.2946
+      },
+      {
+        "name": "3407",
+        "voltage": 34000,
+        "miles": 2.27,
+        "lat": 41.5778,
+        "lng": -87.2882
+      },
+      {
+        "name": "3419",
+        "voltage": 34000,
+        "miles": 9.44,
+        "lat": 41.5836,
+        "lng": -87.2783
+      },
+      {
+        "name": "3401",
+        "voltage": 34000,
+        "miles": 7.09,
+        "lat": 41.5993,
+        "lng": -87.2608
+      },
+      {
+        "name": "3402",
+        "voltage": 34000,
+        "miles": 10.37,
+        "lat": 41.603,
+        "lng": -87.2448
+      },
+      {
+        "name": "Unassigned Segment (6090645)",
+        "voltage": 34000,
+        "miles": 0.7,
+        "lat": 41.5986,
+        "lng": -87.2704
+      },
+      {
+        "name": "34-113",
+        "voltage": 34000,
+        "miles": 8.65,
+        "lat": 41.5552,
+        "lng": -87.3238
+      },
+      {
+        "name": "Unassigned Segment (6090640)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.599,
+        "lng": -87.2628
+      },
+      {
+        "name": "Unassigned Segment (6090662)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.599,
+        "lng": -87.2624
+      },
+      {
+        "name": "Unassigned Segment (6090663)",
+        "voltage": 34000,
+        "miles": 0.1,
+        "lat": 41.5994,
+        "lng": -87.2616
+      }
+    ]
+  },
+  {
+    "id": "M49",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 7,
+    "title": "[34 kV / 34.5 kV] Mission 7",
+    "circuit_miles": 70.51,
+    "effective_inspection_miles": 45.2,
+    "transit_out_miles": 17.3,
+    "transit_back_miles": 16.6,
+    "total_flight_miles": 79.1,
+    "total_flight_hrs": 2.23,
+    "total_flight_mins": 133.9,
+    "flight_time_str": "2 hrs 14 mins",
+    "inspection_hrs": 1.96,
+    "transit_out_mins": 8,
+    "inspection_mins": 118,
+    "transit_back_mins": 8,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.6252,
+    "avg_lng": -87.1101,
+    "circuit_names": [
+      "34-114",
+      "Unassigned Segment (6090664)",
+      "Unassigned Segment (6090642)",
+      "Unassigned Segment (6090686)",
+      "3424",
+      "3417",
+      "3415",
+      "3435",
+      "3498",
+      "Unassigned Segment (10181496)",
+      "3497",
+      "3496",
+      "3495",
+      "3499",
+      "3493",
+      "3443",
+      "34-125",
+      "Unassigned Segment (6007190)",
+      "Unassigned Segment (6007193)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "34-114",
+        "voltage": 34000,
+        "miles": 4.86,
+        "lat": 41.5315,
+        "lng": -87.3243
+      },
+      {
+        "name": "Unassigned Segment (6090664)",
+        "voltage": 34000,
+        "miles": 0.04,
+        "lat": 41.5997,
+        "lng": -87.2604
+      },
+      {
+        "name": "Unassigned Segment (6090642)",
+        "voltage": 34000,
+        "miles": 0.05,
+        "lat": 41.6001,
+        "lng": -87.2597
+      },
+      {
+        "name": "Unassigned Segment (6090686)",
+        "voltage": 34000,
+        "miles": 0.46,
+        "lat": 41.536,
+        "lng": -87.1931
+      },
+      {
+        "name": "3424",
+        "voltage": 34000,
+        "miles": 1.13,
+        "lat": 41.6129,
+        "lng": -87.1721
+      },
+      {
+        "name": "3417",
+        "voltage": 34000,
+        "miles": 4.65,
+        "lat": 41.6212,
+        "lng": -87.1711
+      },
+      {
+        "name": "3415",
+        "voltage": 34000,
+        "miles": 1.26,
+        "lat": 41.6215,
+        "lng": -87.1617
+      },
+      {
+        "name": "3435",
+        "voltage": 34000,
+        "miles": 0.22,
+        "lat": 41.6236,
+        "lng": -87.1612
+      },
+      {
+        "name": "3498",
+        "voltage": 34000,
+        "miles": 7.51,
+        "lat": 41.6198,
+        "lng": -87.1462
+      },
+      {
+        "name": "Unassigned Segment (10181496)",
+        "voltage": 34000,
+        "miles": 0.26,
+        "lat": 41.6189,
+        "lng": -87.1344
+      },
+      {
+        "name": "3497",
+        "voltage": 34000,
+        "miles": 5.72,
+        "lat": 41.6265,
+        "lng": -87.1227
+      },
+      {
+        "name": "3496",
+        "voltage": 34000,
+        "miles": 4.02,
+        "lat": 41.6252,
+        "lng": -87.1198
+      },
+      {
+        "name": "3495",
+        "voltage": 34000,
+        "miles": 3.0,
+        "lat": 41.62,
+        "lng": -87.1008
+      },
+      {
+        "name": "3499",
+        "voltage": 34000,
+        "miles": 4.11,
+        "lat": 41.6437,
+        "lng": -87.0658
+      },
+      {
+        "name": "3493",
+        "voltage": 34000,
+        "miles": 13.01,
+        "lat": 41.6439,
+        "lng": -87.0518
+      },
+      {
+        "name": "3443",
+        "voltage": 34000,
+        "miles": 14.0,
+        "lat": 41.6948,
+        "lng": -86.9226
+      },
+      {
+        "name": "34-125",
+        "voltage": 34000,
+        "miles": 6.18,
+        "lat": 41.6755,
+        "lng": -86.9117
+      },
+      {
+        "name": "Unassigned Segment (6007190)",
+        "voltage": 34000,
+        "miles": 0.02,
+        "lat": 41.6825,
+        "lng": -86.9067
+      },
+      {
+        "name": "Unassigned Segment (6007193)",
+        "voltage": 34000,
+        "miles": 0.03,
+        "lat": 41.6825,
+        "lng": -86.9062
+      }
+    ]
+  },
+  {
+    "id": "M50",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 8,
+    "title": "[34 kV / 34.5 kV] Mission 8",
+    "circuit_miles": 48.7,
+    "effective_inspection_miles": 45.53,
+    "transit_out_miles": 16.6,
+    "transit_back_miles": 27.1,
+    "total_flight_miles": 89.2,
+    "total_flight_hrs": 2.32,
+    "total_flight_mins": 139.4,
+    "flight_time_str": "2 hrs 19 mins",
+    "inspection_hrs": 1.98,
+    "transit_out_mins": 8,
+    "inspection_mins": 119,
+    "transit_back_mins": 13,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.7066,
+    "avg_lng": -86.8532,
+    "circuit_names": [
+      "Unassigned Segment (6007192)",
+      "Unassigned Segment (10679494)",
+      "34-124",
+      "3418",
+      "3411",
+      "3414",
+      "3403",
+      "3426",
+      "34-100",
+      "3432",
+      "3465",
+      "3474",
+      "3465-Backup"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (6007192)",
+        "voltage": 34000,
+        "miles": 0.07,
+        "lat": 41.6825,
+        "lng": -86.9052
+      },
+      {
+        "name": "Unassigned Segment (10679494)",
+        "voltage": 34000,
+        "miles": 0.04,
+        "lat": 41.6825,
+        "lng": -86.9042
+      },
+      {
+        "name": "34-124",
+        "voltage": 34000,
+        "miles": 7.62,
+        "lat": 41.6727,
+        "lng": -86.8801
+      },
+      {
+        "name": "3418",
+        "voltage": 34000,
+        "miles": 4.54,
+        "lat": 41.7096,
+        "lng": -86.8962
+      },
+      {
+        "name": "3411",
+        "voltage": 34000,
+        "miles": 1.42,
+        "lat": 41.7183,
+        "lng": -86.8992
+      },
+      {
+        "name": "3414",
+        "voltage": 34000,
+        "miles": 2.5,
+        "lat": 41.7146,
+        "lng": -86.8735
+      },
+      {
+        "name": "3403",
+        "voltage": 34000,
+        "miles": 5.36,
+        "lat": 41.7214,
+        "lng": -86.8906
+      },
+      {
+        "name": "3426",
+        "voltage": 34000,
+        "miles": 3.39,
+        "lat": 41.7065,
+        "lng": -86.8616
+      },
+      {
+        "name": "34-100",
+        "voltage": 34000,
+        "miles": 5.61,
+        "lat": 41.7218,
+        "lng": -86.8594
+      },
+      {
+        "name": "3432",
+        "voltage": 34000,
+        "miles": 3.87,
+        "lat": 41.6943,
+        "lng": -86.8448
+      },
+      {
+        "name": "3465",
+        "voltage": 34000,
+        "miles": 0.75,
+        "lat": 41.7142,
+        "lng": -86.8302
+      },
+      {
+        "name": "3474",
+        "voltage": 34000,
+        "miles": 3.73,
+        "lat": 41.7321,
+        "lng": -86.8302
+      },
+      {
+        "name": "3465-Backup",
+        "voltage": 34000,
+        "miles": 9.8,
+        "lat": 41.7154,
+        "lng": -86.6164
+      }
+    ]
+  },
+  {
+    "id": "M51",
+    "kv_label": "34 kV / 34.5 kV",
+    "kv_sort": 34000,
+    "flying_id": 9,
+    "title": "[34 kV / 34.5 kV] Mission 9",
+    "circuit_miles": 10.23,
+    "effective_inspection_miles": 10.23,
+    "transit_out_miles": 33.0,
+    "transit_back_miles": 33.0,
+    "total_flight_miles": 76.2,
+    "total_flight_hrs": 0.97,
+    "total_flight_mins": 58.0,
+    "flight_time_str": "58 mins",
+    "inspection_hrs": 0.44,
+    "transit_out_mins": 16,
+    "inspection_mins": 27,
+    "transit_back_mins": 16,
+    "transit_knots": 110,
+    "inspection_knots": 20,
+    "avg_lat": 41.702,
+    "avg_lng": -86.4612,
+    "circuit_names": [
+      "3433"
+    ],
+    "circuits_detail": [
+      {
+        "name": "3433",
+        "voltage": 34000,
+        "miles": 10.23,
+        "lat": 41.702,
+        "lng": -86.4612
+      }
+    ]
+  },
+  {
+    "id": "M52",
+    "kv_label": "Other / Low Voltage",
+    "kv_sort": 0,
+    "flying_id": 1,
+    "title": "[Other / Low Voltage] Mission 1",
+    "circuit_miles": 1.1,
+    "effective_inspection_miles": 0.62,
+    "transit_out_miles": 27.6,
+    "transit_back_miles": 2.0,
+    "total_flight_miles": 30.2,
+    "total_flight_hrs": 0.25,
+    "total_flight_mins": 15.1,
+    "flight_time_str": "15 mins",
+    "inspection_hrs": 0.02,
+    "transit_out_mins": 13,
+    "inspection_mins": 1,
+    "transit_back_mins": 1,
+    "transit_knots": 110,
+    "inspection_knots": 30,
+    "avg_lat": 41.5981,
+    "avg_lng": -87.3788,
+    "circuit_names": [
+      "Unassigned Segment (1910671752)",
+      "Unassigned Segment (1910671767)",
+      "Unassigned Segment (1910671758)",
+      "Unassigned Segment (1910671754)",
+      "Unassigned Segment (6144424)",
+      "Unassigned Segment (6090807)",
+      "Unassigned Segment (6091106)"
+    ],
+    "circuits_detail": [
+      {
+        "name": "Unassigned Segment (1910671752)",
+        "voltage": null,
+        "miles": 0.17,
+        "lat": 41.6514,
+        "lng": -87.4713
+      },
+      {
+        "name": "Unassigned Segment (1910671767)",
+        "voltage": null,
+        "miles": 0.01,
+        "lat": 41.6507,
+        "lng": -87.4703
+      },
+      {
+        "name": "Unassigned Segment (1910671758)",
+        "voltage": null,
+        "miles": 0.01,
+        "lat": 41.6506,
+        "lng": -87.4702
+      },
+      {
+        "name": "Unassigned Segment (1910671754)",
+        "voltage": null,
+        "miles": 0.04,
+        "lat": 41.6503,
+        "lng": -87.4698
+      },
+      {
+        "name": "Unassigned Segment (6144424)",
+        "voltage": null,
+        "miles": 0.53,
+        "lat": 41.6474,
+        "lng": -87.4666
+      },
+      {
+        "name": "Unassigned Segment (6090807)",
+        "voltage": null,
+        "miles": 0.17,
+        "lat": 41.4599,
+        "lng": -87.2723
+      },
+      {
+        "name": "Unassigned Segment (6091106)",
+        "voltage": null,
+        "miles": 0.16,
+        "lat": 41.4766,
+        "lng": -87.0308
+      }
+    ]
+  }
+]

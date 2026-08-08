@@ -1,0 +1,4 @@
+node_modules/
+scratch/
+check.py
+test_*.py

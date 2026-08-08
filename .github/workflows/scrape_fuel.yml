@@ -1,0 +1,42 @@
+name: Scrape AirNav Fuel Prices
+
+on:
+  schedule:
+    # Runs at 11:00, 15:00, 19:00, 23:00, 03:00, 07:00 UTC
+    # This corresponds to 6am, 10am, 2pm, 6pm, 10pm, 2am in local time (UTC-5)
+    - cron: '0 3,7,11,15,19,23 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Run Scraper
+        run: python scripts/scrape_airnav.py
+        
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add fuel_prices.json
+          if git diff --staged --quiet; then
+            echo "No changes to fuel_prices.json"
+          else
+            git commit -m "chore: Update fuel prices via automated scraper"
+            git push origin main
+            git checkout gh-pages || git checkout -b gh-pages
+            git merge main || echo "Nothing to merge"
+            git push origin gh-pages
+          fi
