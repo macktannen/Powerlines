@@ -60,7 +60,9 @@ def main():
             print(f"{icao}: Failed to find price")
         time.sleep(1) # Be nice to AirNav servers
         
-    with open('fuel_prices.json', 'w') as f:
+    import os
+    out_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'fuel_prices.json')
+    with open(out_path, 'w') as f:
         json.dump({
             "timestamp": int(time.time() * 1000),
             "prices": prices
