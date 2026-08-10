@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.34';
-window.APP_BUILD_TIME = '2026-08-10 11:38:00 EST';
+window.APP_VERSION = '3.16.35';
+window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.34 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.35 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -827,7 +827,6 @@ function processDatasetStats() {
   
   document.getElementById('stat-total-circuits').textContent = state.circuitGroups.length.toLocaleString();
   document.getElementById('stat-total-miles').textContent = `${totalMiles} mi`;
-  document.getElementById('stat-total-segments').textContent = totalSegs.toLocaleString();
   document.getElementById('tab-circuit-count').textContent = state.circuitGroups.length;
 }
 
