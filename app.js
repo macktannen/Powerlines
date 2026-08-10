@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.32';
-window.APP_BUILD_TIME = '2026-07-30 19:24:00 EST';
+window.APP_VERSION = '3.16.33';
+window.APP_BUILD_TIME = '2026-08-10 10:45:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.32 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.33 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -4846,6 +4846,7 @@ function generateFlightPlannerPdfReport() {
   let totalInspectionMiles = 0;
   let totalTransitMiles = 0;
   let totalFlightMinutes = 0;
+  let totalGroundMins = 0;
   let totalGallonsBurned = 0;
   let fuelBurnedPriorToRefuel = 0;
   let fuelBurnedAfterRefuel = 0;
@@ -4904,6 +4905,7 @@ function generateFlightPlannerPdfReport() {
 
     totalTransitMiles += fuelTransitDist;
     totalFlightMinutes += (fuelTransitMins + turnAroundMins);
+    totalGroundMins += turnAroundMins;
     totalGallonsBurned += fuelTransitGal;
     fuelBurnedPriorToRefuel += fuelTransitGal;
     const defaultRefuelGal = Math.round(fuelBurnedPriorToRefuel);
@@ -5125,6 +5127,11 @@ function generateFlightPlannerPdfReport() {
   const mins = Math.round(totalFlightMinutes % 60);
   const totalTimeStr = `${hrs}h ${mins}m`;
 
+  const totalPureFlightMinutes = totalFlightMinutes - totalGroundMins;
+  const pfHrs = Math.floor(totalPureFlightMinutes / 60);
+  const pfMins = Math.round(totalPureFlightMinutes % 60);
+  const pureFlightTimeStr = `${pfHrs}h ${pfMins}m`;
+
   // Airport Badges Array for Map
   const airportMapSet = new Map();
   airportMapSet.set(startApt.code, { ...startApt, role: 'DEP' });
@@ -5169,7 +5176,7 @@ function generateFlightPlannerPdfReport() {
       .print-btn { background: #0284C7; color: #FFF; border: none; padding: 5px 12px; border-radius: 4px; font-weight: 700; font-size: 10px; cursor: pointer; }
       @media print { .print-btn { display: none !important; } }
 
-      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
+      .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 8px; }
       .metric-card { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 6px 8px; border-radius: 5px; }
       .metric-lbl { font-size: 8px; color: #64748B; font-weight: 700; text-transform: uppercase; }
       .metric-val { font-size: 13px; font-weight: 800; color: #0284C7; margin-top: 1px; }
@@ -5202,10 +5209,14 @@ function generateFlightPlannerPdfReport() {
         <button class="print-btn" onclick="window.print()">🖨️ Print 1-Page Briefing</button>
       </div>
 
-      <div class="grid-4">
+      <div class="grid-5">
         <div class="metric-card">
           <div class="metric-lbl">Total Mission Time</div>
           <div class="metric-val" style="color: #0284C7;">${totalTimeStr}</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-lbl">Total Flight Time</div>
+          <div class="metric-val" style="color: #0284C7;">${pureFlightTimeStr}</div>
         </div>
         <div class="metric-card">
           <div class="metric-lbl">Total Distance</div>
@@ -5288,6 +5299,19 @@ function generateFlightPlannerPdfReport() {
             `;
           }).join('')}
         </tbody>
+        <tfoot>
+          <tr style="background: #E2E8F0; font-weight: 800; border-top: 2px solid #94A3B8;">
+            <td colspan="3" style="color: #0F172A; text-align: right; padding-right: 12px; font-size: 8.5px;">FLIGHT PLAN TOTALS:</td>
+            <td style="color: #0F172A;">${totalFlightMiles.toFixed(1)} mi</td>
+            <td>-</td>
+            <td>-</td>
+            <td style="color: #0F172A;">${totalTimeStr}</td>
+            <td style="color: #0F172A;">${totalGallonsBurned.toFixed(1)} gal</td>
+            <td><strong style="color: #059669;">${totalRefuelGallonsSum.toFixed(1)} gal</strong></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tfoot>
       </table>
 
       <div class="footer-bar">
