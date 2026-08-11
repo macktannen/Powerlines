@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.41';
+window.APP_VERSION = '3.16.42';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.41 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.42 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -5424,8 +5424,47 @@ function generateFlightPlannerPdfReport() {
         createdMarkers.push({ marker: m, latlng: [apt.lat, apt.lng], html: aptHtml });
       });
 
-      // Dynamic Zoom-Aware Collision Avoidance Algorithm
+      // Create airport markers and leader lines storage
+      const createdMarkers = [];
+      const leaderLinesGroup = L.layerGroup().addTo(map);
+
+      airportsData.forEach(apt => {
+        let badgeBg = '#0F172A';
+        let badgeBorder = '#0284C7';
+        let iconText = apt.code;
+
+        if (apt.role === 'DEP') {
+          badgeBg = '#0284C7';
+          badgeBorder = '#38BDF8';
+          iconText = '🚁 ' + apt.code + ' (Dep)';
+        } else if (apt.role === 'FUEL') {
+          badgeBg = '#D97706';
+          badgeBorder = '#F59E0B';
+          iconText = '⛽ ' + apt.code + ' (Fuel)';
+        } else if (apt.role === 'DEST') {
+          badgeBg = '#16A34A';
+          badgeBorder = '#4ADE80';
+          iconText = '🚁 ' + apt.code + ' (Dest)';
+        }
+
+        const aptHtml = '<div style="background:' + badgeBg + '; color:#FFF; border:1.5px solid ' + badgeBorder + '; padding:2px 6px; border-radius:10px; font-weight:800; font-size:9px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.4); display:inline-block;">' + iconText + '</div>';
+
+        const aptIcon = L.divIcon({
+          className: 'brief-apt-marker',
+          html: aptHtml,
+          iconSize: [70, 18],
+          iconAnchor: [35, 9]
+        });
+
+        const m = L.marker([apt.lat, apt.lng], { icon: aptIcon }).addTo(map);
+        createdMarkers.push({ marker: m, apt: apt, html: aptHtml });
+      });
+
+      // Cartographic Radial Spiral Search Label Engine
       function updateDynamicAnchors() {
+        leaderLinesGroup.clearLayers();
+
+        // Collect all pixel line segments for collision detection
         const allPixelSegments = [];
         circuitLayer.eachLayer(layer => {
           if (layer.getLatLngs) {
@@ -5446,61 +5485,103 @@ function generateFlightPlannerPdfReport() {
         });
 
         const w = 70, h = 18;
-        // 8 candidate anchors strictly 4px away from the airport dot
-        const candidates = [
-          [35, 22],  // Top (4px gap above)
-          [35, -4],  // Bottom (4px gap below)
-          [-4, 9],   // Right (4px gap right)
-          [74, 9],   // Left (4px gap left)
-          [-4, 22],  // Top-Right
-          [74, 22],  // Top-Left
-          [-4, -4],  // Bottom-Right
-          [74, -4]   // Bottom-Left
-        ];
+        const radiusSteps = [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 96, 112, 128];
+        const numAngles = 16;
 
-        createdMarkers.forEach(({ marker, latlng, html }) => {
-          const centerPt = map.latLngToLayerPoint(latlng);
-          let bestAnchor = [35, -4];
-          let foundZero = false;
+        createdMarkers.forEach(({ marker, apt, html }) => {
+          const aptLatLng = [apt.lat, apt.lng];
+          const centerPt = map.latLngToLayerPoint(aptLatLng);
+          
+          let bestDx = 0, bestDy = 0;
+          let bestDistance = 0;
+          let foundClearSpot = false;
 
-          for (const anchor of candidates) {
-            let intersections = 0;
-            const rect = {
-              left: centerPt.x - anchor[0] - 2,
-              right: centerPt.x - anchor[0] + w + 2,
-              top: centerPt.y - anchor[1] - 2,
-              bottom: centerPt.y - anchor[1] + h + 2
-            };
+          // Radial search from R=0 expanding outwards
+          searchLoop:
+          for (const R of radiusSteps) {
+            const angles = R === 0 ? [0] : Array.from({length: numAngles}, (_, i) => (i * 2 * Math.PI) / numAngles);
 
-            for (const seg of allPixelSegments) {
-              const p1 = seg[0], p2 = seg[1];
-              const minX = Math.min(p1.x, p2.x);
-              const maxX = Math.max(p1.x, p2.x);
-              const minY = Math.min(p1.y, p2.y);
-              const maxY = Math.max(p1.y, p2.y);
-              if (maxX >= rect.left && minX <= rect.right && maxY >= rect.top && minY <= rect.bottom) {
-                intersections++;
-                break;
+            for (const angle of angles) {
+              const dx = Math.round(R * Math.cos(angle));
+              const dy = Math.round(R * Math.sin(angle));
+
+              const rect = {
+                left: centerPt.x + dx - (w / 2) - 3,
+                right: centerPt.x + dx + (w / 2) + 3,
+                top: centerPt.y + dy - (h / 2) - 3,
+                bottom: centerPt.y + dy + (h / 2) + 3
+              };
+
+              let intersects = false;
+              for (const seg of allPixelSegments) {
+                const p1 = seg[0], p2 = seg[1];
+                const minX = Math.min(p1.x, p2.x), maxX = Math.max(p1.x, p2.x);
+                const minY = Math.min(p1.y, p2.y), maxY = Math.max(p1.y, p2.y);
+
+                // Quick bounding box check
+                if (maxX >= rect.left && minX <= rect.right && maxY >= rect.top && minY <= rect.bottom) {
+                  // Segment sampling check for high accuracy
+                  const steps = Math.max(2, Math.ceil(Math.hypot(p2.x - p1.x, p2.y - p1.y) / 6));
+                  for (let s = 0; s <= steps; s++) {
+                    const sx = p1.x + (p2.x - p1.x) * (s / steps);
+                    const sy = p1.y + (p2.y - p1.y) * (s / steps);
+                    if (sx >= rect.left && sx <= rect.right && sy >= rect.top && sy <= rect.bottom) {
+                      intersects = true;
+                      break;
+                    }
+                  }
+                }
+                if (intersects) break;
+              }
+
+              if (!intersects) {
+                bestDx = dx;
+                bestDy = dy;
+                bestDistance = R;
+                foundClearSpot = true;
+                break searchLoop;
               }
             }
-
-            if (intersections === 0) {
-              bestAnchor = anchor;
-              foundZero = true;
-              break;
-            }
           }
 
-          if (!foundZero) {
-            bestAnchor = [35, -4];
+          // If no 100% clear spot found up to R=128, fallback to R=0 center
+          if (!foundClearSpot) {
+            bestDx = 0;
+            bestDy = -15;
+            bestDistance = 15;
           }
+
+          const iconAnchor = [ (w / 2) - bestDx, (h / 2) - bestDy ];
 
           marker.setIcon(L.divIcon({
             className: 'brief-apt-marker',
             html: html,
             iconSize: [w, h],
-            iconAnchor: bestAnchor
+            iconAnchor: iconAnchor
           }));
+
+          // Draw Leader Line / Callout Line if offset is greater than 10 pixels
+          if (bestDistance > 10) {
+            const labelCenterPt = L.point(centerPt.x + bestDx, centerPt.y + bestDy);
+            const labelLatLng = map.layerPointToLatLng(labelCenterPt);
+
+            // Thin dashed callout leader line
+            L.polyline([aptLatLng, labelLatLng], {
+              color: '#0F172A',
+              weight: 1.5,
+              dashArray: '3, 3',
+              opacity: 0.8
+            }).addTo(leaderLinesGroup);
+
+            // Small airport coordinate dot anchor
+            L.circleMarker(aptLatLng, {
+              radius: 3,
+              color: '#FFFFFF',
+              fillColor: '#0F172A',
+              fillOpacity: 1,
+              weight: 1.5
+            }).addTo(leaderLinesGroup);
+          }
         });
       }
 
