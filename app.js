@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.36';
+window.APP_VERSION = '3.16.37';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.36 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.37 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
