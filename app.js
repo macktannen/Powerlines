@@ -3372,6 +3372,27 @@ window.setDestinationAirport = function(aptCode) {
   renderIndianaAirportsLayer();
 };
 
+window.updateFuelPrice = function(aptCode, newPriceStr) {
+  const newPrice = parseFloat(newPriceStr.replace(/[^0-9.]/g, ''));
+  if (isNaN(newPrice)) {
+    showToast('❌ Invalid fuel price entered');
+    return;
+  }
+  
+  if (!state.globalFuelPrices) {
+    state.globalFuelPrices = { timestamp: Date.now(), prices: {} };
+  }
+  if (!state.globalFuelPrices.prices) {
+    state.globalFuelPrices.prices = {};
+  }
+  
+  state.globalFuelPrices.prices[aptCode] = newPrice;
+  localStorage.setItem('gh_fuel_prices_cache', JSON.stringify(state.globalFuelPrices));
+  
+  showToast(`⛽ Manually set fuel price for ${aptCode} to $${newPrice.toFixed(2)}`);
+  recalculateFlightPlan();
+};
+
 function renderIndianaAirportsLayer() {
   if (!state.map) return;
 
@@ -3459,9 +3480,15 @@ function renderIndianaAirportsLayer() {
         </div>
 
         <div style="background: #0F172A; color: #FFF; padding: 5px 6px; border-radius: 4px; margin-bottom: 5px; font-size: 9.5px; line-height: 1.35; border: 1px solid #1E293B; box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 2px; background: rgba(16,185,129,0.15); padding: 2px 4px; border-radius: 3px; border: 1px solid rgba(16,185,129,0.3);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 2px; background: rgba(16,185,129,0.15); padding: 2px 4px; border-radius: 3px; border: 1px solid rgba(16,185,129,0.3); align-items: center;">
             <span style="color: #6EE7B7; font-weight: 600;">⛽ Jet-A Fuel:</span>
-            <strong style="color: #34D399; font-weight: 800;">${priceStr}/gal</strong>
+            <div style="display: flex; align-items: center; gap: 2px;">
+              <span style="color: #34D399; font-weight: 800;">$</span>
+              <input type="text" value="${priceStr.replace('$', '')}" 
+                     onchange="window.updateFuelPrice('${apt.code}', this.value)"
+                     style="background: transparent; border: 1px solid rgba(52,211,153,0.3); color: #34D399; font-weight: 800; font-size: 9.5px; width: 35px; text-align: right; border-radius: 2px; padding: 1px 2px; outline: none; font-family: inherit;" />
+              <span style="color: #34D399; font-weight: 800;">/gal</span>
+            </div>
           </div>
           <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
             <span style="color: #94A3B8;">Wind:</span>
