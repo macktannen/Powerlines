@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.40';
+window.APP_VERSION = '3.16.41';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.40 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.41 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -5390,27 +5390,8 @@ function generateFlightPlannerPdfReport() {
         map.fitBounds(boundsGroup.getBounds(), { padding: [20, 20] });
       }
 
-      // Collect all line segments in pixel coordinates for collision detection
-      const allPixelSegments = [];
-      circuitLayer.eachLayer(layer => {
-        if (layer.getLatLngs) {
-          const processLineString = (pts) => {
-            if (pts.length > 0 && Array.isArray(pts[0])) { pts.forEach(processLineString); return; }
-            for (let i = 0; i < pts.length - 1; i++) {
-              allPixelSegments.push([ map.latLngToLayerPoint(pts[i]), map.latLngToLayerPoint(pts[i+1]) ]);
-            }
-          };
-          processLineString(layer.getLatLngs());
-        }
-      });
-      transitPolylinesMap.forEach(pl => {
-        const latlngs = pl.getLatLngs();
-        for (let i = 0; i < latlngs.length - 1; i++) {
-          allPixelSegments.push([ map.latLngToLayerPoint(latlngs[i]), map.latLngToLayerPoint(latlngs[i+1]) ]);
-        }
-      });
-
-      // Render Airport Labeled Badges dynamically avoiding lines
+      // Create airport markers
+      const createdMarkers = [];
       airportsData.forEach(apt => {
         let badgeBg = '#0F172A';
         let badgeBorder = '#0284C7';
@@ -5432,60 +5413,99 @@ function generateFlightPlannerPdfReport() {
 
         const aptHtml = '<div style="background:' + badgeBg + '; color:#FFF; border:1.5px solid ' + badgeBorder + '; padding:2px 6px; border-radius:10px; font-weight:800; font-size:9px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.4); display:inline-block;">' + iconText + '</div>';
 
-        // Collision detection for 8 possible anchors (x, y) relative to top-left of the icon
-        const centerPt = map.latLngToLayerPoint([apt.lat, apt.lng]);
-        const w = 80, h = 20;
-        const candidates = [
-          [40, 30],   // Top
-          [40, -10],  // Bottom
-          [-10, 10],  // Right
-          [90, 10],   // Left
-          [-10, 30],  // Top-Right
-          [90, 30],   // Top-Left
-          [-10, -10], // Bottom-Right
-          [90, -10]   // Bottom-Left
-        ];
-
-        let bestAnchor = [40, -10];
-        let minIntersections = Infinity;
-
-        for (const anchor of candidates) {
-          let intersections = 0;
-          const rect = {
-            left: centerPt.x - anchor[0] - 8,
-            right: centerPt.x - anchor[0] + w + 8,
-            top: centerPt.y - anchor[1] - 8,
-            bottom: centerPt.y - anchor[1] + h + 8
-          };
-
-          for (const seg of allPixelSegments) {
-            const p1 = seg[0], p2 = seg[1];
-            const minX = Math.min(p1.x, p2.x);
-            const maxX = Math.max(p1.x, p2.x);
-            const minY = Math.min(p1.y, p2.y);
-            const maxY = Math.max(p1.y, p2.y);
-            // Simple AABB intersection test
-            if (maxX >= rect.left && minX <= rect.right && maxY >= rect.top && minY <= rect.bottom) {
-              intersections++;
-            }
-          }
-
-          if (intersections < minIntersections) {
-            minIntersections = intersections;
-            bestAnchor = anchor;
-          }
-          if (intersections === 0) break;
-        }
-
         const aptIcon = L.divIcon({
           className: 'brief-apt-marker',
           html: aptHtml,
-          iconSize: [w, h],
-          iconAnchor: bestAnchor
+          iconSize: [70, 18],
+          iconAnchor: [35, -4]
         });
 
-        L.marker([apt.lat, apt.lng], { icon: aptIcon }).addTo(map);
+        const m = L.marker([apt.lat, apt.lng], { icon: aptIcon }).addTo(map);
+        createdMarkers.push({ marker: m, latlng: [apt.lat, apt.lng], html: aptHtml });
       });
+
+      // Dynamic Zoom-Aware Collision Avoidance Algorithm
+      function updateDynamicAnchors() {
+        const allPixelSegments = [];
+        circuitLayer.eachLayer(layer => {
+          if (layer.getLatLngs) {
+            const processLineString = (pts) => {
+              if (pts.length > 0 && Array.isArray(pts[0])) { pts.forEach(processLineString); return; }
+              for (let i = 0; i < pts.length - 1; i++) {
+                allPixelSegments.push([ map.latLngToLayerPoint(pts[i]), map.latLngToLayerPoint(pts[i+1]) ]);
+              }
+            };
+            processLineString(layer.getLatLngs());
+          }
+        });
+        transitPolylinesMap.forEach(pl => {
+          const latlngs = pl.getLatLngs();
+          for (let i = 0; i < latlngs.length - 1; i++) {
+            allPixelSegments.push([ map.latLngToLayerPoint(latlngs[i]), map.latLngToLayerPoint(latlngs[i+1]) ]);
+          }
+        });
+
+        const w = 70, h = 18;
+        // 8 candidate anchors strictly 4px away from the airport dot
+        const candidates = [
+          [35, 22],  // Top (4px gap above)
+          [35, -4],  // Bottom (4px gap below)
+          [-4, 9],   // Right (4px gap right)
+          [74, 9],   // Left (4px gap left)
+          [-4, 22],  // Top-Right
+          [74, 22],  // Top-Left
+          [-4, -4],  // Bottom-Right
+          [74, -4]   // Bottom-Left
+        ];
+
+        createdMarkers.forEach(({ marker, latlng, html }) => {
+          const centerPt = map.latLngToLayerPoint(latlng);
+          let bestAnchor = [35, -4];
+          let foundZero = false;
+
+          for (const anchor of candidates) {
+            let intersections = 0;
+            const rect = {
+              left: centerPt.x - anchor[0] - 2,
+              right: centerPt.x - anchor[0] + w + 2,
+              top: centerPt.y - anchor[1] - 2,
+              bottom: centerPt.y - anchor[1] + h + 2
+            };
+
+            for (const seg of allPixelSegments) {
+              const p1 = seg[0], p2 = seg[1];
+              const minX = Math.min(p1.x, p2.x);
+              const maxX = Math.max(p1.x, p2.x);
+              const minY = Math.min(p1.y, p2.y);
+              const maxY = Math.max(p1.y, p2.y);
+              if (maxX >= rect.left && minX <= rect.right && maxY >= rect.top && minY <= rect.bottom) {
+                intersections++;
+                break;
+              }
+            }
+
+            if (intersections === 0) {
+              bestAnchor = anchor;
+              foundZero = true;
+              break;
+            }
+          }
+
+          if (!foundZero) {
+            bestAnchor = [35, -4];
+          }
+
+          marker.setIcon(L.divIcon({
+            className: 'brief-apt-marker',
+            html: html,
+            iconSize: [w, h],
+            iconAnchor: bestAnchor
+          }));
+        });
+      }
+
+      updateDynamicAnchors();
+      map.on('zoomend moveend', updateDynamicAnchors);
     </script>
   </body>
   </html>`;
