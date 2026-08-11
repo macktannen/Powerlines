@@ -5360,6 +5360,9 @@ function generateFlightPlannerPdfReport() {
 
       const map = L.map('briefing-map', { zoomControl: false }).setView([${startApt.lat}, ${startApt.lng}], 8);
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+      
+      // Ensure circuit lines render on top of airport labels so they are never obscured
+      map.getPane('markerPane').style.zIndex = 390;
 
       // Render Circuit Line Features
       const circuitLayer = L.geoJSON({ type: 'FeatureCollection', features: featuresData }, {
