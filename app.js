@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.42';
+window.APP_VERSION = '3.16.43';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.42 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.43 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -5389,40 +5389,6 @@ function generateFlightPlannerPdfReport() {
       if (boundsGroup.getBounds().isValid()) {
         map.fitBounds(boundsGroup.getBounds(), { padding: [20, 20] });
       }
-
-      // Create airport markers
-      const createdMarkers = [];
-      airportsData.forEach(apt => {
-        let badgeBg = '#0F172A';
-        let badgeBorder = '#0284C7';
-        let iconText = apt.code;
-
-        if (apt.role === 'DEP') {
-          badgeBg = '#0284C7';
-          badgeBorder = '#38BDF8';
-          iconText = '🚁 ' + apt.code + ' (Dep)';
-        } else if (apt.role === 'FUEL') {
-          badgeBg = '#D97706';
-          badgeBorder = '#F59E0B';
-          iconText = '⛽ ' + apt.code + ' (Fuel)';
-        } else if (apt.role === 'DEST') {
-          badgeBg = '#16A34A';
-          badgeBorder = '#4ADE80';
-          iconText = '🚁 ' + apt.code + ' (Dest)';
-        }
-
-        const aptHtml = '<div style="background:' + badgeBg + '; color:#FFF; border:1.5px solid ' + badgeBorder + '; padding:2px 6px; border-radius:10px; font-weight:800; font-size:9px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.4); display:inline-block;">' + iconText + '</div>';
-
-        const aptIcon = L.divIcon({
-          className: 'brief-apt-marker',
-          html: aptHtml,
-          iconSize: [70, 18],
-          iconAnchor: [35, -4]
-        });
-
-        const m = L.marker([apt.lat, apt.lng], { icon: aptIcon }).addTo(map);
-        createdMarkers.push({ marker: m, latlng: [apt.lat, apt.lng], html: aptHtml });
-      });
 
       // Create airport markers and leader lines storage
       const createdMarkers = [];
