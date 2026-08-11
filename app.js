@@ -5407,7 +5407,7 @@ function generateFlightPlannerPdfReport() {
           className: 'brief-apt-marker',
           html: aptHtml,
           iconSize: [80, 20],
-          iconAnchor: [40, 10]
+          iconAnchor: [40, -10]
         });
 
         const m = L.marker([apt.lat, apt.lng], { icon: aptIcon }).addTo(map);
