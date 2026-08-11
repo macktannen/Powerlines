@@ -487,7 +487,7 @@ function renderCustomMissionCardsList() {
       <div style="font-weight: 700; font-size: 0.92rem; color: #FFF; margin-bottom: 4px;">${m.title}</div>
       <div style="font-size: 0.76rem; color: var(--text-muted); display: flex; gap: 10px;">
         <span><i class="fa-solid fa-bolt" style="color: #10B981;"></i> ${m.circuit_miles} mi lines</span>
-        <span><i class="fa-solid fa-plane" style="color: var(--text-dim);"></i> ${m.total_flight_miles} mi flight</span>
+        <span><i class="fa-solid fa-helicopter" style="color: var(--text-dim);"></i> ${m.total_flight_miles} mi flight</span>
         <span><i class="fa-solid fa-layer-group" style="color: var(--text-dim);"></i> ${m.circuit_names.length} legs</span>
       </div>
     `;
@@ -669,7 +669,7 @@ function renderMissionDetailCard(mission) {
   const breakdownEl = document.getElementById('mission-flight-breakdown');
   breakdownEl.innerHTML = `
     <div class="m-breakdown-row">
-      <span class="m-breakdown-tag"><i class="fa-solid fa-plane-departure" style="color: var(--accent-cyan);"></i> Transit Outbound (${trKnots} kts):</span>
+      <span class="m-breakdown-tag"><i class="fa-solid fa-helicopter" style="color: var(--accent-cyan);"></i> Transit Outbound (${trKnots} kts):</span>
       <span class="m-breakdown-val">${mission.transit_out_miles} mi (~${tOutMins} mins)</span>
     </div>
     <div class="m-breakdown-row">
@@ -677,7 +677,7 @@ function renderMissionDetailCard(mission) {
       <span class="m-breakdown-val">${mission.circuit_miles} mi (~${tInspMins} mins)</span>
     </div>
     <div class="m-breakdown-row">
-      <span class="m-breakdown-tag"><i class="fa-solid fa-plane-arrival" style="color: var(--accent-cyan);"></i> Transit Return (${trKnots} kts):</span>
+      <span class="m-breakdown-tag"><i class="fa-solid fa-helicopter" style="color: var(--accent-cyan);"></i> Transit Return (${trKnots} kts):</span>
       <span class="m-breakdown-val">${mission.transit_back_miles} mi (~${tRetMins} mins)</span>
     </div>
   `;
@@ -705,7 +705,7 @@ function renderMissionCardsList() {
       <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 4px;">${m.title}</div>
       <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; gap: 12px;">
         <span><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i> ${m.circuit_miles} mi lines</span>
-        <span><i class="fa-solid fa-plane" style="color: var(--text-dim);"></i> ${m.total_flight_miles} mi flight</span>
+        <span><i class="fa-solid fa-helicopter" style="color: var(--text-dim);"></i> ${m.total_flight_miles} mi flight</span>
         <span><i class="fa-solid fa-layer-group" style="color: var(--text-dim);"></i> ${m.circuit_names.length} circuits</span>
       </div>
     `;
@@ -1197,7 +1197,7 @@ function renderGroupInspectorDrawer(totalMiles) {
     <div class="attr-row"><span class="attr-key">Total Line Segments</span><span class="attr-val">${totalSegments.toLocaleString()}</span></div>
     <div class="attr-row"><span class="attr-key">Voltage Ratings</span><span class="attr-val">${voltagesStr}</span></div>
     <div class="attr-row" style="margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--panel-border);">
-      <span class="attr-key" style="color: var(--accent-cyan); font-weight: 600;"><i class="fa-solid fa-plane-departure"></i> Enroute Transit</span>
+      <span class="attr-key" style="color: var(--accent-cyan); font-weight: 600;"><i class="fa-solid fa-helicopter"></i> Enroute Transit</span>
       <span class="attr-val" style="color: var(--accent-cyan);">${totalTransitMi.toFixed(1)} mi (~${tTransitMins} mins)</span>
     </div>
     <div class="attr-row">
@@ -1810,7 +1810,7 @@ function generateExecutiveReport(d) {
     d.circuitsToReport.forEach(c => {
         let vLbl = c.voltage === 34000 ? '34.5 kV' : (c.voltage / 1000) + ' kV';
         let aptInfo = d.circuitAirportsList.find(a => a.circuitName === c.name);
-        let nearestAptStr = aptInfo ? `✈️ <strong>${aptInfo.nearestAirport.code}</strong> (${aptInfo.nearestAirport.dist.toFixed(1)} mi) - Jet-A` : 'KVPZ Base';
+        let nearestAptStr = aptInfo ? `🚁 <strong>${aptInfo.nearestAirport.code}</strong> (${aptInfo.nearestAirport.dist.toFixed(1)} mi) - Jet-A` : 'KVPZ Base';
 
         tbody += `<tr>
             <td><strong>${c.name}</strong></td>
@@ -1871,7 +1871,7 @@ function generateOperationalReport(d) {
     d.circuitsToReport.forEach(c => {
         let center = c.bounds && c.bounds.isValid() ? c.bounds.getCenter() : {lat: 0, lng: 0};
         let aptInfo = d.circuitAirportsList.find(a => a.circuitName === c.name);
-        let nearestAptStr = aptInfo ? `✈️ ${aptInfo.nearestAirport.code} (${aptInfo.nearestAirport.dist.toFixed(1)} mi)` : 'KVPZ Base';
+        let nearestAptStr = aptInfo ? `🚁 ${aptInfo.nearestAirport.code} (${aptInfo.nearestAirport.dist.toFixed(1)} mi)` : 'KVPZ Base';
 
         tbody += `<tr>
             <td><strong>${c.name}</strong></td>
@@ -2446,7 +2446,7 @@ function setupEventListeners() {
       renderIndianaAirportsLayer();
       recalculateFlightPlan();
       saveFiltersAndMapPreferences();
-      showToast(e.target.checked ? '✈️ Map Airports Layer Enabled' : '✈️ Map Airports Layer Hidden');
+      showToast(e.target.checked ? '🚁 Map Airports Layer Enabled' : '🚁 Map Airports Layer Hidden');
     });
   }
 
@@ -3324,12 +3324,12 @@ window.setDepartureAirport = function(aptCode) {
     state.flightPlanner.startAirport = 'KVPZ';
     const sel = document.getElementById('planner-start-airport');
     if (sel) sel.value = 'KVPZ';
-    showToast(`🛫 Removed Departure Airport -> Reset to KVPZ Base`);
+    showToast(`🚁 Removed Departure Airport -> Reset to KVPZ Base`);
   } else {
     state.flightPlanner.startAirport = aptCode;
     const sel = document.getElementById('planner-start-airport');
     if (sel) sel.value = aptCode;
-    showToast(`🛫 Set Departure Airport -> ${aptCode}`);
+    showToast(`🚁 Set Departure Airport -> ${aptCode}`);
   }
   state.map.closePopup();
   recalculateFlightPlan();
@@ -3360,12 +3360,12 @@ window.setDestinationAirport = function(aptCode) {
     state.flightPlanner.endAirport = 'KVPZ';
     const sel = document.getElementById('planner-end-airport');
     if (sel) sel.value = 'KVPZ';
-    showToast(`🛬 Removed Destination Airport -> Reset to KVPZ Return to Base`);
+    showToast(`🚁 Removed Destination Airport -> Reset to KVPZ Return to Base`);
   } else {
     state.flightPlanner.endAirport = aptCode;
     const sel = document.getElementById('planner-end-airport');
     if (sel) sel.value = aptCode;
-    showToast(`🛬 Set Destination Airport -> ${aptCode}`);
+    showToast(`🚁 Set Destination Airport -> ${aptCode}`);
   }
   state.map.closePopup();
   recalculateFlightPlan();
@@ -3471,7 +3471,7 @@ function renderIndianaAirportsLayer() {
       <div style="font-family: Inter, sans-serif; padding: 2px; width: 175px; color: #0F172A;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px;">
           <div style="font-weight: 800; font-size: 11.5px; color: #0F172A; line-height: 1.1;">
-            ✈️ ${apt.code}
+            🚁 ${apt.code}
           </div>
           ${wxBadgeHtml}
         </div>
@@ -3506,13 +3506,13 @@ function renderIndianaAirportsLayer() {
 
         <div style="display: flex; gap: 3px;">
           <button title="${isStart ? 'Click to REMOVE Departure' : 'Set as Departure Airport'}" style="flex: 1; background: ${isStart ? '#38BDF8' : '#0284C7'}; color: #FFF; padding: 4px 2px; border-radius: 3px; font-weight: 700; font-size: 9.5px; border: ${isStart ? '1.5px solid #FFF' : 'none'}; cursor: pointer; text-align: center; box-shadow: ${isStart ? '0 0 6px rgba(56,189,248,0.8)' : 'none'};" onclick="window.setDepartureAirport('${apt.code}')">
-            🛫 ${isStart ? '✓ Dep' : 'Departure'}
+            🚁 ${isStart ? '✓ Dep' : 'Departure'}
           </button>
           <button title="${isFuel ? 'Click to REMOVE Fuel Stop' : 'Set as Fuel Stop Airport'}" style="flex: 1; background: ${isFuel ? '#F59E0B' : '#D97706'}; color: #FFF; padding: 4px 2px; border-radius: 3px; font-weight: 700; font-size: 9.5px; border: ${isFuel ? '1.5px solid #FFF' : 'none'}; cursor: pointer; text-align: center; box-shadow: ${isFuel ? '0 0 6px rgba(245,158,11,0.8)' : 'none'};" onclick="window.setFuelStopAirport('${apt.code}')">
             ⛽ ${isFuel ? '✓ Fuel' : 'Fuel Stop'}
           </button>
           <button title="${isEnd ? 'Click to REMOVE Destination' : 'Set as Destination Airport'}" style="flex: 1; background: ${isEnd ? '#4ADE80' : '#16A34A'}; color: #FFF; padding: 4px 2px; border-radius: 3px; font-weight: 700; font-size: 9.5px; border: ${isEnd ? '1.5px solid #FFF' : 'none'}; cursor: pointer; text-align: center; box-shadow: ${isEnd ? '0 0 6px rgba(74,222,128,0.8)' : 'none'};" onclick="window.setDestinationAirport('${apt.code}')">
-            🛬 ${isEnd ? '✓ Dest' : 'Destination'}
+            🚁 ${isEnd ? '✓ Dest' : 'Destination'}
           </button>
         </div>
       </div>
@@ -4155,7 +4155,7 @@ function recalculateFlightPlan() {
   legsManifest.push({
     type: 'DEPARTURE',
     legKey: 'departure',
-    title: `🛫 Departure: ${startApt.code}`,
+    title: `🚁 Departure: ${startApt.code}`,
     subtitle: startApt.name,
     distanceMi: 0,
     timeMins: 0,
@@ -4418,7 +4418,7 @@ function recalculateFlightPlan() {
     type: 'ARRIVAL',
     legKey: 'refuel_dest',
     aptCode: endApt.code,
-    title: `🛬 Arrival: ${endApt.code}`,
+    title: `🚁 Arrival: ${endApt.code}`,
     subtitle: endApt.name,
     distanceMi: 0,
     timeMins: 0,
@@ -4662,7 +4662,7 @@ function renderFlightPlanMapLayers(legsManifest, startApt, endApt) {
     // Add Start & End Airport Markers
     const startIcon = L.divIcon({
       className: 'airport-marker',
-      html: `<div style="background: #0284C7; color: #FFF; border: 2px solid #FFF; padding: 4px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; white-space: nowrap; box-shadow: 0 0 10px rgba(2,132,199,0.8);">🛫 ${startApt.code}</div>`,
+      html: `<div style="background: #0284C7; color: #FFF; border: 2px solid #FFF; padding: 4px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; white-space: nowrap; box-shadow: 0 0 10px rgba(2,132,199,0.8);">🚁 ${startApt.code}</div>`,
       iconSize: [80, 24],
       iconAnchor: [40, 12]
     });
@@ -4671,7 +4671,7 @@ function renderFlightPlanMapLayers(legsManifest, startApt, endApt) {
     if (endApt.code !== startApt.code) {
       const endIcon = L.divIcon({
         className: 'airport-marker',
-        html: `<div style="background: #16A34A; color: #FFF; border: 2px solid #FFF; padding: 4px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; white-space: nowrap; box-shadow: 0 0 10px rgba(22,163,74,0.8);">🛬 ${endApt.code}</div>`,
+        html: `<div style="background: #16A34A; color: #FFF; border: 2px solid #FFF; padding: 4px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; white-space: nowrap; box-shadow: 0 0 10px rgba(22,163,74,0.8);">🚁 ${endApt.code}</div>`,
         iconSize: [80, 24],
         iconAnchor: [40, 12]
       });
@@ -4897,7 +4897,7 @@ function generateFlightPlannerPdfReport() {
   fullSequenceManifest.push({
     type: 'DEPARTURE',
     tag: 'DEP',
-    name: `🛫 Departure: ${startApt.code}`,
+    name: `🚁 Departure: ${startApt.code}`,
     subtitle: `${startApt.name}${depRefuelGal > 0 ? ` &bull; Refuel: ${Math.round(depRefuelGal)} gal @ $${depPricePerGal.toFixed(2)}/gal ($${depRefuelCost.toFixed(2)})` : ''}`,
     voltage: 'Base',
     length: '-',
@@ -5138,7 +5138,7 @@ function generateFlightPlannerPdfReport() {
   fullSequenceManifest.push({
     type: 'ARRIVAL',
     tag: 'DEST',
-    name: `🛬 Arrival: ${endApt.code}`,
+    name: `🚁 Arrival: ${endApt.code}`,
     subtitle: `${endApt.name}${destRefuelGal > 0 ? ` &bull; Post-Flight Refuel: ${Math.round(destRefuelGal)} gal @ $${destPricePerGal.toFixed(2)}/gal ($${destRefuelCost.toFixed(2)})` : ''}`,
     voltage: 'Dest',
     length: '-',
@@ -5270,7 +5270,7 @@ function generateFlightPlannerPdfReport() {
         <div class="box-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="panel-title">
-              <span>✈️ Flight Profile & Route Endpoints</span>
+              <span>🚁 Flight Profile & Route Endpoints</span>
               <span class="wx-badge">${startWxRules.category}</span>
             </div>
             <table style="width:100%; font-size: 8.5px; line-height: 1.4; border-collapse: collapse;">
@@ -5387,7 +5387,7 @@ function generateFlightPlannerPdfReport() {
         if (apt.role === 'DEP') {
           badgeBg = '#0284C7';
           badgeBorder = '#38BDF8';
-          iconText = '🛫 ' + apt.code + ' (Dep)';
+          iconText = '🚁 ' + apt.code + ' (Dep)';
         } else if (apt.role === 'FUEL') {
           badgeBg = '#D97706';
           badgeBorder = '#F59E0B';
@@ -5395,7 +5395,7 @@ function generateFlightPlannerPdfReport() {
         } else if (apt.role === 'DEST') {
           badgeBg = '#16A34A';
           badgeBorder = '#4ADE80';
-          iconText = '🛬 ' + apt.code + ' (Dest)';
+          iconText = '🚁 ' + apt.code + ' (Dest)';
         }
 
         const aptHtml = '<div style="background:' + badgeBg + '; color:#FFF; border:1.5px solid ' + badgeBorder + '; padding:2px 6px; border-radius:10px; font-weight:800; font-size:9px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.4); display:inline-block;">' + iconText + '</div>';
