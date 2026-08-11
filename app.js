@@ -4877,6 +4877,10 @@ function generateFlightPlannerPdfReport() {
   let fuelBurnedPriorToRefuel = 0;
   let fuelBurnedAfterRefuel = 0;
 
+  const defaultTransitKts = fp.defaultTransitSpeedKts || 110;
+  const defaultInspKts = fp.defaultInspSpeedKts || 30;
+  const defaultFuelGph = fp.defaultFuelBurnGph || 69;
+
   const customParams = fp.legCustomParams || {};
   const detailedLegs = [];
   const fullSequenceManifest = [];
@@ -4921,8 +4925,10 @@ function generateFlightPlannerPdfReport() {
     }
 
     const fuelTransitDist = calcDistanceMiles(currentPos.lat, currentPos.lng, fuelApt.lat, fuelApt.lng);
-    const fuelTransitMins = Math.round((fuelTransitDist / (110 * 1.15078)) * 60);
-    const fuelTransitGal = Math.round((fuelTransitMins / 60) * 69);
+    const fuelTransitSpeedKts = customParams['fuel_transit'] && customParams['fuel_transit'].transitSpeedKts !== undefined ? customParams['fuel_transit'].transitSpeedKts : defaultTransitKts;
+    const fuelTransitGph = customParams['fuel_transit'] && customParams['fuel_transit'].fuelBurnGph !== undefined ? customParams['fuel_transit'].fuelBurnGph : defaultFuelGph;
+    const fuelTransitMins = Math.round((fuelTransitDist / (fuelTransitSpeedKts * 1.15078)) * 60);
+    const fuelTransitGal = Math.round((fuelTransitMins / 60) * fuelTransitGph);
 
     transitPolylines.push({
       from: { ...currentPos },
@@ -4947,7 +4953,7 @@ function generateFlightPlannerPdfReport() {
       subtitle: `${fuelApt.name} (${turnAroundMins}m Turnaround) &bull; Replaced Enroute Fuel Burn`,
       voltage: 'Jet-A',
       length: `${fuelTransitDist.toFixed(1)} mi`,
-      transitInfo: `110 kts`,
+      transitInfo: `${fuelTransitSpeedKts} kts`,
       inspSpeed: '-',
       timeMins: fuelTransitMins + turnAroundMins,
       fuelGal: fuelTransitGal,
@@ -4972,8 +4978,8 @@ function generateFlightPlannerPdfReport() {
     // Transit Leg
     const transitKey = `transit_${idx}`;
     const legTransitParams = customParams[transitKey] || {};
-    const transitSpeedKts = legTransitParams.transitSpeedKts !== undefined ? legTransitParams.transitSpeedKts : 110;
-    const transitFuelGph = legTransitParams.fuelBurnGph !== undefined ? legTransitParams.fuelBurnGph : 69;
+    const transitSpeedKts = legTransitParams.transitSpeedKts !== undefined ? legTransitParams.transitSpeedKts : defaultTransitKts;
+    const transitFuelGph = legTransitParams.fuelBurnGph !== undefined ? legTransitParams.fuelBurnGph : defaultFuelGph;
     const transitMph = transitSpeedKts * 1.15078;
     const transitDist = calcDistanceMiles(currentPos.lat, currentPos.lng, entryPt.lat, entryPt.lng);
     const transitMins = transitMph > 0 ? Math.round((transitDist / transitMph) * 60) : 0;
@@ -5015,9 +5021,9 @@ function generateFlightPlannerPdfReport() {
     const inspDist = cObj.totalMiles;
     const vStr = String(cObj.voltage);
     const is34 = (vStr === '34000' || vStr === '34500');
-    const defaultInspKnots = is34 ? 20 : 30;
+    const defaultInspKnots = is34 ? (defaultInspKts ? Math.round(defaultInspKts * 0.66) : 20) : defaultInspKts;
     const inspSpeedKts = legInspParams.inspSpeedKts !== undefined ? legInspParams.inspSpeedKts : defaultInspKnots;
-    const inspFuelGph = legInspParams.fuelBurnGph !== undefined ? legInspParams.fuelBurnGph : 69;
+    const inspFuelGph = legInspParams.fuelBurnGph !== undefined ? legInspParams.fuelBurnGph : defaultFuelGph;
     const inspMph = inspSpeedKts * 1.15078;
     const inspMins = inspMph > 0 ? Math.round((inspDist / inspMph) * 60) : 0;
     const inspGal = Math.round((inspMins / 60) * inspFuelGph);
@@ -5084,8 +5090,8 @@ function generateFlightPlannerPdfReport() {
   // Final Transit back to Destination
   const finalTransitKey = 'final_transit';
   const finalLegParams = customParams[finalTransitKey] || {};
-  const finalSpeedKts = finalLegParams.transitSpeedKts !== undefined ? finalLegParams.transitSpeedKts : 110;
-  const finalGph = finalLegParams.fuelBurnGph !== undefined ? finalLegParams.fuelBurnGph : 69;
+  const finalSpeedKts = finalLegParams.transitSpeedKts !== undefined ? finalLegParams.transitSpeedKts : defaultTransitKts;
+  const finalGph = finalLegParams.fuelBurnGph !== undefined ? finalLegParams.fuelBurnGph : defaultFuelGph;
   const finalDist = calcDistanceMiles(currentPos.lat, currentPos.lng, endApt.lat, endApt.lng);
   const finalMins = Math.round((finalDist / (finalSpeedKts * 1.15078)) * 60);
   const finalGal = Math.round((finalMins / 60) * finalGph);
