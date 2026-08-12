@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.48';
+window.APP_VERSION = '3.16.44';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.48 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.44 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -32,31 +32,7 @@ const state = {
   missionPackages: [],          // List of 37 KVPZ helicopter out-and-back mission packages
   activeMission: null,          // Currently selected mission package
   activeWeatherStation: 'ALL',  // Active weather station filter selection
-  weatherCache: {},
-  fuelPriceCache: {},
-  weatherRadarLayer: null,      // Live NEXRAD tile layer
-  showWeatherRadar: false,
-  radarProduct: 'n0q',          // n0q = Composite, n0r = Base 0.5° Tilt, eet = Echo Tops, vil = VIL
-  radarOpacity: 0.65,           // Layer opacity (0.2 to 1.0)
-  flightPlanner: {
-    startAirport: 'KVPZ',
-    fuelAirport: 'NONE',
-    fuelTurnaroundMins: 30,
-    endAirport: 'KVPZ',
-    circuitLegs: [],
-    autoOptimize: true,
-    manualEndpoints: {},
-    isClickMode: false,
-    plannerLayerGroup: null,
-    airportsLayerGroup: null,
-    showAirports: true,
-    showAirportLabels: true,
-    showFuelPrices: true,
-    legCustomParams: {},
-    defaultTransitSpeedKts: 110,
-    defaultInspSpeedKts: 30,
-    defaultFuelBurnGph: 69
-  }
+  weatherCache: {}
 };
 
 // Voltage Configuration & Color Matrix
@@ -256,15 +232,15 @@ function loadFiltersAndMapPreferences() {
       state.activeVoltages = new Set(prefs.activeVoltages);
     }
 
-    if (state.flightPlanner && typeof prefs.showAirports === 'boolean') {
+    if (typeof prefs.showAirports === 'boolean') {
       state.flightPlanner.showAirports = prefs.showAirports;
     }
 
-    if (state.flightPlanner && typeof prefs.showAirportLabels === 'boolean') {
+    if (typeof prefs.showAirportLabels === 'boolean') {
       state.flightPlanner.showAirportLabels = prefs.showAirportLabels;
     }
 
-    if (state.flightPlanner && typeof prefs.showFuelPrices === 'boolean') {
+    if (typeof prefs.showFuelPrices === 'boolean') {
       state.flightPlanner.showFuelPrices = prefs.showFuelPrices;
     }
   } catch (err) {
@@ -556,11 +532,6 @@ async function loadMissionPackages() {
   buildMissionDropdownOptions();
   renderCustomMissionCardsList();
   renderMissionCardsList();
-
-  // If flight plan is currently empty on load, auto-select Mission #1 so Flight Planner is populated
-  if (state.flightPlanner.circuitLegs.length === 0 && state.missionPackages.length > 0) {
-    selectMissionPackageById(state.missionPackages[0].id);
-  }
 }
 
 function buildMissionDropdownOptions() {
@@ -2330,8 +2301,8 @@ function setupEventListeners() {
       document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
       document.getElementById(targetTab).classList.add('active');
 
-      if (targetTab === 'tab-planner') {
-        recalculateFlightPlan();
+      if (targetTab === 'tab-planner' && typeof syncSelectedGroupToFlightPlan === 'function') {
+        syncSelectedGroupToFlightPlan(true);
       } else if (targetTab === 'tab-weather') {
         populateWeatherUI();
       }
@@ -2350,38 +2321,6 @@ function setupEventListeners() {
   if (btnRefreshWeather) {
     btnRefreshWeather.addEventListener('click', () => {
       populateWeatherUI(true);
-    });
-  }
-
-  const toggleRadarInput = document.getElementById('toggle-weather-radar');
-  if (toggleRadarInput) {
-    toggleRadarInput.addEventListener('change', (e) => {
-      toggleWeatherRadar(e.target.checked);
-    });
-  }
-
-  const radarProductSelect = document.getElementById('radar-product-select');
-  if (radarProductSelect) {
-    radarProductSelect.addEventListener('change', (e) => {
-      state.radarProduct = e.target.value;
-      if (state.showWeatherRadar) {
-        updateWeatherRadarLayer();
-        showToast(`📡 Switched Radar Product: ${getRadarProductName(state.radarProduct)}`);
-      }
-    });
-  }
-
-  const radarOpacityRange = document.getElementById('radar-opacity-range');
-  if (radarOpacityRange) {
-    radarOpacityRange.addEventListener('input', (e) => {
-      const val = parseInt(e.target.value, 10);
-      const opacity = val / 100;
-      state.radarOpacity = opacity;
-      const label = document.getElementById('radar-opacity-val');
-      if (label) label.textContent = `${val}% Opacity`;
-      if (state.weatherRadarLayer) {
-        state.weatherRadarLayer.setOpacity(opacity);
-      }
     });
   }
 
@@ -3121,60 +3060,6 @@ function parseMetarToPlainEnglish(rawMetar, metarObj, rules) {
   `;
 }
 
-function toggleWeatherRadar(enable) {
-  if (!state.map) return;
-
-  const checkbox = document.getElementById('toggle-weather-radar');
-  const isChecked = enable !== undefined ? enable : (checkbox ? checkbox.checked : false);
-  state.showWeatherRadar = isChecked;
-  if (checkbox) checkbox.checked = isChecked;
-
-  if (isChecked) {
-    updateWeatherRadarLayer();
-    showToast(`📡 NEXRAD Radar Enabled: ${getRadarProductName(state.radarProduct)}`);
-  } else {
-    if (state.weatherRadarLayer && state.map.hasLayer(state.weatherRadarLayer)) {
-      state.map.removeLayer(state.weatherRadarLayer);
-    }
-    showToast('📡 Weather Radar Overlay Disabled');
-  }
-}
-
-function updateWeatherRadarLayer() {
-  if (!state.map) return;
-
-  if (state.weatherRadarLayer && state.map.hasLayer(state.weatherRadarLayer)) {
-    state.map.removeLayer(state.weatherRadarLayer);
-  }
-
-  const prod = state.radarProduct || 'n0q';
-  const tileUrl = `https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-${prod}-900913/{z}/{x}/{y}.png`;
-
-  state.weatherRadarLayer = L.tileLayer(tileUrl, {
-    opacity: state.radarOpacity !== undefined ? state.radarOpacity : 0.65,
-    maxZoom: 18,
-    attribution: 'Weather Radar &copy; IEM / NOAA'
-  });
-
-  if (state.showWeatherRadar) {
-    state.weatherRadarLayer.addTo(state.map);
-  }
-}
-
-function getRadarProductName(prodKey) {
-  switch (prodKey) {
-    case 'n0r': return 'Base Reflectivity (0.5° Tilt)';
-    case 'eet': return 'Echo Tops (Cloud Tops)';
-    case 'vil': return 'Vertically Integrated Liquid (VIL)';
-    case 'n0q':
-    default:
-      return 'Composite Reflectivity';
-  }
-}
-
-window.toggleWeatherRadar = toggleWeatherRadar;
-window.updateWeatherRadarLayer = updateWeatherRadarLayer;
-
 async function populateWeatherUI(forceRefresh = false) {
   const container = document.getElementById('weather-cards-list');
   const select = document.getElementById('weather-airport-select');
@@ -3314,6 +3199,24 @@ async function populateWeatherUI(forceRefresh = false) {
     console.log('⚡ Auto-refreshing weather data (10-min interval)...');
     populateWeatherUI(true);
   }, 600000);
+}
+
+function initCollapsibleCards() {
+  const headers = document.querySelectorAll('.collapsible-header');
+  headers.forEach(header => {
+    if (header.dataset.hasCollapseListener) return;
+    header.dataset.hasCollapseListener = 'true';
+
+    header.addEventListener('click', (e) => {
+      if (e.target.closest('button') || e.target.closest('select') || e.target.closest('input') || e.target.closest('a')) {
+        return;
+      }
+      const card = header.closest('.collapsible-card');
+      if (card) {
+        card.classList.toggle('collapsed');
+      }
+    });
+  });
 }
 
 // Entry Point
