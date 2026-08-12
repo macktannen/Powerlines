@@ -19,10 +19,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0F19'/><path d='M55 12L20 54h25l-8 34 38-44H50l8-32z' fill='%2300E5FF'/></svg>">
 
-  <meta name="version" content="3.16.45">
+  <meta name="version" content="3.16.46">
   
   <!-- Application Styling -->
-  <link rel="stylesheet" href="style.css?v=3.16.45">
+  <link rel="stylesheet" href="style.css?v=3.16.46">
 </head>
 <body>
   <div class="app-container">
@@ -33,7 +33,7 @@
           <i class="fa-solid fa-bolt-lightning"></i>
         </div>
         <div class="brand-text">
-          <h1>Indiana Grid Map <span class="badge-version">v3.16.45</span></h1>
+          <h1>Indiana Grid Map <span class="badge-version">v3.16.46</span></h1>
           <p>Electric Transmission System & Mission Planner</p>
         </div>
       </div>
@@ -370,6 +370,28 @@
                   <option value="PLAN_NEAREST">⚡ Auto-Filter: Nearest to Flight Plan</option>
                   <!-- Populated dynamically by JS -->
                 </select>
+              <!-- Live Radar Product & Tilt Controls -->
+              <div id="radar-settings-panel" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); padding: 8px; border-radius: 6px; margin-bottom: 8px;">
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                  <span><i class="fa-solid fa-radar"></i> Radar Mode & Tilt Controls</span>
+                  <span id="radar-opacity-val" style="font-size: 0.7rem; color: var(--text-muted);">65% Opacity</span>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 8px; align-items: center;">
+                  <div>
+                    <label style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 2px;">Radar Product / Tilt:</label>
+                    <select id="radar-product-select" class="custom-select-sm" style="width: 100%; font-size: 0.72rem;">
+                      <option value="n0q" selected>Composite (All Altitudes)</option>
+                      <option value="n0r">Base Reflectivity (0.5° Tilt)</option>
+                      <option value="eet">Echo Tops (Cloud Tops)</option>
+                      <option value="vil">VIL (Liquid / Severe Core)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 2px;">Layer Opacity:</label>
+                    <input type="range" id="radar-opacity-range" min="20" max="100" value="65" style="width: 100%; accent-color: var(--accent-cyan); cursor: pointer;" />
+                  </div>
+                </div>
               </div>
 
               <div class="search-hint">
@@ -745,7 +767,7 @@
   <!-- Sortable JS -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <!-- Application JS -->
-  <script src="app.js?v=3.16.45"></script>
+  <script src="app.js?v=3.16.46"></script>
 </body>
 
 

@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.45';
+window.APP_VERSION = '3.16.46';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.45 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.46 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -34,7 +34,9 @@ const state = {
   activeWeatherStation: 'ALL',  // Active weather station filter selection
   weatherCache: {},
   weatherRadarLayer: null,      // Live NEXRAD tile layer
-  showWeatherRadar: false
+  showWeatherRadar: false,
+  radarProduct: 'n0q',          // n0q = Composite, n0r = Base 0.5° Tilt, eet = Echo Tops, vil = VIL
+  radarOpacity: 0.65            // Layer opacity (0.2 to 1.0)
 };
 
 // Voltage Configuration & Color Matrix
@@ -2333,6 +2335,31 @@ function setupEventListeners() {
     });
   }
 
+  const radarProductSelect = document.getElementById('radar-product-select');
+  if (radarProductSelect) {
+    radarProductSelect.addEventListener('change', (e) => {
+      state.radarProduct = e.target.value;
+      if (state.showWeatherRadar) {
+        updateWeatherRadarLayer();
+        showToast(`📡 Switched Radar Product: ${getRadarProductName(state.radarProduct)}`);
+      }
+    });
+  }
+
+  const radarOpacityRange = document.getElementById('radar-opacity-range');
+  if (radarOpacityRange) {
+    radarOpacityRange.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      const opacity = val / 100;
+      state.radarOpacity = opacity;
+      const label = document.getElementById('radar-opacity-val');
+      if (label) label.textContent = `${val}% Opacity`;
+      if (state.weatherRadarLayer) {
+        state.weatherRadarLayer.setOpacity(opacity);
+      }
+    });
+  }
+
   document.getElementById('circuit-sort-select').addEventListener('change', (e) => {
     state.sortMode = e.target.value;
     filterAndSortCircuits();
@@ -3078,17 +3105,8 @@ function toggleWeatherRadar(enable) {
   if (checkbox) checkbox.checked = isChecked;
 
   if (isChecked) {
-    if (!state.weatherRadarLayer) {
-      state.weatherRadarLayer = L.tileLayer('https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png', {
-        opacity: 0.65,
-        maxZoom: 18,
-        attribution: 'Weather Radar &copy; IEM / NOAA'
-      });
-    }
-    if (!state.map.hasLayer(state.weatherRadarLayer)) {
-      state.weatherRadarLayer.addTo(state.map);
-    }
-    showToast('📡 Live NEXRAD Weather Radar Overlay Enabled');
+    updateWeatherRadarLayer();
+    showToast(`📡 NEXRAD Radar Enabled: ${getRadarProductName(state.radarProduct)}`);
   } else {
     if (state.weatherRadarLayer && state.map.hasLayer(state.weatherRadarLayer)) {
       state.map.removeLayer(state.weatherRadarLayer);
@@ -3097,7 +3115,40 @@ function toggleWeatherRadar(enable) {
   }
 }
 
+function updateWeatherRadarLayer() {
+  if (!state.map) return;
+
+  if (state.weatherRadarLayer && state.map.hasLayer(state.weatherRadarLayer)) {
+    state.map.removeLayer(state.weatherRadarLayer);
+  }
+
+  const prod = state.radarProduct || 'n0q';
+  const tileUrl = `https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-${prod}-900913/{z}/{x}/{y}.png`;
+
+  state.weatherRadarLayer = L.tileLayer(tileUrl, {
+    opacity: state.radarOpacity !== undefined ? state.radarOpacity : 0.65,
+    maxZoom: 18,
+    attribution: 'Weather Radar &copy; IEM / NOAA'
+  });
+
+  if (state.showWeatherRadar) {
+    state.weatherRadarLayer.addTo(state.map);
+  }
+}
+
+function getRadarProductName(prodKey) {
+  switch (prodKey) {
+    case 'n0r': return 'Base Reflectivity (0.5° Tilt)';
+    case 'eet': return 'Echo Tops (Cloud Tops)';
+    case 'vil': return 'Vertically Integrated Liquid (VIL)';
+    case 'n0q':
+    default:
+      return 'Composite Reflectivity';
+  }
+}
+
 window.toggleWeatherRadar = toggleWeatherRadar;
+window.updateWeatherRadarLayer = updateWeatherRadarLayer;
 
 async function populateWeatherUI(forceRefresh = false) {
   const container = document.getElementById('weather-cards-list');
