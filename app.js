@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.46';
+window.APP_VERSION = '3.16.47';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.46 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.47 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -33,10 +33,30 @@ const state = {
   activeMission: null,          // Currently selected mission package
   activeWeatherStation: 'ALL',  // Active weather station filter selection
   weatherCache: {},
+  fuelPriceCache: {},
   weatherRadarLayer: null,      // Live NEXRAD tile layer
   showWeatherRadar: false,
   radarProduct: 'n0q',          // n0q = Composite, n0r = Base 0.5° Tilt, eet = Echo Tops, vil = VIL
-  radarOpacity: 0.65            // Layer opacity (0.2 to 1.0)
+  radarOpacity: 0.65,           // Layer opacity (0.2 to 1.0)
+  flightPlanner: {
+    startAirport: 'KVPZ',
+    fuelAirport: 'NONE',
+    fuelTurnaroundMins: 30,
+    endAirport: 'KVPZ',
+    circuitLegs: [],
+    autoOptimize: true,
+    manualEndpoints: {},
+    isClickMode: false,
+    plannerLayerGroup: null,
+    airportsLayerGroup: null,
+    showAirports: true,
+    showAirportLabels: true,
+    showFuelPrices: true,
+    legCustomParams: {},
+    defaultTransitSpeedKts: 110,
+    defaultInspSpeedKts: 30,
+    defaultFuelBurnGph: 69
+  }
 };
 
 // Voltage Configuration & Color Matrix
@@ -236,15 +256,15 @@ function loadFiltersAndMapPreferences() {
       state.activeVoltages = new Set(prefs.activeVoltages);
     }
 
-    if (typeof prefs.showAirports === 'boolean') {
+    if (state.flightPlanner && typeof prefs.showAirports === 'boolean') {
       state.flightPlanner.showAirports = prefs.showAirports;
     }
 
-    if (typeof prefs.showAirportLabels === 'boolean') {
+    if (state.flightPlanner && typeof prefs.showAirportLabels === 'boolean') {
       state.flightPlanner.showAirportLabels = prefs.showAirportLabels;
     }
 
-    if (typeof prefs.showFuelPrices === 'boolean') {
+    if (state.flightPlanner && typeof prefs.showFuelPrices === 'boolean') {
       state.flightPlanner.showFuelPrices = prefs.showFuelPrices;
     }
   } catch (err) {
