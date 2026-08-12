@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.47';
+window.APP_VERSION = '3.16.48';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.47 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.48 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -556,6 +556,11 @@ async function loadMissionPackages() {
   buildMissionDropdownOptions();
   renderCustomMissionCardsList();
   renderMissionCardsList();
+
+  // If flight plan is currently empty on load, auto-select Mission #1 so Flight Planner is populated
+  if (state.flightPlanner.circuitLegs.length === 0 && state.missionPackages.length > 0) {
+    selectMissionPackageById(state.missionPackages[0].id);
+  }
 }
 
 function buildMissionDropdownOptions() {
@@ -2325,8 +2330,8 @@ function setupEventListeners() {
       document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
       document.getElementById(targetTab).classList.add('active');
 
-      if (targetTab === 'tab-planner' && typeof syncSelectedGroupToFlightPlan === 'function') {
-        syncSelectedGroupToFlightPlan(true);
+      if (targetTab === 'tab-planner') {
+        recalculateFlightPlan();
       } else if (targetTab === 'tab-weather') {
         populateWeatherUI();
       }
@@ -3309,24 +3314,6 @@ async function populateWeatherUI(forceRefresh = false) {
     console.log('⚡ Auto-refreshing weather data (10-min interval)...');
     populateWeatherUI(true);
   }, 600000);
-}
-
-function initCollapsibleCards() {
-  const headers = document.querySelectorAll('.collapsible-header');
-  headers.forEach(header => {
-    if (header.dataset.hasCollapseListener) return;
-    header.dataset.hasCollapseListener = 'true';
-
-    header.addEventListener('click', (e) => {
-      if (e.target.closest('button') || e.target.closest('select') || e.target.closest('input') || e.target.closest('a')) {
-        return;
-      }
-      const card = header.closest('.collapsible-card');
-      if (card) {
-        card.classList.toggle('collapsed');
-      }
-    });
-  });
 }
 
 // Entry Point
