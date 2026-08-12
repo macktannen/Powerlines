@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.44';
+window.APP_VERSION = '3.16.45';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.44 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.45 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -32,7 +32,9 @@ const state = {
   missionPackages: [],          // List of 37 KVPZ helicopter out-and-back mission packages
   activeMission: null,          // Currently selected mission package
   activeWeatherStation: 'ALL',  // Active weather station filter selection
-  weatherCache: {}
+  weatherCache: {},
+  weatherRadarLayer: null,      // Live NEXRAD tile layer
+  showWeatherRadar: false
 };
 
 // Voltage Configuration & Color Matrix
@@ -2324,6 +2326,13 @@ function setupEventListeners() {
     });
   }
 
+  const toggleRadarInput = document.getElementById('toggle-weather-radar');
+  if (toggleRadarInput) {
+    toggleRadarInput.addEventListener('change', (e) => {
+      toggleWeatherRadar(e.target.checked);
+    });
+  }
+
   document.getElementById('circuit-sort-select').addEventListener('change', (e) => {
     state.sortMode = e.target.value;
     filterAndSortCircuits();
@@ -3059,6 +3068,36 @@ function parseMetarToPlainEnglish(rawMetar, metarObj, rules) {
     </div>
   `;
 }
+
+function toggleWeatherRadar(enable) {
+  if (!state.map) return;
+
+  const checkbox = document.getElementById('toggle-weather-radar');
+  const isChecked = enable !== undefined ? enable : (checkbox ? checkbox.checked : false);
+  state.showWeatherRadar = isChecked;
+  if (checkbox) checkbox.checked = isChecked;
+
+  if (isChecked) {
+    if (!state.weatherRadarLayer) {
+      state.weatherRadarLayer = L.tileLayer('https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png', {
+        opacity: 0.65,
+        maxZoom: 18,
+        attribution: 'Weather Radar &copy; IEM / NOAA'
+      });
+    }
+    if (!state.map.hasLayer(state.weatherRadarLayer)) {
+      state.weatherRadarLayer.addTo(state.map);
+    }
+    showToast('📡 Live NEXRAD Weather Radar Overlay Enabled');
+  } else {
+    if (state.weatherRadarLayer && state.map.hasLayer(state.weatherRadarLayer)) {
+      state.map.removeLayer(state.weatherRadarLayer);
+    }
+    showToast('📡 Weather Radar Overlay Disabled');
+  }
+}
+
+window.toggleWeatherRadar = toggleWeatherRadar;
 
 async function populateWeatherUI(forceRefresh = false) {
   const container = document.getElementById('weather-cards-list');
