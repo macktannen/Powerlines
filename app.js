@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.43';
+window.APP_VERSION = '3.16.44';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.43 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.44 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -3459,6 +3459,16 @@ function renderIndianaAirportsLayer() {
       }
     }
 
+    let wxTypeStr = 'Clear / Dry';
+    if (metar && metar.wxString) {
+      wxTypeStr = formatWeatherPhenomena(metar.wxString) || 'Clear / Dry';
+    } else if (metar && metar.rawOb) {
+      let wxMatch = metar.rawOb.match(/\b(\+|-|VC)?(MI|PR|BC|DR|BL|SH|TS|FZ)?(DZ|RA|SN|SG|IC|PL|GR|GS|UP|FG|BR|HZ|FU|DU|SA|VA|SQ|FC|SS|DS)+\b/);
+      if (wxMatch) {
+        wxTypeStr = formatWeatherPhenomena(wxMatch[0]) || 'Clear / Dry';
+      }
+    }
+
     // Fetch AirNav Jet-A Fuel Price
     const fuelData = await fetchAirNavFuelPrice(apt.code);
     const priceStr = fuelData ? fuelData.priceFormatted : '$5.85';
@@ -3498,9 +3508,13 @@ function renderIndianaAirportsLayer() {
             <span style="color: #94A3B8;">Visibility:</span>
             <strong style="color: #F59E0B;">${visStr}</strong>
           </div>
-          <div style="display: flex; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
             <span style="color: #94A3B8;">Ceiling:</span>
             <strong style="color: #4ADE80;">${ceilingStr}</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #94A3B8;">Weather:</span>
+            <strong style="color: #E0F2FE;">${wxTypeStr}</strong>
           </div>
         </div>
 
