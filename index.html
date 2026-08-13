@@ -19,10 +19,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0F19'/><path d='M55 12L20 54h25l-8 34 38-44H50l8-32z' fill='%2300E5FF'/></svg>">
 
-  <meta name="version" content="3.16.51">
+  <meta name="version" content="3.16.52">
   
   <!-- Application Styling -->
-  <link rel="stylesheet" href="style.css?v=3.16.51">
+  <link rel="stylesheet" href="style.css?v=3.16.52">
 </head>
 <body>
   <div class="app-container">
@@ -33,7 +33,7 @@
           <i class="fa-solid fa-bolt-lightning"></i>
         </div>
         <div class="brand-text">
-          <h1>Indiana Grid Map <span class="badge-version">v3.16.51</span></h1>
+          <h1>Indiana Grid Map <span class="badge-version">v3.16.52</span></h1>
           <p>Electric Transmission System & Mission Planner</p>
         </div>
       </div>
@@ -410,13 +410,16 @@
               <!-- Typable Circuit Input Box (comma-separated supported) -->
               <div>
                 <div style="display: flex; gap: 6px;">
-                  <input type="text" id="planner-circuit-search-input" placeholder="Type circuit #s (e.g. 13883, 34509, 6907)..." list="circuit-options-list" autocomplete="off" class="custom-select-sm" style="flex: 1; padding: 7px 10px;">
-                  <button id="btn-planner-add-input" class="btn-xs btn-highlight" style="padding: 6px 14px;">
-                    <i class="fa-solid fa-plus"></i> Add
+                  <input type="text" id="planner-circuit-search-input" placeholder="Type circuit #s (e.g. 3450, 3451, 3455)..." list="circuit-options-list" autocomplete="off" class="custom-select-sm" style="flex: 1; padding: 7px 10px;">
+                  <button id="btn-planner-add-input" class="btn-xs btn-highlight" style="padding: 6px 12px;" title="Set/Add typed circuits to Flight Plan">
+                    <i class="fa-solid fa-plus"></i> Set/Add
+                  </button>
+                  <button id="btn-planner-clear-route" class="btn-xs btn-danger" style="padding: 6px 10px;" title="Clear all circuit legs from Flight Plan">
+                    <i class="fa-solid fa-trash-can"></i> Clear
                   </button>
                 </div>
                 <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 4px;">
-                  Tip: Type single or comma-separated circuit numbers & press Enter.
+                  Tip: Type a list (e.g. <code>3450, 3451, 3455</code>) to set route & lock 1st circuit as start.
                 </div>
               </div>
             </div>
@@ -744,7 +747,7 @@
   <!-- Sortable JS -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <!-- Application JS -->
-  <script src="app.js?v=3.16.51"></script>
+  <script src="app.js?v=3.16.52"></script>
 </body>
 
 

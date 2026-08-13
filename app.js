@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.51';
+window.APP_VERSION = '3.16.52';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.51 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.52 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -3317,8 +3317,8 @@ function processPlannerSearchInput() {
   const rawVal = inputEl.value.trim();
   if (!rawVal) return;
 
-  const tokens = rawVal.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-  let addedNames = [];
+  const tokens = rawVal.split(/[,;]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+  let matchedCircuits = [];
 
   tokens.forEach(tok => {
     let match = state.circuitGroups.find(c => c.name.toLowerCase() === tok);
@@ -3328,18 +3328,38 @@ function processPlannerSearchInput() {
     if (!match) {
       match = state.circuitGroups.find(c => c.name.toLowerCase().includes(tok));
     }
-    if (match && !state.flightPlanner.circuitLegs.includes(match.name)) {
-      state.flightPlanner.circuitLegs.push(match.name);
-      addedNames.push(match.name);
+    if (match && !matchedCircuits.includes(match.name)) {
+      matchedCircuits.push(match.name);
     }
   });
 
-  if (addedNames.length > 0) {
-    showToast(`Added ${addedNames.length} circuit(s) to flight plan!`);
+  if (matchedCircuits.length > 0) {
+    if (tokens.length > 1) {
+      // Multiple circuits typed in: replace route with new sequence & lock 1st circuit as starting point
+      state.flightPlanner.circuitLegs = [...matchedCircuits];
+      state.flightPlanner.lockFirstCircuit = true;
+      updateLockFirstCircuitButtonUI();
+      showToast(`📍 Flight Plan set to ${matchedCircuits.length} circuits (Locked start at ${matchedCircuits[0]})`);
+    } else {
+      // Single circuit typed: append if not present or set as first if list was empty
+      if (state.flightPlanner.circuitLegs.length === 0) {
+        state.flightPlanner.circuitLegs = [...matchedCircuits];
+        state.flightPlanner.lockFirstCircuit = true;
+        updateLockFirstCircuitButtonUI();
+        showToast(`📍 Flight Plan set starting at ${matchedCircuits[0]}`);
+      } else {
+        matchedCircuits.forEach(name => {
+          if (!state.flightPlanner.circuitLegs.includes(name)) {
+            state.flightPlanner.circuitLegs.push(name);
+          }
+        });
+        showToast(`Added ${matchedCircuits.length} circuit(s) to flight plan!`);
+      }
+    }
     inputEl.value = '';
     recalculateFlightPlan();
   } else {
-    showToast(`No matching unadded circuits found for "${rawVal}"`);
+    showToast(`No matching circuits found for "${rawVal}"`);
   }
 }
 
@@ -3739,6 +3759,17 @@ function initFlightPlanner() {
 
   if (addInputBtn) {
     addInputBtn.addEventListener('click', processPlannerSearchInput);
+  }
+
+  const clearRouteBtn = document.getElementById('btn-planner-clear-route');
+  if (clearRouteBtn) {
+    clearRouteBtn.addEventListener('click', () => {
+      state.flightPlanner.circuitLegs = [];
+      state.flightPlanner.lockFirstCircuit = false;
+      updateLockFirstCircuitButtonUI();
+      showToast('🗑️ Flight Plan route cleared');
+      recalculateFlightPlan();
+    });
   }
 
   if (syncBtn) {
