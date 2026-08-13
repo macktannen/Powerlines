@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.50';
+window.APP_VERSION = '3.16.51';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.50 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.51 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -3294,7 +3294,8 @@ state.flightPlanner = {
   legCustomParams: {}, // Stores custom parameters per leg key or index: { transitSpeedKts, inspSpeedKts, fuelBurnGph }
   defaultTransitSpeedKts: 110,
   defaultInspSpeedKts: 30,
-  defaultFuelBurnGph: 69
+  defaultFuelBurnGph: 69,
+  lockFirstCircuit: false       // Lock 1st circuit in manifest as starting inspection leg
 };
 
 function syncSelectedGroupToFlightPlan(forceToast = false) {
@@ -3615,6 +3616,23 @@ function renderIndianaAirportsLayer() {
   });
 }
 
+function updateLockFirstCircuitButtonUI() {
+  const btn = document.getElementById('btn-toggle-lock-first-circuit');
+  if (!btn) return;
+  const isLocked = !!state.flightPlanner.lockFirstCircuit;
+  if (isLocked) {
+    btn.style.background = 'linear-gradient(135deg, #0284C7, #00E5FF)';
+    btn.style.border = 'none';
+    btn.style.color = '#FFF';
+    btn.innerHTML = '<i class="fa-solid fa-anchor"></i> 📍 Lock 1st: ON';
+  } else {
+    btn.style.background = 'rgba(255, 255, 255, 0.08)';
+    btn.style.border = '1px solid var(--panel-border)';
+    btn.style.color = 'var(--text-muted)';
+    btn.innerHTML = '<i class="fa-solid fa-anchor"></i> 📍 Lock 1st: OFF';
+  }
+}
+
 window.reverseFlightPlan = function() {
   if (!state.flightPlanner.circuitLegs || state.flightPlanner.circuitLegs.length <= 1) return;
   state.flightPlanner.isReversed = !state.flightPlanner.isReversed;
@@ -3646,6 +3664,21 @@ function initFlightPlanner() {
   const pdfBtn = document.getElementById('btn-planner-export-pdf');
   const autoOptBtn = document.getElementById('btn-toggle-auto-optimize');
   const reverseBtn = document.getElementById('btn-planner-reverse-route');
+  const lockFirstBtn = document.getElementById('btn-toggle-lock-first-circuit');
+
+  if (lockFirstBtn) {
+    lockFirstBtn.addEventListener('click', () => {
+      state.flightPlanner.lockFirstCircuit = !state.flightPlanner.lockFirstCircuit;
+      updateLockFirstCircuitButtonUI();
+      if (state.flightPlanner.lockFirstCircuit) {
+        const first = state.flightPlanner.circuitLegs[0] || '1st Circuit';
+        showToast(`📍 Locked ${first} as starting circuit for auto-routing!`);
+      } else {
+        showToast('📍 Lock 1st Circuit disabled — full route auto-optimization enabled');
+      }
+      recalculateFlightPlan();
+    });
+  }
 
   if (reverseBtn) {
     reverseBtn.addEventListener('click', reverseFlightPlan);
@@ -4144,22 +4177,56 @@ function recalculateFlightPlan() {
     const optStart = state.flightPlanner.isReversed ? endApt : startApt;
     const optEnd = state.flightPlanner.isReversed ? startApt : endApt;
 
-    if (hasFuelStop && fuelStopIdx > 0 && fuelStopIdx < state.flightPlanner.circuitLegs.length) {
-      const fuelApt = INDIANA_AIRPORTS[fuelCode];
-      const preFuel = state.flightPlanner.circuitLegs.slice(0, fuelStopIdx);
-      const postFuel = state.flightPlanner.circuitLegs.slice(fuelStopIdx);
+    if (state.flightPlanner.lockFirstCircuit && state.flightPlanner.circuitLegs.length > 1) {
+      const firstCircuitName = state.flightPlanner.circuitLegs[0];
+      const firstObj = state.circuitGroups.find(c => c.name === firstCircuitName);
+      
+      let firstExitPt = optStart;
+      if (firstObj) {
+        const ep = getCircuitEndpoints(firstObj, optStart);
+        firstExitPt = ep.exitPt || ep.entryPt || optStart;
+      }
 
-      const optPre = optimizeCircuitSequence(preFuel, optStart, fuelApt);
-      const optPost = optimizeCircuitSequence(postFuel, fuelApt, optEnd);
-      state.flightPlanner.circuitLegs = [...optPre, ...optPost];
-    } else if (hasFuelStop && fuelStopIdx === state.flightPlanner.circuitLegs.length) {
-      const fuelApt = INDIANA_AIRPORTS[fuelCode];
-      state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, optStart, fuelApt);
-    } else if (hasFuelStop && fuelStopIdx === 0) {
-      const fuelApt = INDIANA_AIRPORTS[fuelCode];
-      state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, fuelApt, optEnd);
+      const remainingLegs = state.flightPlanner.circuitLegs.slice(1);
+
+      if (hasFuelStop && fuelStopIdx > 1 && fuelStopIdx < state.flightPlanner.circuitLegs.length) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        const preFuel = remainingLegs.slice(0, fuelStopIdx - 1);
+        const postFuel = remainingLegs.slice(fuelStopIdx - 1);
+
+        const optPre = optimizeCircuitSequence(preFuel, firstExitPt, fuelApt);
+        const optPost = optimizeCircuitSequence(postFuel, fuelApt, optEnd);
+        state.flightPlanner.circuitLegs = [firstCircuitName, ...optPre, ...optPost];
+      } else if (hasFuelStop && fuelStopIdx === 1) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        const optPost = optimizeCircuitSequence(remainingLegs, fuelApt, optEnd);
+        state.flightPlanner.circuitLegs = [firstCircuitName, ...optPost];
+      } else if (hasFuelStop && fuelStopIdx === state.flightPlanner.circuitLegs.length) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        const optRemaining = optimizeCircuitSequence(remainingLegs, firstExitPt, fuelApt);
+        state.flightPlanner.circuitLegs = [firstCircuitName, ...optRemaining];
+      } else {
+        const optRemaining = optimizeCircuitSequence(remainingLegs, firstExitPt, optEnd);
+        state.flightPlanner.circuitLegs = [firstCircuitName, ...optRemaining];
+      }
     } else {
-      state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, optStart, optEnd);
+      if (hasFuelStop && fuelStopIdx > 0 && fuelStopIdx < state.flightPlanner.circuitLegs.length) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        const preFuel = state.flightPlanner.circuitLegs.slice(0, fuelStopIdx);
+        const postFuel = state.flightPlanner.circuitLegs.slice(fuelStopIdx);
+
+        const optPre = optimizeCircuitSequence(preFuel, optStart, fuelApt);
+        const optPost = optimizeCircuitSequence(postFuel, fuelApt, optEnd);
+        state.flightPlanner.circuitLegs = [...optPre, ...optPost];
+      } else if (hasFuelStop && fuelStopIdx === state.flightPlanner.circuitLegs.length) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, optStart, fuelApt);
+      } else if (hasFuelStop && fuelStopIdx === 0) {
+        const fuelApt = INDIANA_AIRPORTS[fuelCode];
+        state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, fuelApt, optEnd);
+      } else {
+        state.flightPlanner.circuitLegs = optimizeCircuitSequence(state.flightPlanner.circuitLegs, optStart, optEnd);
+      }
     }
 
     if (state.flightPlanner.isReversed) {
@@ -4586,11 +4653,15 @@ function renderFlightPlanManifestList(legsManifest) {
         </div>
       `;
     } else if (leg.type === 'INSPECTION') {
-      item.style.borderLeft = '3px solid #FF0055';
+      const isLockedStart = leg.index === 0 && !!state.flightPlanner.lockFirstCircuit;
+      item.style.borderLeft = isLockedStart ? '3px solid #00E5FF' : '3px solid #FF0055';
       item.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <strong style="color: #FFF;">${leg.title}</strong>
-          <div style="display: flex; gap: 4px;">
+          <div style="display: flex; gap: 3px; align-items: center;">
+            <button class="btn-xs btn-lock-start-circuit" data-index="${leg.index}" title="Set this circuit as starting inspection point for auto-routing" style="padding: 2px 5px; font-size: 0.62rem; background: ${isLockedStart ? 'rgba(0, 229, 255, 0.25)' : 'rgba(255, 255, 255, 0.08)'}; border: 1px solid ${isLockedStart ? '#00E5FF' : 'var(--panel-border)'}; color: ${isLockedStart ? '#00E5FF' : 'var(--text-muted)'}; border-radius: 3px; cursor: pointer;">
+              <i class="fa-solid fa-anchor"></i> ${isLockedStart ? 'Start Locked' : 'Set Start'}
+            </button>
             <button class="btn-xs btn-insp-up" data-index="${leg.index}" title="Move Leg Up" style="padding: 2px 5px;"><i class="fa-solid fa-arrow-up" style="pointer-events: none;"></i></button>
             <button class="btn-xs btn-insp-down" data-index="${leg.index}" title="Move Leg Down" style="padding: 2px 5px;"><i class="fa-solid fa-arrow-down" style="pointer-events: none;"></i></button>
             <button class="btn-xs btn-danger btn-insp-del" data-index="${leg.index}" title="Remove Leg" style="padding: 2px 5px;"><i class="fa-solid fa-trash" style="pointer-events: none;"></i></button>
@@ -4624,7 +4695,19 @@ function renderFlightPlanManifestList(legsManifest) {
       const target = e.target.closest('button');
       if (!target) return;
       
-      if (target.classList.contains('btn-insp-up')) {
+      if (target.classList.contains('btn-lock-start-circuit')) {
+        const idx = parseInt(target.dataset.index, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < state.flightPlanner.circuitLegs.length) {
+          if (idx !== 0) {
+            const [selectedCircuit] = state.flightPlanner.circuitLegs.splice(idx, 1);
+            state.flightPlanner.circuitLegs.unshift(selectedCircuit);
+          }
+          state.flightPlanner.lockFirstCircuit = true;
+          updateLockFirstCircuitButtonUI();
+          showToast(`📍 Locked ${state.flightPlanner.circuitLegs[0]} as starting circuit!`);
+          recalculateFlightPlan();
+        }
+      } else if (target.classList.contains('btn-insp-up')) {
         moveFlightPlanLeg(parseInt(target.dataset.index, 10), -1);
       } else if (target.classList.contains('btn-insp-down')) {
         moveFlightPlanLeg(parseInt(target.dataset.index, 10), 1);

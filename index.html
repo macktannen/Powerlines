@@ -19,10 +19,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0F19'/><path d='M55 12L20 54h25l-8 34 38-44H50l8-32z' fill='%2300E5FF'/></svg>">
 
-  <meta name="version" content="3.16.50">
+  <meta name="version" content="3.16.51">
   
   <!-- Application Styling -->
-  <link rel="stylesheet" href="style.css?v=3.16.50">
+  <link rel="stylesheet" href="style.css?v=3.16.51">
 </head>
 <body>
   <div class="app-container">
@@ -33,7 +33,7 @@
           <i class="fa-solid fa-bolt-lightning"></i>
         </div>
         <div class="brand-text">
-          <h1>Indiana Grid Map <span class="badge-version">v3.16.50</span></h1>
+          <h1>Indiana Grid Map <span class="badge-version">v3.16.51</span></h1>
           <p>Electric Transmission System & Mission Planner</p>
         </div>
       </div>
@@ -395,11 +395,16 @@
 
             <div class="card-body" style="margin-top: 10px;">
               <!-- Routing Mode & Auto-Optimize Toggle -->
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed var(--panel-border);">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed var(--panel-border); flex-wrap: wrap; gap: 4px;">
                 <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Routing Mode:</span>
-                <button id="btn-toggle-auto-optimize" class="btn-xs btn-highlight" style="padding: 3px 8px; font-size: 0.68rem; background: linear-gradient(135deg, #0284C7, #00E5FF); border: none; color: #FFF; font-weight: 700;" title="Toggle between Auto-Optimize & Manual Drag Waypoints">
-                  <i class="fa-solid fa-bolt"></i> ⚡ Auto-Optimize: ON
-                </button>
+                <div style="display: flex; gap: 4px;">
+                  <button id="btn-toggle-lock-first-circuit" class="btn-xs btn-highlight" style="padding: 3px 6px; font-size: 0.65rem; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--panel-border); color: var(--text-muted); font-weight: 700;" title="Lock 1st circuit in manifest as starting inspection point, then auto-optimize remaining circuits">
+                    <i class="fa-solid fa-anchor"></i> 📍 Lock 1st: OFF
+                  </button>
+                  <button id="btn-toggle-auto-optimize" class="btn-xs btn-highlight" style="padding: 3px 6px; font-size: 0.65rem; background: linear-gradient(135deg, #0284C7, #00E5FF); border: none; color: #FFF; font-weight: 700;" title="Toggle between Auto-Optimize & Manual Drag Waypoints">
+                    <i class="fa-solid fa-bolt"></i> ⚡ Auto: ON
+                  </button>
+                </div>
               </div>
 
               <!-- Typable Circuit Input Box (comma-separated supported) -->
@@ -739,7 +744,7 @@
   <!-- Sortable JS -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <!-- Application JS -->
-  <script src="app.js?v=3.16.50"></script>
+  <script src="app.js?v=3.16.51"></script>
 </body>
 
 
