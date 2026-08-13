@@ -1,24 +1,4 @@
 {
-  "timestamp": 1786651099378,
-  "prices": {
-    "KVPZ": 6.0,
-    "KGYY": 5.99,
-    "KSBN": 7.3,
-    "KPPO": 6.0,
-    "KMGC": 6.45,
-    "KRZL": 4.49,
-    "KMCX": 5.8,
-    "KOXI": 4.85,
-    "KRWN": 4.67,
-    "KRCR": 5.31,
-    "KASW": 5.52,
-    "KEKM": 6.85,
-    "KANQ": 5.6,
-    "KSMD": 5.0,
-    "KFWA": 7.19,
-    "KHHG": 4.22,
-    "KIWH": 5.05,
-    "KLAF": 6.59,
-    "KFKR": 6.25
-  }
+  "timestamp": 1786664967249,
+  "prices": {}
 }
