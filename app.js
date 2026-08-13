@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.44';
+window.APP_VERSION = '3.16.49';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.44 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.49 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -925,17 +925,29 @@ function filterAndSortCircuits() {
 
   // When user types in search box: automatically check the checkboxes for matched circuits!
   if (tokens.length > 0) {
-    state.filteredCircuits.forEach(c => state.selectedGroup.add(c.name));
+    const exactMatches = state.filteredCircuits.filter(c => tokens.includes(c.name.toLowerCase()));
+    if (exactMatches.length > 0) {
+      exactMatches.forEach(c => state.selectedGroup.add(c.name));
+    } else {
+      state.filteredCircuits.forEach(c => state.selectedGroup.add(c.name));
+    }
     updateGroupHighlightMap();
   }
 
-  // Sort Circuits by Voltage then Circuit # (Numeric Low to High)
+  // Sort Circuits (Prioritize exact search matches at the top)
   state.filteredCircuits.sort((a, b) => {
     // Unassigned segments ALWAYS go to the bottom of the list
     if (a.isUnknownSegment && !b.isUnknownSegment) return 1;
     if (!a.isUnknownSegment && b.isUnknownSegment) return -1;
     if (a.isUnknownSegment && b.isUnknownSegment) {
       return a.name.localeCompare(b.name, undefined, { numeric: true });
+    }
+
+    if (tokens.length > 0) {
+      const aExact = tokens.includes(a.name.toLowerCase());
+      const bExact = tokens.includes(b.name.toLowerCase());
+      if (aExact && !bExact) return -1;
+      if (!aExact && bExact) return 1;
     }
 
     if (state.sortMode === 'voltage-asc-name-asc') {
@@ -3302,7 +3314,13 @@ function processPlannerSearchInput() {
   let addedNames = [];
 
   tokens.forEach(tok => {
-    const match = state.circuitGroups.find(c => c.name.toLowerCase() === tok || c.name.toLowerCase().includes(tok));
+    let match = state.circuitGroups.find(c => c.name.toLowerCase() === tok);
+    if (!match) {
+      match = state.circuitGroups.find(c => c.name.toLowerCase().startsWith(tok));
+    }
+    if (!match) {
+      match = state.circuitGroups.find(c => c.name.toLowerCase().includes(tok));
+    }
     if (match && !state.flightPlanner.circuitLegs.includes(match.name)) {
       state.flightPlanner.circuitLegs.push(match.name);
       addedNames.push(match.name);
