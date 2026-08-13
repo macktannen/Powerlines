@@ -4,11 +4,11 @@
  */
 
 // Application Version & DevTools Information
-window.APP_VERSION = '3.16.49';
+window.APP_VERSION = '3.16.50';
 window.APP_BUILD_TIME = '2026-08-10 12:05:00 EST';
 
 console.log(
-  '%c ⚡ Indiana Power Grid Viewer %c v3.16.49 ',
+  '%c ⚡ Indiana Power Grid Viewer %c v3.16.50 ',
   'background: #0B0F19; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 4px 0 0 4px; border: 1px solid #00E5FF;',
   'background: #00E5FF; color: #00E5FF; font-weight: bold; font-size: 13px; padding: 4px 8px; border-radius: 0 4px 4px 0;'
 );
@@ -181,7 +181,7 @@ async function loadGridData() {
 
   try {
     loadingText.textContent = 'Fetching transmission dataset...';
-    const response = await fetch('osmtransmission.json');
+    const response = await fetch(`osmtransmission.json?v=${window.APP_VERSION}&t=${Date.now()}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const fetchedObj = await response.json();
@@ -727,9 +727,15 @@ function aggregateCircuits() {
 
   let unknownCounter = 1;
 
+  const OVERRIDE_34KV_CIRCUITS = new Set(['3450', '3451', '3455', '3456', '3457', '3459']);
+
   state.allFeatures.forEach((feat, featIdx) => {
     const p = feat.properties || {};
     const subRaw = p.SUBNETWORKNAME;
+
+    if (subRaw && OVERRIDE_34KV_CIRCUITS.has(String(subRaw).trim())) {
+      p.NOMINALVOLTAGE = 34000;
+    }
 
     if (isUnknownSubnetwork(subRaw)) {
       // Individual entry for each unknown segment
